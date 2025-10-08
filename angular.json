@@ -11,46 +11,27 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:application",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/cruise-lens-academy",
+            "outputPath": "dist/cruise-lens-academy/browser",
             "index": "src/index.html",
-            "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "main": "src/main.ts",
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "outputMode": "server",
-            "ssr": {
-              "entry": "src/server.ts"
-            }
+            "assets": ["src/assets"],
+            "styles": ["src/styles.css"],
+            "scripts": []
           },
           "configurations": {
             "production": {
               "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
-                }
+                { "type": "initial", "maximumWarning": "2MB", "maximumError": "5MB" },
+             { "type": "anyComponentStyle", "maximumWarning": "10kB", "maximumError": "12kB" }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true
             },
             "development": {
               "optimization": false,
@@ -63,12 +44,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
-            "production": {
-              "buildTarget": "Cruise_Lens_Academy:build:production"
-            },
-            "development": {
-              "buildTarget": "Cruise_Lens_Academy:build:development"
-            }
+            "production": { "buildTarget": "Cruise_Lens_Academy:build:production" },
+            "development": { "buildTarget": "Cruise_Lens_Academy:build:development" }
           },
           "defaultConfiguration": "development"
         },
@@ -78,24 +55,43 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "public"
-              }
-            ],
-            "styles": [
-              "src/styles.css"
-            ],
+            "assets": [{ "glob": "**/*", "input": "public", "output": "/" }],
+            "styles": ["src/styles.css"],
             "scripts": []
           }
-        }
+        },
+        "server": {
+  "builder": "@angular-devkit/build-angular:server",
+  "options": {
+    "outputPath": "dist/cruise-lens-academy-server",
+    "main": "src/main.server.ts",
+    "tsConfig": "tsconfig.server.json"
+  },
+  "configurations": {
+    "production": { "optimization": true, "sourceMap": false, "extractLicenses": true },
+    "development": { "optimization": false, "sourceMap": true, "extractLicenses": false }
+  }
+}
+,
+       "prerender": {
+  "builder": "@angular-devkit/build-angular:prerender",
+  "options": {
+    "browserTarget": "Cruise_Lens_Academy:build:production",
+    "serverTarget": "Cruise_Lens_Academy:server:production",
+    "routes": [
+      "/",
+      "/course-1",
+      "/apply-now",
+      "/about",
+      "/contact"
+    ]
+  }
+}
+
       }
     }
-  }
+  },
+  "cli": { "analytics": "5fcf1704-8106-459e-8e07-8c22368de598" }
 }

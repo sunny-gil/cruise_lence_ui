@@ -1,0 +1,247 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 300;
+}
+
+
+
+/* Column 1: Green Sidebar */
+.col-green {
+  background: #ffcc66;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+}
+
+/* Vertical text */
+.vertical-text {
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  font-size: 1rem;       /* slightly bigger */
+  font-weight: 900;      /* extra bold */
+  color: #000;
+  margin-bottom: 1rem;
+  text-decoration: none; /* remove underline */
+  cursor: pointer;       /* nice hover pointer */
+}
+
+/* Optional: hover effect */
+.vertical-text:hover {
+  color: #444; /* slightly darker on hover */
+}
+
+
+/* Column 2: Dark Sidebar */
+.about-layout {
+  display: grid;
+  grid-template-columns: 70px 300px 1fr; /* three columns */
+  min-height: 100vh;
+  background: #000;
+  color: #fff;
+  margin-top: 80px;
+  overflow: hidden;
+}
+
+/* ================= Responsive ================= */
+@media (max-width: 991px) {
+  /* Hide the left green column */
+  .col-green {
+    display: none;
+  }
+
+  /* Adjust grid to use only remaining columns */
+  .about-layout {
+    grid-template-columns: 1fr; /* single column */
+  }
+}
+
+
+.col-dark {
+  background: #111;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  overflow-y: auto; /* allow only sidebar text to scroll if too long */
+}
+
+.sidebar-inner {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.logo {
+  font-weight: bold;
+  margin-bottom: 2rem;
+}
+
+.project-info .title {
+  font-size: 1.6rem;
+  margin-bottom: 1rem;
+  color: #ffcc66;
+}
+
+.project-info hr {
+  border: 0;
+  border-top: 1px solid #444;
+  margin: 1rem 0;
+}
+
+.project-info .description, 
+.project-info p {
+  font-size: 1rem;
+  line-height: 1.5;
+  color: #aaa;
+  text-align: justify;
+}
+
+.project-info .highlight {
+  color: #ffcc66;
+  font-weight: bold;
+}
+
+/* Column 3: Image Section */
+.col-image {
+  position: relative;
+  background: #000;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+.video-wrapper {
+  position: relative;
+  padding: 50px 20px; /* reduce padding on mobile */
+  background: #000;
+}
+
+.video-wrapper video {
+  width: 100%;
+  height: auto;       /* auto height to maintain aspect ratio */
+  max-height: 80vh;   /* optional: don't exceed 80% of viewport height */
+  display: block;
+  object-fit: contain; /* show full video without cropping */
+  border-radius: 12px;
+}
+
+/* Overlay text responsive */
+.video-wrapper .overlay-text {
+  position: absolute;
+  bottom: 30px;
+  left: 20px;
+  font-size: 1.5rem;
+}
+
+/* Media Query for Mobile */
+@media (max-width: 768px) {
+  .video-wrapper {
+    padding: 20px 10px;
+  }
+
+  .video-wrapper .overlay-text {
+    font-size: 1.5rem;
+    bottom: 15px;
+    left: 10px;
+  }
+}
+
+
+/* Image section (no padding, full width) */
+.image-section {
+  margin-top: 20px; /* space between video and image */
+}
+
+.image-wrapper {
+  position: relative;
+}
+
+.image-wrapper img {
+  width: 100%;   /* full width */
+  height: auto;
+  display: block;
+  border-radius: 0; /* remove rounding for full-width look */
+}
+
+.image-wrapper .overlay-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #ffcc66;
+  background: rgba(0, 0, 0, 0.4);
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.mission
+{
+  color: #ffcc66;
+}
+
+
+.content-section {
+  width: 100%;
+  padding: 40px;
+  color: #ddd;
+  text-align: left;
+  font-family: "Poppins", sans-serif;
+}
+
+.content-section h2 {
+  font-size: 2rem;
+  color: #ffcc66;
+  margin-bottom: 1.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.typing-container p {
+  white-space: pre-wrap; /* preserves line breaks */
+  font-family: "Poppins", sans-serif;
+  font-size: 1.5rem;
+  padding: 50px;
+  text-align: center;
+}
+
+.cursor {
+  display: inline-block;
+  width: 1px;
+  background-color: black;
+  animation: blink 0.7s steps(1) infinite;
+}
+
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0; }
+}
+
+.lead 
+{
+  text-align: justify;
+  font-size: 1.5rem;
+}
+
+li 
+{
+  font-weight: 300;
+  font-size: 1.5rem;
+}

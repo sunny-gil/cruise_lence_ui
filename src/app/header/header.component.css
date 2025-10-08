@@ -1,0 +1,52 @@
+.custom-navbar {
+  background-color: #0D2A45;
+  padding: 0.8rem 1rem;
+}
+
+.custom-navbar .nav-link {
+  color: #f5f5f5;
+  font-weight: 500;
+  margin-left: 1rem;
+  transition: color 0.3s ease;
+}
+
+.custom-navbar .nav-link:hover {
+  color: #D9A566;
+}
+
+/* Dropdown */
+.custom-navbar .dropdown-menu {
+  background-color: #0D2A45;
+  border: none;
+}
+.custom-navbar .dropdown-item {
+  color: #f5f5f5;
+}
+.custom-navbar .dropdown-item:hover {
+  background-color: #D9A566;
+  color: #0D2A45;
+}
+.navbar-dark .navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%23D9A566' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+
+/* Logo */
+.logo {
+  height: 50px;
+}
+
+/* Hide text on small screens */
+.brand-text {
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+/* Remove outline/border on click/focus */
+.navbar-brand,
+.nav-link,
+.navbar-toggler,
+.dropdown-item {
+  outline: none !important;
+  box-shadow: none !important;
+}

@@ -1,0 +1,205 @@
+<section class="color-section bg-dark">
+<section class="hero">
+  <div class="hero-content">
+    <div class="left">
+      <h1>CONTACT US</h1>
+    </div>
+    <!-- <div class="right">
+      <img src="assets/images/bg.jpg" alt="Plant">
+    </div> -->
+  </div>
+</section>
+
+
+<!-- 
+
+<section class="contact-details">
+  <div class="container">
+    <div class="row justify-content-center gap-4">
+      
+    
+      <div class="col-md-3">
+        <div class="contact-box half-circle">
+          <div class="icon"><i class="bi bi-telephone-fill"></i></div>
+          <h3>Contact</h3>
+          <p>+91 000000</p>
+        </div>
+      </div>
+
+    
+      <div class="col-md-3">
+        <div class="contact-box half-circle">
+          <div class="icon"><i class="bi bi-envelope-fill"></i></div>
+          <h3>Email</h3>
+          <p>nindhaaragmail.com</p>
+        </div>
+      </div>
+
+     
+      <div class="col-md-3">
+        <div class="contact-box half-circle">
+          <div class="icon"><i class="bi bi-geo-alt-fill"></i></div>
+          <h3>Location</h3>
+          <p>cdsfcdsjhfbdsj bdjsdskj jjsdkjsnjk njxcnsakjdncs</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section> -->
+
+<section class="enquiry-section py-5">
+  <div class="container-fluid">
+    <div class="row align-items-stretch">
+      
+      <!-- Left: Enquiry Form -->
+    <div class="col-md-12 d-flex align-items-center px-5">
+  <div class="w-100">
+    <h2 class="mb-4 text-white">Enquiry Form</h2>
+    <form [formGroup]="enquiryForm" (ngSubmit)="onSubmit()">
+
+      <div class="row g-3">
+        <!-- Full Name -->
+   <!-- Full Name -->
+<div class="col-md-6">
+  <label class="form-label text-white">Full Name</label>
+  <input type="text" class="form-control" formControlName="fullName">
+  <div *ngIf="enquiryForm.get('fullName')?.touched && enquiryForm.get('fullName')?.invalid" class="text-danger">
+    Full Name is required (min 3 characters).
+  </div>
+</div>
+
+<!-- Phone -->
+<div class="col-md-6">
+  <label class="form-label text-white">Phone</label>
+  <input type="tel" class="form-control" formControlName="phone">
+  <div *ngIf="enquiryForm.get('phone')?.touched && enquiryForm.get('phone')?.invalid" class="text-danger">
+    Enter a valid 10-digit phone number.
+  </div>
+</div>
+
+<!-- WhatsApp -->
+<div class="col-md-6">
+  <label class="form-label text-white">WhatsApp</label>
+  <input type="tel" class="form-control" formControlName="whatsapp">
+  <div *ngIf="enquiryForm.get('whatsapp')?.touched && enquiryForm.get('whatsapp')?.invalid" class="text-danger">
+    WhatsApp number must be 10 digits.
+  </div>
+</div>
+
+<!-- Email -->
+<div class="col-md-6">
+  <label class="form-label text-white">Email</label>
+  <input type="email" class="form-control" formControlName="email">
+  <div *ngIf="enquiryForm.get('email')?.touched && enquiryForm.get('email')?.invalid" class="text-danger">
+    Enter a valid email address.
+  </div>
+</div>
+
+<!-- City -->
+<div class="col-md-6">
+  <label class="form-label text-white">City</label>
+  <input type="text" class="form-control" formControlName="city">
+  <div *ngIf="enquiryForm.get('city')?.touched && enquiryForm.get('city')?.invalid" class="text-danger">
+    City is required.
+  </div>
+</div>
+
+<!-- State -->
+<div class="col-md-6">
+  <label class="form-label text-white">State</label>
+  <input type="text" class="form-control" formControlName="state">
+  <div *ngIf="enquiryForm.get('state')?.touched && enquiryForm.get('state')?.invalid" class="text-danger">
+    State is required.
+  </div>
+</div>
+
+        <!-- Course -->
+        <div class="col-12">
+          <label class="form-label text-white">Course</label>
+          <input type="text" class="form-control" formControlName="course">
+        </div>
+
+        <!-- Batch Start Date -->
+        <!-- <div class="col-md-6">
+          <label class="form-label text-white">Batch Start Date</label>
+          <input type="date" class="form-control" formControlName="batchStartDate">
+        </div> -->
+
+        <!-- Notes -->
+<div class="col-12">
+  <label class="form-label text-white">Notes</label>
+  <textarea rows="3" class="form-control" formControlName="notes"></textarea>
+  <div *ngIf="enquiryForm.get('notes')?.touched && enquiryForm.get('notes')?.invalid" class="text-danger">
+    Notes are required (at least 5 characters).
+  </div>
+</div>
+
+
+        <!-- UTM Source -->
+        <!-- <div class="col-md-4">
+          <label class="form-label text-white">UTM Source</label>
+          <input type="text" class="form-control" formControlName="utmSource">
+        </div> -->
+
+        <!-- UTM Medium -->
+        <!-- <div class="col-md-4">
+          <label class="form-label text-white">UTM Medium</label>
+          <input type="text" class="form-control" formControlName="utmMedium">
+        </div> -->
+
+        <!-- UTM Campaign -->
+        <!-- <div class="col-md-4">
+          <label class="form-label text-white">UTM Campaign</label>
+          <input type="text" class="form-control" formControlName="utmCampaign">
+        </div> -->
+
+        <!-- Submit -->
+        <div class="col-12">
+         <button type="submit" class="btn btn-warning w-100" [disabled]="enquiryForm.invalid">
+  Submit
+</button>
+        </div>
+
+        <!-- Success Message -->
+        <div class="col-12" *ngIf="successMessage">
+          <div class="alert alert-success mt-3">
+            {{ successMessage }}
+          </div>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+
+      <!-- Right: Image -->
+      
+
+    </div>
+  </div>
+</section>
+<section>
+  <div class="col-md-12 p-0 mt-5">
+        <img src="assets/images/contact.png" alt="Enquiry" 
+             class="img-fluid w-100 h-100" style="object-fit: contain; border-radius: 0;">
+      </div>
+</section>
+
+
+
+<section class="map-section">
+  <div class="container-fluid p-0">
+    <iframe 
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3768.097129354739!2d73.8149911!3d15.5885247!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bbfeb7154d97eb9%3A0x5b2eb9b0324cf649!2sCruise+Lens+Academy%2C+Goa+%7C+Cruise+Lens+Institute+of+Photography%2C+Goa!5e0!3m2!1sen!2sin!4v1694536000000!5m2!1sen!2sin" 
+      width="100%" 
+      height="450" 
+      style="border:0;" 
+      allowfullscreen="" 
+      loading="lazy" 
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</section>
+</section>

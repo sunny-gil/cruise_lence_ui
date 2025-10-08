@@ -1,0 +1,645 @@
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+h1, h2, h3 {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+p {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+
+/* ================= Hero Section ================= */
+.hero-section {
+  position: relative;
+  /* height: 170vh;       */
+  overflow: hidden;
+  background: black;
+  cursor: default;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start; /* content starts from top but we can adjust */
+  align-items: center;
+  /* padding-top: 60px; */
+}
+
+/* ================= Grid Background ================= */
+.hero-background-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+  gap: 10px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  transition: transform 0.8s ease;
+}
+
+.grid-item {
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  text-align: center;
+}
+
+/* ================= Overlay ================= */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.6); /* slightly transparent */
+  z-index: 2;
+  pointer-events: none;
+  transition: background 0.2s ease;
+}
+
+/* ================= Hero Content ================= */
+.hero-content {
+  position: relative;
+  z-index: 3;
+  color: white;
+  text-align: center;
+  margin-top: 20vh;          /* adjust to place content visually like before */
+  max-width: 90%;
+}
+
+/* Logo */
+.hero-logo {
+  width: 300px;
+  height: auto;
+  margin-bottom: 1rem;
+  filter: drop-shadow(0 0 10px rgba(0,0,0,0.6));
+  text-align: center;
+}
+
+/* Headings */
+.hero-content h1 {
+  font-size: 4rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+.hero-content .lead {
+  font-size: 2rem;
+  font-weight: 300;
+  color: #ffcc66;
+}
+
+/* Subtext box */
+.hero-subtext {
+  font-size: 1.6rem;
+  font-weight: 500;
+  color: #fff;
+  line-height: 1.8;
+  text-align: center;
+  text-shadow: 0 0 8px rgba(0,0,0,0.7);
+  letter-spacing: 0.5px;
+  margin-top: 1rem;
+  /* background: rgba(0,0,0,0.5); */
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+/* ================= Video Icons ================= */
+.video-icon {
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  animation: pulse 1.5s infinite ease-in-out;
+  margin: 0 10px;
+}
+
+.video-icon i {
+  transition: transform 0.3s;
+  color: #ffcc66;
+  font-size: 50px;
+}
+
+.video-icon:hover i {
+  transform: scale(1.4);
+}
+
+.video-icon p {
+  margin-top: 5px;
+  font-weight: 600;
+}
+
+/* Pulse animation */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+/* ================= Video Container ================= */
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* ================= Responsive for Tablets/Mobile ================= */
+@media (max-width: 1024px) {
+  .hero-content h1 {
+    font-size: 3rem;
+  }
+  .hero-content .lead {
+    font-size: 1.6rem;
+  }
+  .hero-subtext {
+    font-size: 1.2rem;
+    padding: 8px 16px;
+  }
+  .video-icon i {
+    font-size: 40px;
+  }
+  .video-icon p {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-content {
+    margin-top: 15vh;  /* move content slightly up */
+  }
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .hero-content .lead {
+    font-size: 1.3rem;
+  }
+  .hero-subtext {
+    font-size: 1rem;
+    padding: 6px 12px;
+  }
+  .video-icon i {
+    font-size: 35px;
+  }
+  .video-icon p {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-content {
+    margin-top: 12vh;
+  }
+  .hero-content h1 {
+    font-size: 2rem;
+  }
+  .hero-content .lead {
+    font-size: 1.1rem;
+  }
+  .hero-subtext {
+    font-size: 0.9rem;
+    padding: 5px 10px;
+  }
+  .video-icon i {
+    font-size: 30px;
+  }
+  .video-icon p {
+    font-size: 0.75rem;
+  }
+}
+
+
+
+.video-container video {
+  width: 100%;
+  height: 100%;
+  object-fit: contain; /* maintain aspect ratio */
+}
+
+
+        /* Grid Cards */
+.grid-container {
+  display: grid;
+  gap: 20px;
+  background-color: #222;
+}
+
+.grid-container.single {
+  grid-template-columns: 1fr; /* single card */
+}
+
+.grid-container.two-col {
+  grid-template-columns: repeat(2, 1fr); /* 2 cards side by side */
+}
+
+.grid-container.single .card {
+  height: 600px;        /* fixed height */
+  aspect-ratio: unset;  /* remove aspect-ratio for this layout */
+}
+
+.card {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  aspect-ratio: 0.67 / 1;
+  background-color: #222;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 2s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  color: #ffcc66;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 16px;
+}
+
+.headtitle h1 {
+  font-size: 1.5rem; /* smaller label */
+  color: #ffcc66;
+  text-transform: capitalize;
+}
+.card-overlay h2 {
+  font-size: 1.8rem; /* bigger title */
+}
+
+.justify-text
+{
+  text-align: justify;
+}
+
+/* Animations */
+@keyframes slideRight {
+  0% { transform: translateX(0) scale(1); opacity: 1; }
+  100% { transform: translateX(120vw) scale(0.9); opacity: 0; }
+}
+
+@keyframes slideLeft {
+  0% { transform: translateX(0) scale(1); opacity: 1; }
+  100% { transform: translateX(-120vw) scale(0.9); opacity: 0; }
+}
+
+.slide-right {
+  animation: slideRight 1.5s ease-in-out forwards;
+}
+
+.slide-left {
+  animation: slideLeft 1.5s ease-in-out forwards;
+}
+
+
+
+.course-row {
+  position: relative; /* important for z-index to work */
+  z-index: 2; /* above video and overlay */
+  min-height: 400px;
+  margin-bottom: 50px;
+}
+
+.course-row h2,
+.course-row p,
+.course-row button {
+  position: relative;
+  z-index: 2; /* ensures text is above overlay */
+}
+.image-wrapper {
+  position: sticky;
+  height: 400px; /* fix height */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.image-wrapper img {
+  max-height: 100%;
+  width: auto;
+  opacity: 0;
+  transition: opacity 0.6s ease; /* only fade */
+}
+
+.image-wrapper.active img {
+  opacity: 1;
+  transition: opacity 1s ease; /* smooth fade-in */
+}
+
+/* ================= Video & Courses Section Base ================= */
+.courses-section {
+  position: relative;
+  overflow: hidden;
+  z-index: 1; /* content above video */
+  padding-bottom: 50px;
+}
+
+.bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: translate(-50%, -50%);
+  z-index: 0; /* behind content */
+  pointer-events: none;
+}
+
+/* Optional overlay to darken video */
+.courses-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Each course row */
+.course-row {
+  margin-bottom: 80px;
+  position: relative;
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+}
+
+/* Left Column (titles) */
+.course-row .col-md-2 .headtitle h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.course-row .col-md-2 .headtitle h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* Middle Column (image) */
+.image-wrapper {
+  position: relative;
+  width: 100%;
+  transition: transform 0.3s ease;
+}
+
+.image-wrapper img {
+  width: 100%;
+  border-radius: 15px;
+  object-fit: cover;
+  max-height: 400px;
+}
+
+/* Right Column (description & button) */
+.course-row .col-md-4 p {
+  font-size: 1.1rem;
+  color: #fff;
+}
+
+.btn-explore {
+  background: #ffcc66;
+  color: #000;
+  font-weight: 600;
+}
+
+/* ================= Responsive Adjustments ================= */
+
+/* Extra small devices (mobile portrait) */
+@media (max-width: 575px) {
+  .course-row {
+    flex-direction: column !important;
+    padding: 15px 10px;
+  }
+
+  .col-md-2, .col-md-6, .col-md-4 {
+    flex: 0  100% !important;
+    max-width: 100% !important;
+    padding: 10px 0 !important;
+  }
+   .image-wrapper
+  {
+    width: 100%;
+  }
+
+
+  .headtitle h1 {
+    font-size: 1.5rem;
+  }
+
+  .headtitle h2 {
+    font-size: 1.2rem;
+  }
+
+  .image-wrapper img {
+    width: 80%;       /* take most of the width */
+    max-height: 350px; /* increase height */
+    margin: 0 auto;   /* center the image */
+    display: block;
+  }
+
+  .btn-explore {
+    width: 100%;
+    text-align: center;
+  }
+}
+
+/* Small devices (mobile landscape / small tablets) */
+@media (min-width: 576px) and (max-width: 767px) {
+  .course-row {
+    flex-direction: column !important;
+    padding: 20px;
+  }
+  .image-wrapper
+  {
+    width: 100%;
+  }
+
+  .col-md-2, .col-md-6, .col-md-4 {
+    flex: 0  100% !important;
+    max-width: 100% !important;
+    padding: 10px 0 !important;
+  }
+
+  .headtitle h1 {
+    font-size: 1.8rem;
+  }
+
+  .headtitle h2 {
+    font-size: 1.5rem;
+  }
+
+  .image-wrapper img {
+    max-height: 300px;
+    width: 100%;
+  }
+}
+
+/* Medium devices (tablet) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .course-row {
+    flex-wrap: wrap;
+    padding: 30px 10px;
+  }
+
+  .col-md-2, .col-md-6, .col-md-4 {
+    padding: 10px;
+  }
+
+  .headtitle h1 {
+    font-size: 2rem;
+  }
+
+  .headtitle h2 {
+    font-size: 1.5rem;
+  }
+
+  .image-wrapper img {
+    max-height: 350px;
+    width: 100%;
+  }
+}
+
+/* Large devices (desktop) */
+@media (min-width: 992px) {
+  .course-row {
+    flex-wrap: nowrap;
+  }
+
+  .col-md-2, .col-md-6, .col-md-4 {
+    padding: 0 15px;
+  }
+
+  .image-wrapper img {
+    max-height: 400px;
+    width: 100%;
+  }
+}
+
+
+.offer-section {
+  position: relative;
+  color: #fff;
+  background-color: #111; /* dark background */
+  padding: 5rem 2rem;
+  overflow: hidden;
+  text-align: center; /* center everything */
+}
+
+.section-header {
+  position: relative;
+  z-index: 2;
+  display: inline-block;
+}
+
+.section-title {
+  font-size: 2rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  color: #ffcc66;
+}
+
+.section-title .arrow {
+  color: #ffcc66; /* highlight color for arrow */
+  font-size: 1.5rem;
+}
+
+.section-number {
+  display: block;
+  font-size: 2rem;
+  opacity: 0.3;
+  margin-top: 0.5rem;
+}
+
+.animated-line {
+  position: relative;
+  height: 2px;
+  background-color: #ffcc66;
+  width: 0;
+  margin: 2rem auto 0; /* start center */
+  transform-origin: center;
+  transition: width 1s ease-out;
+}
+
+.offer-section.in-view .animated-line {
+  width: 100%; /* animate to full width */
+}
+
+.offer-list {
+  list-style: none;
+  margin: 2rem 0 0 0;
+  padding: 0;
+  display: inline-block;
+  text-align: left; /* keep bullets aligned */
+}
+
+.offer-list li {
+  font-size: 1.5rem;
+  line-height: 2rem;
+  margin-bottom: 1rem;
+  position: relative;
+}
+
+.about-cruise {
+  width: 100%;
+  background: url('/assets/images/image-57.jpg') no-repeat center;
+  background-size: cover;
+  background-attachment: fixed;
+  min-height: 100vh; /* fill full viewport height */
+  display: flex; /* enable flexbox */
+  align-items: center; /* vertical center */
+  justify-content: center; /* horizontal center */
+}
+
+.glass-box {
+  background: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border-radius: 10px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+  color: white;
+  padding: 2rem 3rem;
+  max-width: 850px; /* keep it readable */
+  text-align: center;
+}
+
+.about-phian .row,
+.about-phian .col-md-6 {
+    height: 100%; /* ensure both parent row and col fill height */
+}
+
+.btn-explore {
+  background-color: #ffcc66;
+  color: #000;            /* black text for contrast */
+  border: none;           /* remove border */
+  font-weight: 500;
+}
+
+.btn-explore:hover {
+  background-color: #000; /* slightly darker shade on hover */
+  color: #e6b85c;
+}
+

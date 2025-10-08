@@ -1,0 +1,276 @@
+.infinite-scroll-section {
+  background: #000; /* optional */
+  overflow: hidden;
+}
+
+.scroll-wrapper {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.scroll-content {
+  display: inline-flex;
+  animation: scrollLeft 30s linear infinite;
+}
+
+.scroll-content img {
+  height: 400px;
+  width: auto;
+  margin-right: 20px;
+  border-radius: 12px;
+  object-fit: cover;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+/* Animation */
+@keyframes scrollLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.team-section {
+  background: #f8f9fa;
+}
+
+.team-img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.team-img:hover {
+  transform: scale(1.05);
+}
+
+
+.offers-flow {
+  background: linear-gradient(135deg, #0f2027, #2c5364, #00c6ff);
+  padding: 80px 20px;
+  font-family: 'Poppins', sans-serif;
+  color: #fff;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 60px;
+  font-weight: 700;
+  color: #ffcc66;
+  text-shadow: 0 3px 8px rgba(0,0,0,0.5);
+}
+
+.offers-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+  flex-wrap: wrap; /* ✅ helps on smaller screens */
+}
+
+.offers-left {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 25px;
+  flex: 1;
+  min-width: 280px; /* ✅ prevents shrinking */
+}
+
+.offers-right {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 280px; /* ✅ prevents shrinking */
+  margin-top: 30px;
+}
+
+.offer-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 18px;
+  padding: 25px 20px;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 500;
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,0.2);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.offer-card .icon {
+  font-size: 2.5rem;
+  color: #ffdd57;
+  margin-bottom: 12px;
+  display: block;
+}
+
+.offer-card p {
+  margin: 0;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #fff;
+}
+
+.offer-card.big {
+  min-height: 300px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  padding: 40px 25px;
+  max-width: 350px;
+}
+
+.arrow {
+  position: absolute;
+  right: -15px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.2rem;
+  color: #d1c4e9;
+  background: #0077b6;
+  border-radius: 50%;
+  padding: 4px 7px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+}
+
+/* ✅ RESPONSIVE FIXES */
+@media (max-width: 992px) {
+  .offers-wrapper {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .offers-left {
+    grid-template-columns: 1fr; /* stack cards */
+    width: 100%;
+    max-width: 500px;
+  }
+
+  .offers-right {
+    margin-top: 40px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 576px) {
+  .offer-card {
+    font-size: 0.95rem;
+    padding: 20px 15px;
+  }
+
+  .offer-card .icon {
+    font-size: 2rem;
+  }
+
+  .offer-card p {
+    font-size: 1rem;
+  }
+
+  .offer-card.big {
+    min-height: auto;
+    padding: 25px 20px;
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+  }
+}
+
+
+.text-color, .lead-1
+{
+  color:#ffcc66;
+}
+
+p{
+  font-size: 1.2rem;
+  text-align: justify;
+  padding:0 50px;
+}
+
+.leadpage-1, .leadpage-2
+{
+  padding:0 50px;
+}
+
+
+.team-overlay-section {
+  color: #fff;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: #ffcc66; /* golden */
+  margin-bottom: 1rem;
+}
+
+.section-subtitle {
+  font-size: 1.5rem;
+  color: #ccc;
+  max-width: 750px;
+  margin: 0 auto 2rem auto;
+  line-height: 1.6;
+  text-align: center;
+}
+
+/* Overlay Card */
+.expert-overlay-card {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.expert-overlay-card img {
+  width: 100%;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.expert-overlay-card .overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.8); /* dark overlay */
+  opacity: 1;
+  transition: background 0.3s ease, transform 0.3s ease;
+  text-align: center;
+  padding: 10px;
+}
+
+.expert-overlay-card h5 {
+  color: #ffcc66;
+  font-weight: 600;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 0 5px;
+}
+
+.expert-overlay-card:hover img {
+  transform: scale(1.05);
+}
+
+.expert-overlay-card:hover .overlay {
+  background: rgba(0,0,0,0.4);
+}
+.team-special {
+  background: linear-gradient(135deg, #0c1a3a, #000);
+  color: #fff;
+}
+.team-special h2 {
+  color: #00aaff;
+}
+.team-special ul li {
+  font-size: 1.1rem;
+  line-height: 1.6;
+}

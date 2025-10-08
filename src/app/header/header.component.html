@@ -1,0 +1,34 @@
+<nav class="navbar navbar-expand-lg navbar-dark custom-navbar fixed-top">
+  <div class="container">
+    <!-- Logo -->
+    <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+      <img src="assets/images/logo.png" alt="Logo" class="logo me-2" />
+      <span class="brand-text d-none d-lg-inline">Cruise Lens Academy</span>
+    </a>
+
+    <!-- Toggler -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" routerLink="/home" (click)="closeNavbar()">Home</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="about" (click)="closeNavbar()">About Academy</a></li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Courses</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" routerLink="course-1" (click)="closeNavbar()">Course 1</a></li>
+            <li><a class="dropdown-item" routerLink="course-2" (click)="closeNavbar()">Course 2</a></li>
+            <li><a class="dropdown-item" routerLink="course-3" (click)="closeNavbar()">Course 3</a></li>
+          </ul>
+        </li>
+        <li class="nav-item"><a class="nav-link" routerLink="partners" (click)="closeNavbar()">Our Team</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="faq" (click)="closeNavbar()">FAQs</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="contact" (click)="closeNavbar()">Inquire Us</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="apply-now" (click)="closeNavbar()">Apply Now</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>

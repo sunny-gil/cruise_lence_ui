@@ -1,0 +1,83 @@
+.apply-now {
+  position: relative;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+.bg-video {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;      /* cover the whole container */
+  transform: translate(-50%, -50%);
+  z-index: 1;             /* place video above background, below overlay/content */
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* optional dark overlay */
+  z-index: 2;             /* overlay above video */
+}
+
+.apply-now .content {
+  position: relative;
+  z-index: 3;             /* content above video and overlay */
+  color: #fff;
+  text-align: center;
+}
+
+.form-card {
+  position: relative;   /* needed for z-index */
+  z-index: 3;           /* above overlay and video */
+  background: rgba(17, 17, 17, 0.9);
+  color: #fff;
+  border-radius: 12px;
+  max-width: 700px;
+  width: 100%;
+  padding: 2rem;
+}
+
+
+.form-control,
+.form-check-input {
+  background-color: #222;
+  border: 1px solid #444;
+  color: #fff;
+}
+
+.form-control:focus {
+  background-color: #222;
+  color: #fff;
+  border-color: #ffcc66;
+  box-shadow: none;
+}
+
+.progress {
+  height: 20px;
+  background-color: #333;
+}
+
+.progress-bar {
+  background-color: #ffcc66;
+  color: black;
+}
+
+
+/* #applyNowCarousel .carousel-item {
+  height: 600px; 
+}
+
+#applyNowCarousel .carousel-item img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover; 
+} */
+
+
