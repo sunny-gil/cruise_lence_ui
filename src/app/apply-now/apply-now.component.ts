@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SupabaseService } from '../supabase.service';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-apply-now',
@@ -29,7 +30,7 @@ export class ApplyNowComponent {
 
   constructor(private fb: FormBuilder, private supabaseService: SupabaseService) {
     // Step 1
-    debugger
+    // debugger
     this.personalForm = this.fb.group({
       
       fullName: ['', Validators.required],
@@ -42,7 +43,7 @@ export class ApplyNowComponent {
     });
 
     // Step 2
-    this.courseForm = this.fb.group({
+    this.courseForm = this.fb.group({ 
       course: ['', Validators.required],
     });
 
@@ -136,66 +137,86 @@ export class ApplyNowComponent {
     return uploadedUrls;
   }
 
-  // Called on Step 4 – Pay Now
-  async proceedToPayment() {
-    const applicationData = {
-      personalInfo: this.personalForm.value,
-      course: this.courseForm.value.course,
-      courseData: this.getCourseData(),
-      resumeFiles: await this.uploadFiles(),
-      paymentMode: this.paymentMode
-    };
 
-    try {
-      const response = await fetch('http://localhost:3000/payu-initiate', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(applicationData)
-      });
+async proceedToPayment() {
+  // ✅ Define course-wise fixed fees here
+  let amount = 0;
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        console.error("❌ Backend error:", errorText);
-        alert("Payment initiation failed. Please try again.");
-        return;
-      }
-
-      const data = await response.json();
-      console.log("✅ PayU Response:", data);
-
-      if (!data.payuParams || !data.payuUrl) {
-        console.error("❌ Invalid response:", data);
-        alert("Could not initiate payment. Please contact support.");
-        return;
-      }
-
-      // ✅ Safe to proceed now
-      const form = document.createElement('form');
-      form.method = 'POST';
-      form.action = data.payuUrl;
-
-      Object.entries(data.payuParams).forEach(([key, value]) => {
-        const input = document.createElement('input');
-        input.type = 'hidden';
-        input.name = key;
-        input.value = value as string;
-        form.appendChild(input);
-      });
-
-      document.body.appendChild(form);
-      form.submit();
-
-    } catch (err) {
-      console.error("❌ Payment error:", err);
-      alert("Something went wrong while initiating payment.");
-    }
+  switch (this.courseForm.value.course) {
+    case 'course1': amount = 50000; break; // ₹50,000
+    case 'course2': amount = 10000; break; // ₹10,000
+    case 'course3': amount = 499; break;   // ₹499
+    default: amount = 1;                   // fallback test value
   }
+
+  const applicationData = {
+    personalInfo: this.personalForm.value,
+    course: this.courseForm.value.course,
+    courseData: this.getCourseData(),
+    resumeFiles: await this.uploadFiles(),
+    paymentMode: this.paymentMode,
+    amount // ✅ include the correct amount here
+  };
+
+  try {
+    // ✅ Use your backend URL (change for production)
+    const response = await fetch(`${environment.backendUrl}/payu-initiate`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(applicationData)
+    });
+
+    if (!response.ok) {
+      const errorText = await response.text();
+      console.error("❌ Backend error:", errorText);
+      alert("Payment initiation failed. Please try again.");
+      return;
+    }
+
+    const data = await response.json();
+    console.log("✅ PayU Response:", data);
+
+    if (!data.payuParams || !data.payuUrl) {
+      console.error("❌ Invalid response:", data);
+      alert("Could not initiate payment. Please contact support.");
+      return;
+    }
+
+    // ✅ Open PayU in a new tab
+    const newTab = window.open('', '_blank');
+    if (!newTab) {
+      alert('Popup blocked! Please allow popups for this site.');
+      return;
+    }
+
+    const formHtml = `
+      <form id="payuForm" method="POST" action="${data.payuUrl}">
+        ${Object.entries(data.payuParams)
+          .map(
+            ([key, value]) =>
+              `<input type="hidden" name="${key}" value="${value}">`
+          )
+          .join('')}
+      </form>
+      <script>document.getElementById('payuForm').submit();</script>
+    `;
+
+    newTab.document.write(formHtml);
+    newTab.document.close();
+
+  } catch (err) {
+    console.error("❌ Payment error:", err);
+    alert("Something went wrong while initiating payment.");
+  }
+}
+
+
 
   getCourseAmount() {
     switch (this.selectedCourse) {
-      case 'course1': return 5000; // Beginner
-      case 'course2': return 7000; // STCW Holder
-      case 'course3': return 10000; // Photographer
+      case 'course1': return 1; // Beginner
+      case 'course2': return 2; // STCW Holder
+      case 'course3': return 3; // Photographer
       default: return 0;
     }
   }
@@ -261,7 +282,7 @@ onCheckboxChange(event: any) {
     this.isLoading = true;
 
     try {
-      debugger;
+      // debugger;
 
       const resumeUrls = await this.uploadFiles();
 

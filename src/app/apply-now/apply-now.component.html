@@ -1,129 +1,135 @@
 <section class="color-section bg-dark">
 
-<section class="container-fluid p-0 m-0 bg-dark mt-5 pt-4" style="margin-top: 80px;">
-  <div class="ratio ratio-16x9">
-    <video autoplay loop muted playsinline controls>
-      <source src="assets/Video/student.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-  </div>
-</section>
-<div class="apply-now d-flex align-items-center justify-content-center">
-  <!-- <video autoplay muted loop class="bg-video">
+  <section class="container-fluid p-0 m-0 bg-dark mt-5 pt-4" style="margin-top: 80px;">
+    <div class="ratio ratio-16x9">
+      <video autoplay loop muted playsinline controls>
+        <source src="assets/Video/student.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </section>
+  <div class="apply-now d-flex align-items-center justify-content-center">
+    <!-- <video autoplay muted loop class="bg-video">
     <source src="assets/Video/student.mp4" type="video/mp4">
   </video> -->
-  <div class="overlay"></div>
+    <div class="overlay"></div>
 
-  <div class="form-card p-4 shadow my-5">
-    <h1 class="text-center text-uppercase py-3">Application form</h1>
-    <!-- Progress -->
-    <div class="progress mb-4">
-      <div class="progress-bar" role="progressbar"
-           [style.width.%]="step === 1 ? 33 : step === 2 ? 66 : 100">
-        Step {{ step }} of 4
-      </div>
-    </div>
-
-    <!-- Step 1: Personal Info -->
-    <div *ngIf="step === 1" [formGroup]="personalForm">
-      <h3>Step 1 – Personal Info</h3>
-      <div class="mb-3"><label>Full Name *</label><input class="form-control" formControlName="fullName"></div>
-      <div class="mb-3"><label>Email Address *</label><input type="email" class="form-control" formControlName="email"></div>
-      <div class="mb-3"><label>Phone Number (WhatsApp preferred) *</label><input class="form-control" formControlName="phone"></div>
-      <div class="mb-3"><label>City & State *</label><input class="form-control" formControlName="city"></div>
-      <!-- <div class="mb-3"><label>Age *</label><input type="number" class="form-control" formControlName="age"></div> -->
-      <div class="mb-3"><label>Date of Birth *</label><input type="date" class="form-control" formControlName="dob"></div>
-    <div class="mb-3">
-  <label class="form-label text-white">Preferred Way To Connect *</label>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="WhatsApp" (change)="onCheckboxChange($event)">
-  <label class="form-check-label">WhatsApp</label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="Email" (change)="onCheckboxChange($event)">
-  <label class="form-check-label">Email</label>
-</div>
-<div class="form-check">
-  <input class="form-check-input" type="checkbox" value="Call" (change)="onCheckboxChange($event)">
-  <label class="form-check-label">Call</label>
-</div>
-
-<div *ngIf="preferredContactArray.touched && preferredContactArray.invalid" class="text-danger">
-  Please select at least one option.
-</div>
-
-</div>
-
-<div class="mb-3">
-  <label class="form-label text-white">How did you hear about Cruise Lens Academy? *</label>
-
-  <div class="form-check">
-    <input class="form-check-input" type="radio" value="Instagram" formControlName="heardFrom" id="radioInstagram">
-    <label class="form-check-label" for="radioInstagram">Instagram</label>
-  </div>
-
-  <div class="form-check">
-    <input class="form-check-input" type="radio" value="Facebook" formControlName="heardFrom" id="radioFacebook">
-    <label class="form-check-label" for="radioFacebook">Facebook</label>
-  </div>
-
-  <div class="form-check">
-    <input class="form-check-input" type="radio" value="LinkedIn" formControlName="heardFrom" id="radioLinkedIn">
-    <label class="form-check-label" for="radioLinkedIn">LinkedIn</label>
-  </div>
-
-  <div class="form-check">
-    <input class="form-check-input" type="radio" value="Google" formControlName="heardFrom" id="radioGoogle">
-    <label class="form-check-label" for="radioGoogle">Google</label>
-  </div>
-
-  <div class="form-check">
-    <input class="form-check-input" type="radio" value="Others" formControlName="heardFrom" id="radioOthers">
-    <label class="form-check-label" for="radioOthers">Others</label>
-  </div>
-
-  <!-- Validation error -->
-  <div *ngIf="personalForm.get('heardFrom')?.touched && personalForm.get('heardFrom')?.invalid" class="text-danger">
-    Please select an option.
-  </div>
-</div>
-
-
-      <button class="btn btn-warning w-100" (click)="nextStep()" [disabled]="!personalForm.valid">Next</button>
-    </div>
-
-    <!-- Step 2: Course Selection & Questions -->
-    <div *ngIf="step === 2" [formGroup]="courseForm">
-      <h3>Step 2 – Course Selection & Questions</h3>
-
-      <!-- Select Course -->
-      <div class="mb-3">
-        <label>Select Course *</label>
-<select class="form-control" formControlName="course" (change)="onCourseChange($event)">
-  <option value="">-- Select a Course --</option>
-  <option value="course1">Beginner & New to the Sea</option>
-  <option value="course2">STCW Holder / Ex-Seafarer</option>
-  <option value="course3">Cruise Photographer Evaluation</option>
-</select>
-
-
+    <div class="form-card p-4 shadow my-5">
+      <h1 class="text-center text-uppercase py-3">Application form</h1>
+      <!-- Progress -->
+      <div class="progress mb-4">
+        <div class="progress-bar" role="progressbar" [style.width.%]="step === 1 ? 33 : step === 2 ? 66 : 100">
+          Step {{ step }} of 4
+        </div>
       </div>
 
-      <!-- Course 1 -->
-      <div *ngIf="selectedCourse === 'course1'" [formGroup]="course1Questions">
-        <h5>Beginner & New to the Sea</h5>
-        <div class="mb-3">
-          <label>Used DSLR or professional camera? *</label><br>
-          <label><input type="radio" formControlName="usedCamera" value="yes" required> Yes</label>
-          <label><input type="radio" formControlName="usedCamera" value="no" required> No</label>
-          <label><input type="radio" formControlName="usedCamera" value="phone" required> Phone only</label>
+      <!-- Step 1: Personal Info -->
+      <div *ngIf="step === 1" [formGroup]="personalForm">
+        <h3>Step 1 – Personal Info</h3>
+        <div class="mb-3"><label>Full Name *</label><input class="form-control" formControlName="fullName"></div>
+        <div class="mb-3"><label>Email Address *</label><input type="email" class="form-control"
+            formControlName="email"></div>
+        <div class="mb-3"><label>Phone Number (WhatsApp preferred) *</label><input class="form-control"
+            formControlName="phone"></div>
+        <div class="mb-3"><label>City & State *</label><input class="form-control" formControlName="city"></div>
+        <!-- <div class="mb-3"><label>Age *</label><input type="number" class="form-control" formControlName="age"></div> -->
+        <div class="mb-3"><label>Date of Birth *</label><input type="date" class="form-control" formControlName="dob">
         </div>
         <div class="mb-3">
-          <label>Worked in hospitality/events? *</label><br>
-          <label><input type="radio" formControlName="hospitalityExp" value="yes" required> Yes</label>
-          <label><input type="radio" formControlName="hospitalityExp" value="no" required> No</label>
+          <label class="form-label text-white">Preferred Way To Connect *</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="WhatsApp" (change)="onCheckboxChange($event)">
+            <label class="form-check-label">WhatsApp</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="Email" (change)="onCheckboxChange($event)">
+            <label class="form-check-label">Email</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" value="Call" (change)="onCheckboxChange($event)">
+            <label class="form-check-label">Call</label>
+          </div>
+
+          <div *ngIf="preferredContactArray.touched && preferredContactArray.invalid" class="text-danger">
+            Please select at least one option.
+          </div>
+
         </div>
+
         <div class="mb-3">
+          <label class="form-label text-white">How did you hear about Cruise Lens Academy? *</label>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" value="Instagram" formControlName="heardFrom"
+              id="radioInstagram">
+            <label class="form-check-label" for="radioInstagram">Instagram</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" value="Facebook" formControlName="heardFrom"
+              id="radioFacebook">
+            <label class="form-check-label" for="radioFacebook">Facebook</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" value="LinkedIn" formControlName="heardFrom"
+              id="radioLinkedIn">
+            <label class="form-check-label" for="radioLinkedIn">LinkedIn</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" value="Google" formControlName="heardFrom" id="radioGoogle">
+            <label class="form-check-label" for="radioGoogle">Google</label>
+          </div>
+
+          <div class="form-check">
+            <input class="form-check-input" type="radio" value="Others" formControlName="heardFrom" id="radioOthers">
+            <label class="form-check-label" for="radioOthers">Others</label>
+          </div>
+
+          <!-- Validation error -->
+          <div *ngIf="personalForm.get('heardFrom')?.touched && personalForm.get('heardFrom')?.invalid"
+            class="text-danger">
+            Please select an option.
+          </div>
+        </div>
+
+
+        <button class="btn btn-warning w-100" (click)="nextStep()" [disabled]="!personalForm.valid">Next</button>
+      </div>
+
+      <!-- Step 2: Course Selection & Questions -->
+      <div *ngIf="step === 2" [formGroup]="courseForm">
+        <h3>Step 2 – Course Selection & Questions</h3>
+
+        <!-- Select Course -->
+        <div class="mb-3">
+          <label>Select Course *</label>
+          <select class="form-control" formControlName="course" (change)="onCourseChange($event)">
+            <option value="">-- Select a Course --</option>
+            <option value="course1">Beginner & New to the Sea</option>
+            <option value="course2">STCW Holder / Ex-Seafarer</option>
+            <option value="course3">Cruise Photographer Evaluation</option>
+          </select>
+
+
+        </div>
+
+        <!-- Course 1 -->
+        <div *ngIf="selectedCourse === 'course1'" [formGroup]="course1Questions">
+          <h5>Beginner & New to the Sea</h5>
+          <div class="mb-3">
+            <label>Used DSLR or professional camera? *</label><br>
+            <label><input type="radio" formControlName="usedCamera" value="yes" required> Yes</label>
+            <label><input type="radio" formControlName="usedCamera" value="no" required> No</label>
+            <label><input type="radio" formControlName="usedCamera" value="phone" required> Phone only</label>
+          </div>
+          <div class="mb-3">
+            <label>Worked in hospitality/events? *</label><br>
+            <label><input type="radio" formControlName="hospitalityExp" value="yes" required> Yes</label>
+            <label><input type="radio" formControlName="hospitalityExp" value="no" required> No</label>
+          </div>
+          <!-- <div class="mb-3">
           <label>Open to STCW courses & INDOS? *</label><br>
           <label><input type="radio" formControlName="joinSTCW" value="yes" required> Yes</label>
           <label><input type="radio" formControlName="joinSTCW" value="no" required> No</label>
@@ -134,17 +140,17 @@
           <label><input type="radio" formControlName="trainingMode" value="online" required> Online</label>
           <label><input type="radio" formControlName="trainingMode" value="offline" required> Offline</label>
           <label><input type="radio" formControlName="trainingMode" value="hybrid" required> Hybrid</label>
+        </div> -->
+          <div class="mb-3">
+            <label>Questions for us?</label>
+            <textarea class="form-control" rows="3" formControlName="message"></textarea>
+          </div>
         </div>
-        <div class="mb-3">
-          <label>Questions for us?</label>
-          <textarea class="form-control" rows="3" formControlName="message"></textarea>
-        </div>
-      </div>
 
-      <!-- Course 2 -->
-      <div *ngIf="selectedCourse === 'course2'" [formGroup]="course2Questions">
-        <h5>STCW Holder / Ex-Seafarer</h5>
-         <div class="mb-3">
+        <!-- Course 2 -->
+        <div *ngIf="selectedCourse === 'course2'" [formGroup]="course2Questions">
+          <h5>STCW Holder / Ex-Seafarer</h5>
+          <!-- <div class="mb-3">
   <label class="form-label">Which STCW courses have you completed? *</label>
 
   <div class="form-check" *ngFor="let course of stcwCourses">
@@ -162,140 +168,144 @@
 </div>
 
 
-  <!-- Validation -->
+ 
   <div *ngIf="course2Questions.get('stcwCourse')?.touched && course2Questions.get('stcwCourse')?.invalid" class="text-danger">
     Please select one course.
   </div>
-</div>
+</div> -->
 
-        <div class="mb-3"><label>Years of sea experience *</label><input type="number" class="form-control" formControlName="yearsExperience" required></div>
-        <div class="mb-3"><label>Last ship type worked on *</label><input type="text" class="form-control" formControlName="lastShipType" required></div>
-        <div class="mb-3">
-          <label>Ready to rejoin sea? *</label><br>
-          <label><input type="radio" formControlName="readyRejoin" value="yes" required> Yes</label>
-          <label><input type="radio" formControlName="readyRejoin" value="no" required> No</label>
+          <div class="mb-3"><label>Years of sea experience *</label><input type="number" class="form-control"
+              formControlName="yearsExperience" required></div>
+          <div class="mb-3"><label>Last ship type worked on *</label><input type="text" class="form-control"
+              formControlName="lastShipType" required></div>
+          <!-- <div class="mb-3">
+            <label>Ready to rejoin sea? *</label><br>
+            <label><input type="radio" formControlName="readyRejoin" value="yes" required> Yes</label>
+            <label><input type="radio" formControlName="readyRejoin" value="no" required> No</label>
+          </div> -->
+          <div class="mb-3">
+            <label>Questions for us?</label>
+            <textarea class="form-control" rows="3" formControlName="message"></textarea>
+          </div>
         </div>
-        <div class="mb-3">
-          <label>Questions for us?</label>
-          <textarea class="form-control" rows="3" formControlName="message"></textarea>
-        </div>
-      </div>
 
-      <!-- Course 3 -->
-     <div *ngIf="selectedCourse === 'course3'" [formGroup]="course3Questions">
-  <h5>Cruise Photographer Evaluation</h5>
+        <!-- Course 3 -->
+        <div *ngIf="selectedCourse === 'course3'" [formGroup]="course3Questions">
+          <h5>Cruise Photographer Evaluation</h5>
 
-  <!-- Years of experience -->
-  <div class="mb-3">
-    <label>Years of photography experience *</label>
-    <input type="number" class="form-control" formControlName="yearsPhotography" required>
-  </div>
+          <!-- Years of experience -->
+          <div class="mb-3">
+            <label>Years of cruise photography experience *</label>
+            <input type="number" class="form-control" formControlName="yearsPhotography" required>
+          </div>
 
-  <!-- Onboard experience -->
-  <div class="mb-3">
-    <label>Prior onboard photography experience? *</label><br>
-    <label><input type="radio" formControlName="onboardExperience" value="yes" required> Yes</label>
-    <label><input type="radio" formControlName="onboardExperience" value="no" required> No</label>
-  </div>
+          <!-- Onboard experience -->
+          <!-- <div class="mb-3">
+            <label>Prior onboard photography experience? *</label><br>
+            <label><input type="radio" formControlName="onboardExperience" value="yes" required> Yes</label>
+            <label><input type="radio" formControlName="onboardExperience" value="no" required> No</label>
+          </div> -->
 
-  <!-- Portfolio shared -->
-  <div class="mb-3">
+          <!-- Portfolio shared -->
+          <!-- <div class="mb-3">
     <label>Portfolio shared? *</label><br>
     <label><input type="radio" formControlName="portfolioShared" value="yes" required> Yes</label>
     <label><input type="radio" formControlName="portfolioShared" value="no" required> No</label>
-  </div>
+  </div> -->
 
-  <!-- ✅ New Questions -->
+          <!-- ✅ New Questions -->
 
-  <div class="mb-3">
-    <label>Which cruise line(s) have you worked with? *</label>
-    <input type="text" class="form-control" formControlName="cruiseLineWorked">
-  </div>
+          <div class="mb-3">
+            <label>Which cruise line(s) have you worked with? *</label>
+            <input type="text" class="form-control" formControlName="cruiseLineWorked">
+          </div>
 
-  <div class="mb-3">
-    <label>What was your last position and contract end date? *</label>
-    <input type="text" class="form-control" formControlName="lastPosition">
-  </div>
+          <div class="mb-3">
+            <label>What was your last position and contract end date? *</label>
+            <input type="text" class="form-control" formControlName="lastPosition">
+          </div>
 
-  <div class="mb-3">
-    <label>What camera systems and editing tools are you confident using? *</label>
-    <input type="text" class="form-control" formControlName="cameraSystems">
-  </div>
+          <!-- <div class="mb-3">
+            <label>What camera systems and editing tools are you confident using? *</label>
+            <input type="text" class="form-control" formControlName="cameraSystems">
+          </div> -->
 
-  <div class="mb-3">
-    <label>Would you be interested in a skill-based evaluation for interview opportunities with other cruise companies? *</label><br>
-    <label><input type="radio" formControlName="skillEvaluation" value="yes" required> Yes</label>
-    <label><input type="radio" formControlName="skillEvaluation" value="no" required> No</label>
-    <label><input type="radio" formControlName="skillEvaluation" value="other" required> Other</label>
-  </div>
+          <!-- <div class="mb-3">
+            <label>Would you be interested in a skill-based evaluation for interview opportunities with other cruise
+              companies? *</label><br>
+            <label><input type="radio" formControlName="skillEvaluation" value="yes" required> Yes</label>
+            <label><input type="radio" formControlName="skillEvaluation" value="no" required> No</label>
+            <label><input type="radio" formControlName="skillEvaluation" value="other" required> Other</label>
+          </div> -->
 
-  <div class="mb-3">
-    <label>Are you looking for a job switch or growth in your current career? *</label>
-    <input type="text" class="form-control" formControlName="careerGoal">
-  </div>
+          <div class="mb-3">
+            <label>Are you looking for a job switch or growth in your current career? *</label>
+            <input type="text" class="form-control" formControlName="careerGoal">
+          </div>
 
-  <!-- Questions for us -->
-  <div class="mb-3">
-    <label>Questions for us?</label>
-    <textarea class="form-control" rows="3" formControlName="message"></textarea>
-  </div>
-</div>
+          <!-- Questions for us -->
+          <div class="mb-3">
+            <label>Questions for us?</label>
+            <textarea class="form-control" rows="3" formControlName="message"></textarea>
+          </div>
+        </div>
 
 
-      <!-- Navigation -->
-      <div class="d-flex justify-content-between mt-4">
-        <button class="btn btn-secondary" (click)="prevStep()">Back</button>
-        <button class="btn btn-warning" (click)="nextStep()" [disabled]="!courseForm.valid">Next</button>
-      </div>
-    </div>
-
-    <!-- Step 3: Upload Resume -->
-    <div *ngIf="step === 3">
-      <h3>Step 3 – Upload Resume / Documents</h3>
-      <div class="mb-3">
-        <label>Upload Your Resume / Documents</label>
-        <input type="file" class="form-control" (change)="onFileChange($event)" multiple>
-        <small class="text-muted">You can upload PDF, document, or image. Max 10 MB per file.</small>
+        <!-- Navigation -->
+        <div class="d-flex justify-content-between mt-4">
+          <button class="btn btn-secondary" (click)="prevStep()">Back</button>
+          <button class="btn btn-warning" (click)="nextStep()" [disabled]="!courseForm.valid">Next</button>
+        </div>
       </div>
 
-       <div class="d-flex justify-content-between">
-    <button class="btn btn-secondary" (click)="prevStep()">Back</button>
-    <button class="btn btn-success" (click)="nextStep()" [disabled]="resumeFiles.length === 0">
-      Next
-    </button>
-  </div>
+      <!-- Step 3: Upload Resume -->
+      <div *ngIf="step === 3">
+        <h3>Step 3 – Upload Resume / Documents</h3>
+        <div class="mb-3">
+          <label>Upload Your Resume / Documents</label>
+          <input type="file" class="form-control" (change)="onFileChange($event)" multiple>
+          <small class="text-muted">You can upload PDF, document, or image. Max 10 MB per file.</small>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-secondary" (click)="prevStep()">Back</button>
+          <button class="btn btn-success" (click)="nextStep()" [disabled]="resumeFiles.length === 0">
+            Next
+          </button>
+        </div>
+      </div>
+      <div *ngIf="step === 4">
+        <h3>Step 4 – Payment</h3>
+
+        <p>Please choose a payment option for your selected course:</p>
+
+        <div class="mb-3">
+          <div *ngIf="selectedCourse === 'course1'">
+            <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="payu_course1"> Pay via PayU –
+              Beginner Course</label>
+          </div>
+          <div *ngIf="selectedCourse === 'course2'">
+            <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="payu_course2"> Pay via PayU –
+              STCW Holder / Ex-Seafarer</label>
+          </div>
+          <div *ngIf="selectedCourse === 'course3'">
+            <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="payu_course3"> Pay via PayU –
+              Cruise Photographer</label>
+          </div>
+        </div>
+
+        <div class="d-flex justify-content-between">
+          <button class="btn btn-secondary" (click)="prevStep()">Back</button>
+          <button class="btn btn-success" (click)="proceedToPayment()" [disabled]="!paymentMode">
+            Pay Now
+          </button>
+        </div>
+      </div>
+
+
     </div>
-
-<!-- Step 4: Payment -->
-<div *ngIf="step === 4">
-  <h3>Step 4 – Payment</h3>
-
-  <p>Please choose a payment option for your selected course:</p>
-
-  <div class="mb-3">
-    <div *ngIf="selectedCourse === 'course1'">
-      <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="payu_course1"> Pay via PayU – Beginner Course</label>
-    </div>
-    <div *ngIf="selectedCourse === 'course2'">
-      <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="payu_course2"> Pay via PayU – STCW Holder / Ex-Seafarer</label>
-    </div>
-    <div *ngIf="selectedCourse === 'course3'">
-      <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="payu_course3"> Pay via PayU – Cruise Photographer</label>
-    </div>
   </div>
-
-  <div class="d-flex justify-content-between">
-    <button class="btn btn-secondary" (click)="prevStep()">Back</button>
-    <button class="btn btn-success" (click)="proceedToPayment()" [disabled]="!paymentMode">
-      Pay Now
-    </button>
-  </div>
-</div>
-
-
-  </div>
-</div>
-<br>
+  <br>
 
 
 </section>

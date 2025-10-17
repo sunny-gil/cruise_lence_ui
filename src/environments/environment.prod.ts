@@ -1,8 +1,8 @@
 export const environment = {
   production: true,
   payu: {
-    key: 'your_live_key',
-    salt: 'your_live_salt',
+    key: 'aWlJnB',
+    salt: '3kd4Ihdl9D4B5F6QJWofTuOKtPvhGnbd',
     url: 'https://secure.payu.in/_payment'
   }
 };

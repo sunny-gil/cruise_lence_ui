@@ -86,6 +86,14 @@ export const routes: Routes = [
           path: 'payment-emi-policy',
           loadComponent: () => import('./payment-emi-policy/payment-emi-policy.component').then(m => m.PaymentEMIPolicyComponent)
      },
+     {
+          path: 'payment-success',
+          loadComponent: () => import('./payment-success/payment-success.component').then(m => m.PaymentSuccessComponent)
+     },
+     {
+          path: 'payment-failure',
+          loadComponent: () => import('./payment-failure/payment-failure.component').then(m => m.PaymentFailureComponent)
+     },
 ];
      
 

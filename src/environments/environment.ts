@@ -1,9 +1,23 @@
-export const environment = {
-  production: false,
+// export const environment = {
+//   production: false,
+//   payu: {
+//     key: 'aWlJnB',
+//     salt: '3kd4Ihdl9D4B5F6QJWofTuOKtPvhGnbd',
+//     url: 'https://secure.payu.in/_payment'
+//   },
+//   backendUrl: 'http://127.0.0.1:3000/api',
+//   frontendUrl: 'http://localhost:4200'
+// };
 
-    payu: {
-    key: 'Bb5MaO',
-    salt: '7E9weTfAZZts8lfV91zV8vXfBhB5bPTn',
-    url: 'https://test.payu.in/_payment'
-  }
+
+
+ export const environment = {
+   production: false,
+  payu: {
+    key: 'aWlJnB',
+    salt: '3kd4Ihdl9D4B5F6QJWofTuOKtPvhGnbd',
+    url: 'https://secure.payu.in/_payment'
+  },
+  backendUrl: 'https://cruiselensacademy.com',
+  frontendUrl: 'https://cruiselensacademy.com'
 };

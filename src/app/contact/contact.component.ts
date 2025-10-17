@@ -17,7 +17,10 @@ export class ContactComponent {
   successMessage: string = '';
   webAppUrl: string = 'https://script.google.com/macros/s/AKfycbxqS4urC6BEneP5cq6o4dvqOA_XgypzobKmnGxt3i2JVNzgZxYImIbVz7IRUePR8QgYuw/exec'; // ← Replace with your Apps Script Web App URL
 
-  constructor(private fb: FormBuilder, private http: HttpClient) {
+
+  //  webAppUrl: string = 'https://script.google.com/macros/s/AKfycbwN0LMR1jxq47LQO3XlQJXPL2V1H2auknxHf1GtdzQKYevuXoTVPmtfzduKbHBcWQdf/exec';
+  
+   constructor(private fb: FormBuilder, private http: HttpClient) {
     this.enquiryForm = this.fb.group({
   fullName: ['', [Validators.required, Validators.minLength(3)]],
   phone: ['', [Validators.required, Validators.pattern(/^[0-9]{10}$/)]], // 10-digit phone
