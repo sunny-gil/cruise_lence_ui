@@ -113,6 +113,7 @@
   font-size: 1.2rem;
   line-height: 1.5;
   color: #fff;
+  text-align: center !important;
 }
 
 .offer-card.big {
@@ -273,4 +274,135 @@ p{
 .team-special ul li {
   font-size: 1.1rem;
   line-height: 1.6;
+}
+/* ================= RESPONSIVE FONT BALANCE ================= */
+
+/* Tablets */
+@media (max-width: 992px) {
+
+  /* Leadership section paragraphs */
+  .team-section p {
+    font-size: 1.05rem;
+    padding: 0 20px;
+  }
+
+  .leadpage-1 {
+    font-size: 1.6rem;
+  }
+
+  .leadpage-2 {
+    font-size: 1.1rem;
+  }
+
+  /* Section titles */
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.2rem;
+    padding: 0 20px;
+  }
+
+  /* Expert overlay text */
+  .expert-overlay-card h5 {
+    font-size: 1.2rem;
+  }
+
+  /* Offer cards */
+  .offer-card p {
+    font-size: 1.05rem;
+  }
+
+  .offer-card.big {
+    font-size: 1.05rem;
+  }
+
+  /* Team special list */
+  .team-special ul li {
+    font-size: 1rem;
+  }
+
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .team-section p {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+
+  .leadpage-1 {
+    font-size: 1.4rem;
+  }
+
+  .leadpage-2 {
+    font-size: 1rem;
+  }
+
+  .section-title {
+    font-size: 1.7rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.05rem;
+  }
+
+  .expert-overlay-card h5 {
+    font-size: 1.1rem;
+  }
+
+  .offer-card p {
+    font-size: 1rem;
+  }
+
+  .offer-card.big {
+    font-size: 1rem;
+  }
+
+  .team-special ul li {
+    font-size: 0.95rem;
+  }
+
+}
+
+
+/* Small phones */
+@media (max-width: 480px) {
+
+  .team-section p {
+    font-size: 0.95rem;
+    padding: 0 10px;
+  }
+
+  .leadpage-1 {
+    font-size: 1.3rem;
+  }
+
+  .leadpage-2 {
+    font-size: 0.95rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .section-subtitle {
+    font-size: 0.95rem;
+  }
+
+  .expert-overlay-card h5 {
+    font-size: 1rem;
+  }
+
+  .offer-card p {
+    font-size: 0.95rem;
+  }
+
+  .team-special ul li {
+    font-size: 0.9rem;
+  }
+
 }

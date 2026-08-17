@@ -1,14 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-about',
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })
-export class AboutComponent  implements OnInit {
+export class AboutComponent implements OnInit {
   fullText: string = `Recognizing this gap, Rohan built Cruise Lens Academy 
 to create a dedicated platform for maritime education, 
 ensuring aspiring photographers receive structured guidance, 
@@ -17,6 +17,19 @@ hands-on training, and international exposure.`;
   displayedText: string = '';
   currentIndex: number = 0;
   typingSpeed: number = 50; // milliseconds per character
+
+  // Gallery images array
+  galleryImages = [
+    { url: 'assets/images/image-18.jpg', alt: 'Classroom Training' },
+    { url: 'assets/images/image-19.jpg', alt: 'Hands-on Shoot' },
+    { url: 'assets/images/image-20.jpg', alt: 'Student Portraiture' },
+    { url: 'assets/images/image-12.jpg', alt: 'Camera Editing Classroom' },
+    { url: 'assets/images/image-14.webp', alt: 'Field Practice' },
+    { url: 'assets/images/image-6.jpg', alt: 'Graduation Group' }
+  ];
+
+  showLightbox = false;
+  activeImageIndex = 0;
 
   ngOnInit() {
     this.typeText();
@@ -30,13 +43,41 @@ hands-on training, and international exposure.`;
     }
   }
 
-  // about.component.ts
-scrollToSection(event: Event, sectionId: string) {
-  event.preventDefault(); // prevent default anchor jump
-  const el = document.getElementById(sectionId);
-  if (el) {
-    el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  scrollToSection(event: Event, sectionId: string) {
+    event.preventDefault(); // prevent default anchor jump
+    const el = document.getElementById(sectionId);
+    if (el) {
+      el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }
-}
 
+  // Lightbox Handlers
+  openLightbox(index: number) {
+    this.activeImageIndex = index;
+    this.showLightbox = true;
+    if (typeof window !== 'undefined') {
+      document.body.style.overflow = 'hidden'; // prevent scrolling behind overlay
+    }
+  }
+
+  closeLightbox() {
+    this.showLightbox = false;
+    if (typeof window !== 'undefined') {
+      document.body.style.overflow = ''; // restore scrolling
+    }
+  }
+
+  nextImage(event?: Event) {
+    if (event) {
+      event.stopPropagation();
+    }
+    this.activeImageIndex = (this.activeImageIndex + 1) % this.galleryImages.length;
+  }
+
+  prevImage(event?: Event) {
+    if (event) {
+      event.stopPropagation();
+    }
+    this.activeImageIndex = (this.activeImageIndex - 1 + this.galleryImages.length) % this.galleryImages.length;
+  }
 }

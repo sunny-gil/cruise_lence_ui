@@ -67,3 +67,73 @@ color: #ffcc66;
   height: 100%;
   object-fit: contain; /* fills area without distortion */
 }
+/* ================= FAQ MEDIUM TYPOGRAPHY ================= */
+
+/* Desktop refinement (slightly balanced) */
+.accordion-button {
+  font-size: 1.25rem;
+  padding: 0.9rem 1.2rem;
+}
+
+.accordion-body {
+  font-size: 1.05rem;
+  line-height: 1.6;
+}
+
+.section-subtitle {
+  font-size: 1.25rem;
+}
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+
+  .accordion-button {
+    font-size: 1.1rem;
+  }
+
+  .accordion-body {
+    font-size: 1rem;
+  }
+
+  .heading {
+    font-size: 1.8rem;
+  }
+
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+
+  .accordion-button {
+    font-size: 1rem;
+    padding: 0.8rem 1rem;
+  }
+
+  .accordion-body {
+    font-size: 0.95rem;
+  }
+
+  .heading {
+    font-size: 1.6rem;
+  }
+
+}
+
+/* Small Phones */
+@media (max-width: 480px) {
+
+  .accordion-button {
+    font-size: 0.95rem;
+  }
+
+  .accordion-body {
+    font-size: 0.9rem;
+  }
+
+  .heading {
+    font-size: 1.4rem;
+  }
+
+}

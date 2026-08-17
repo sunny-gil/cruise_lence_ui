@@ -1,0 +1,88 @@
+<section class="photographer-carousel-section py-5 bg-white border-top">
+  <div class="container text-center">
+    
+    <!-- Section Header (Mockup style) -->
+    <div class="d-flex flex-wrap justify-content-between align-items-center mb-4 text-start">
+      <div>
+        <span class="section-eyebrow fw-bold text-uppercase" style="color: var(--gold-accent);">CREW DECK</span>
+        <h2 class="section-main-title fw-bold mt-1 mb-0" style="color: var(--primary-navy);">OUR CERTIFIED TALENT POOL</h2>
+        <span class="section-subtitle-text text-muted" style="font-size: 0.9rem;">Trained. Certified. Cruise Ready.</span>
+      </div>
+      <div>
+        <!-- Link to view all photographers -->
+        <a routerLink="/photographers" class="btn btn-white-outline py-2 px-3 text-uppercase fw-semibold" style="font-size: 0.85rem;">
+          View All Crew <i class="fa-solid fa-arrow-right ms-2"></i>
+        </a>
+      </div>
+    </div>
+    
+    <div class="section-divider-gold text-start mb-5" style="width: 70px; height: 3px; background-color: var(--gold-accent);"></div>
+
+    <!-- Carousel Slider -->
+    <div class="carousel-wrapper position-relative">
+
+      <button class="nav-btn prev shadow-sm" (click)="prevSlide()">❮</button>
+
+      <div
+        #track
+        class="carousel-track py-3"
+        (mouseenter)="pauseAutoSlide()"
+        (mouseleave)="resumeAutoSlide()"
+        [ngStyle]="{
+          transform: 'translateX(' + translateX + 'px)',
+          transition: isTransitionEnabled ? 'transform 0.6s ease' : 'none'
+        }"
+      >
+        <div class="card-item" *ngFor="let member of doubled">
+
+          <div class="card-inner shadow-sm" [class.flipped]="flippedCard === member.initials">
+
+            <!-- FRONT OF CARD (Horizontal Layout - Click to flip) -->
+            <div class="card-front p-3 d-flex align-items-center text-start gap-3" style="cursor: pointer;" (click)="flipCard(member.initials)">
+              <div class="photo-circle-horizontal flex-shrink-0">
+                <img [src]="member.image || 'assets/images/profile.png'" [alt]="member.initials" class="rounded-circle border" width="75" height="75" style="object-fit: cover;" />
+              </div>
+
+              <div class="member-details flex-grow-1">
+                <h5 class="fw-bold mb-1 text-navy-main" style="font-size: 1.05rem; color: var(--primary-navy);">{{ member.name || member.initials }}</h5>
+                <p class="text-muted small mb-1 fw-semibold" style="font-size: 0.78rem;">Batch: {{ member.batch }}</p>
+                <p class="member-status-text small mb-2" style="font-size: 0.78rem; font-weight: 600; color: var(--accent-blue);">
+                  {{ member.status === 'Onboard' ? 'Working Onboard' : (member.status === 'Available' ? 'Available for Hire' : 'Certified Cruise Photographer') }}
+                </p>
+                
+                <button class="btn btn-white-outline btn-sm py-1 px-3 text-uppercase" style="font-size: 0.7rem; font-weight: 600;">
+                  View Profile <i class="fa-solid fa-arrow-right ms-1" style="font-size: 0.65rem;"></i>
+                </button>
+              </div>
+            </div>
+
+            <!-- BACK OF CARD (Click outer card to flip back) -->
+            <div class="card-back p-3 d-flex flex-column justify-content-between text-start" style="cursor: pointer;" (click)="flipCard(null)">
+              <div>
+                <h5 class="fw-bold mb-1" style="font-size: 1rem; color: var(--primary-navy);">{{ member.name || member.initials }}</h5>
+                <div class="back-divider mb-2" style="height: 1px; background-color: #cbd5e1;"></div>
+                
+                <div class="details-scroll" style="max-height: 125px; overflow-y: auto;" (click)="$event.stopPropagation()">
+                  <p class="small mb-1 text-muted" style="font-size: 0.72rem; line-height: 1.3;">
+                    <strong>Bio:</strong> {{ member.bio || 'Cruise-ready certified photographer.' }}
+                  </p>
+                  <p class="small mb-0 text-muted" style="font-size: 0.72rem; line-height: 1.3;" *ngIf="member.skills?.length">
+                    <strong>Skills:</strong> {{ member.skills?.join(', ') }}
+                  </p>
+                </div>
+              </div>
+
+              <button class="btn btn-navy-solid btn-sm py-1 w-100 text-uppercase" style="font-size: 0.7rem; font-weight: 600;">
+                ← Back
+              </button>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <button class="nav-btn next shadow-sm" (click)="nextSlide()">❯</button>
+    </div>
+
+  </div>
+</section>

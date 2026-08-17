@@ -18,7 +18,7 @@
       <h1 class="text-center text-uppercase py-3">Application form</h1>
       <!-- Progress -->
       <div class="progress mb-4">
-        <div class="progress-bar" role="progressbar" [style.width.%]="step === 1 ? 33 : step === 2 ? 66 : 100">
+        <div class="progress-bar" role="progressbar" [style.width.%]="step === 1 ? 25 : step === 2 ? 50 : step === 3 ? 75 : 100">
           Step {{ step }} of 4
         </div>
       </div>
@@ -36,7 +36,7 @@
         <div class="mb-3"><label>Date of Birth *</label><input type="date" class="form-control" formControlName="dob">
         </div>
         <div class="mb-3">
-          <label class="form-label text-white">Preferred Way To Connect *</label>
+          <label class="form-label text-navy fw-semibold">Preferred Way To Connect *</label>
           <div class="form-check">
             <input class="form-check-input" type="checkbox" value="WhatsApp" (change)="onCheckboxChange($event)">
             <label class="form-check-label">WhatsApp</label>
@@ -57,7 +57,7 @@
         </div>
 
         <div class="mb-3">
-          <label class="form-label text-white">How did you hear about Cruise Lens Academy? *</label>
+          <label class="form-label text-navy fw-semibold">How did you hear about Cruise Lens Academy? *</label>
 
           <div class="form-check">
             <input class="form-check-input" type="radio" value="Instagram" formControlName="heardFrom"
@@ -95,7 +95,7 @@
         </div>
 
 
-        <button class="btn btn-warning w-100" (click)="nextStep()" [disabled]="!personalForm.valid">Next</button>
+        <button class="btn btn-warning w-100" (click)="nextStep()" [disabled]="!isCurrentStepValid()">Next</button>
       </div>
 
       <!-- Step 2: Course Selection & Questions -->
@@ -105,8 +105,9 @@
         <!-- Select Course -->
         <div class="mb-3">
           <label>Select Course *</label>
-          <select class="form-control" formControlName="course" (change)="onCourseChange($event)">
+          <select class="form-control" formControlName="course">
             <option value="">-- Select a Course --</option>
+            <option value="starterTrack">Starter Track – Photography & Camera Basics</option>
             <option value="course1">Beginner & New to the Sea</option>
             <option value="course2">STCW Holder / Ex-Seafarer</option>
             <option value="course3">Cruise Photographer Evaluation</option>
@@ -115,32 +116,61 @@
 
         </div>
 
+        <!-- Course 4 – Starter Track -->
+<div *ngIf="selectedCourse === 'starterTrack'" [formGroup]="coursestartertrackQuestions">
+  <h5>Starter Track – Photography & Camera Basics</h5>
+
+  <div class="mb-3">
+    <label>Have you ever used a DSLR or mirrorless camera? *</label><br>
+    <label><input type="radio" value="yes" formControlName="usedCamera"> Yes</label>
+    <label><input type="radio" value="no" formControlName="usedCamera"> No</label>
+    <label><input type="radio" value="phone" formControlName="usedCamera"> Phone only</label>
+  </div>
+
+  <div class="mb-3">
+    <label>Have you attended any photography course/workshop before? *</label><br>
+    <label><input type="radio" value="yes" formControlName="attendedWorkshop"> Yes</label>
+    <label><input type="radio" value="no" formControlName="attendedWorkshop"> No</label>
+  </div>
+
+  <div class="mb-3">
+    <label>What is your primary reason for joining this course? *</label>
+    <input type="text" class="form-control" formControlName="reason">
+  </div>
+
+  <div class="mb-3">
+    <label>Questions for us?</label>
+    <textarea class="form-control" rows="3" formControlName="message"></textarea>
+  </div>
+</div>
+
+
         <!-- Course 1 -->
         <div *ngIf="selectedCourse === 'course1'" [formGroup]="course1Questions">
           <h5>Beginner & New to the Sea</h5>
           <div class="mb-3">
             <label>Used DSLR or professional camera? *</label><br>
-            <label><input type="radio" formControlName="usedCamera" value="yes" required> Yes</label>
-            <label><input type="radio" formControlName="usedCamera" value="no" required> No</label>
-            <label><input type="radio" formControlName="usedCamera" value="phone" required> Phone only</label>
+            <label class="me-3"><input type="radio" formControlName="usedCamera" value="yes"> Yes</label>
+            <label class="me-3"><input type="radio" formControlName="usedCamera" value="no"> No</label>
+            <label class="me-3"><input type="radio" formControlName="usedCamera" value="phone"> Phone only</label>
           </div>
           <div class="mb-3">
             <label>Worked in hospitality/events? *</label><br>
-            <label><input type="radio" formControlName="hospitalityExp" value="yes" required> Yes</label>
-            <label><input type="radio" formControlName="hospitalityExp" value="no" required> No</label>
+            <label class="me-3"><input type="radio" formControlName="hospitalityExp" value="yes"> Yes</label>
+            <label class="me-3"><input type="radio" formControlName="hospitalityExp" value="no"> No</label>
           </div>
-          <!-- <div class="mb-3">
-          <label>Open to STCW courses & INDOS? *</label><br>
-          <label><input type="radio" formControlName="joinSTCW" value="yes" required> Yes</label>
-          <label><input type="radio" formControlName="joinSTCW" value="no" required> No</label>
-          <label><input type="radio" formControlName="joinSTCW" value="dontknow" required> Don't know</label>
-        </div>
-        <div class="mb-3">
-          <label>Training mode? *</label><br>
-          <label><input type="radio" formControlName="trainingMode" value="online" required> Online</label>
-          <label><input type="radio" formControlName="trainingMode" value="offline" required> Offline</label>
-          <label><input type="radio" formControlName="trainingMode" value="hybrid" required> Hybrid</label>
-        </div> -->
+          <div class="mb-3">
+            <label>Open to STCW courses & INDOS? *</label><br>
+            <label class="me-3"><input type="radio" formControlName="joinSTCW" value="yes"> Yes</label>
+            <label class="me-3"><input type="radio" formControlName="joinSTCW" value="no"> No</label>
+            <label class="me-3"><input type="radio" formControlName="joinSTCW" value="dontknow"> Don't know</label>
+          </div>
+          <div class="mb-3">
+            <label>Training mode? *</label><br>
+            <label class="me-3"><input type="radio" formControlName="trainingMode" value="online"> Online</label>
+            <label class="me-3"><input type="radio" formControlName="trainingMode" value="offline"> Offline</label>
+            <label class="me-3"><input type="radio" formControlName="trainingMode" value="hybrid"> Hybrid</label>
+          </div>
           <div class="mb-3">
             <label>Questions for us?</label>
             <textarea class="form-control" rows="3" formControlName="message"></textarea>
@@ -150,39 +180,33 @@
         <!-- Course 2 -->
         <div *ngIf="selectedCourse === 'course2'" [formGroup]="course2Questions">
           <h5>STCW Holder / Ex-Seafarer</h5>
-          <!-- <div class="mb-3">
-  <label class="form-label">Which STCW courses have you completed? *</label>
+        
+          <div class="mb-3">
+            <label>Years of sea experience *</label>
+            <input type="number" class="form-control" formControlName="yearsExperience">
+          </div>
+          <div class="mb-3">
+            <label>Last ship type worked on *</label>
+            <input type="text" class="form-control" formControlName="lastShipType">
+          </div>
 
-  <div class="form-check" *ngFor="let course of stcwCourses">
-  <input
-    type="checkbox"
-    class="form-check-input"
-    [value]="course"
-    (change)="onStcwCheckboxChange($event)"
-    [checked]="selectedStcwCourses.includes(course)">
-  <label class="form-check-label">{{ course }}</label>
-</div>
+          <div class="mb-3">
+            <label class="form-label text-navy fw-semibold d-block">Which STCW courses do you hold? *</label>
+            <div *ngFor="let course of stcwCourses" class="form-check">
+              <input class="form-check-input" type="checkbox" [value]="course" (change)="onStcwCheckboxChange($event)" [checked]="selectedStcwCourses.includes(course)">
+              <label class="form-check-label">{{ course }}</label>
+            </div>
+            <div *ngIf="selectedStcwCourses.length === 0" class="text-danger small mt-1">
+              Please select at least one STCW course.
+            </div>
+          </div>
 
-<div *ngIf="selectedStcwCourses.length === 0 && isSubmittedCourse2" class="text-danger">
-  Please select at least one course.
-</div>
-
-
- 
-  <div *ngIf="course2Questions.get('stcwCourse')?.touched && course2Questions.get('stcwCourse')?.invalid" class="text-danger">
-    Please select one course.
-  </div>
-</div> -->
-
-          <div class="mb-3"><label>Years of sea experience *</label><input type="number" class="form-control"
-              formControlName="yearsExperience" required></div>
-          <div class="mb-3"><label>Last ship type worked on *</label><input type="text" class="form-control"
-              formControlName="lastShipType" required></div>
-          <!-- <div class="mb-3">
-            <label>Ready to rejoin sea? *</label><br>
-            <label><input type="radio" formControlName="readyRejoin" value="yes" required> Yes</label>
-            <label><input type="radio" formControlName="readyRejoin" value="no" required> No</label>
-          </div> -->
+          <div class="mb-3">
+            <label>Are you ready to rejoin the sea? *</label><br>
+            <label class="me-3"><input type="radio" formControlName="readyRejoin" value="yes"> Yes</label>
+            <label class="me-3"><input type="radio" formControlName="readyRejoin" value="no"> No</label>
+          </div>
+          
           <div class="mb-3">
             <label>Questions for us?</label>
             <textarea class="form-control" rows="3" formControlName="message"></textarea>
@@ -196,24 +220,14 @@
           <!-- Years of experience -->
           <div class="mb-3">
             <label>Years of cruise photography experience *</label>
-            <input type="number" class="form-control" formControlName="yearsPhotography" required>
+            <input type="number" class="form-control" formControlName="yearsPhotography">
           </div>
 
-          <!-- Onboard experience -->
-          <!-- <div class="mb-3">
-            <label>Prior onboard photography experience? *</label><br>
-            <label><input type="radio" formControlName="onboardExperience" value="yes" required> Yes</label>
-            <label><input type="radio" formControlName="onboardExperience" value="no" required> No</label>
-          </div> -->
-
-          <!-- Portfolio shared -->
-          <!-- <div class="mb-3">
-    <label>Portfolio shared? *</label><br>
-    <label><input type="radio" formControlName="portfolioShared" value="yes" required> Yes</label>
-    <label><input type="radio" formControlName="portfolioShared" value="no" required> No</label>
-  </div> -->
-
-          <!-- ✅ New Questions -->
+          <div class="mb-3">
+            <label>Have you worked onboard a cruise ship before? *</label><br>
+            <label class="me-3"><input type="radio" formControlName="onboardExperience" value="yes"> Yes</label>
+            <label class="me-3"><input type="radio" formControlName="onboardExperience" value="no"> No</label>
+          </div>
 
           <div class="mb-3">
             <label>Which cruise line(s) have you worked with? *</label>
@@ -225,18 +239,23 @@
             <input type="text" class="form-control" formControlName="lastPosition">
           </div>
 
-          <!-- <div class="mb-3">
-            <label>What camera systems and editing tools are you confident using? *</label>
-            <input type="text" class="form-control" formControlName="cameraSystems">
-          </div> -->
+          <div class="mb-3">
+            <label>Which camera systems are you proficient with? *</label>
+            <input type="text" class="form-control" formControlName="cameraSystems" placeholder="e.g. Canon, Nikon, Sony">
+          </div>
 
-          <!-- <div class="mb-3">
-            <label>Would you be interested in a skill-based evaluation for interview opportunities with other cruise
-              companies? *</label><br>
-            <label><input type="radio" formControlName="skillEvaluation" value="yes" required> Yes</label>
-            <label><input type="radio" formControlName="skillEvaluation" value="no" required> No</label>
-            <label><input type="radio" formControlName="skillEvaluation" value="other" required> Other</label>
-          </div> -->
+          <div class="mb-3">
+            <label>Self-evaluate your photography skills (1 to 10) *</label>
+            <select class="form-control" formControlName="skillEvaluation">
+              <option value="">-- Select Rating --</option>
+              <option *ngFor="let rate of [1,2,3,4,5,6,7,8,9,10]" [value]="rate">{{ rate }}</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label>Portfolio Link (Instagram, Website, Drive, etc.) *</label>
+            <input type="text" class="form-control" formControlName="portfolioShared" placeholder="https://...">
+          </div>
 
           <div class="mb-3">
             <label>Are you looking for a job switch or growth in your current career? *</label>
@@ -254,53 +273,135 @@
         <!-- Navigation -->
         <div class="d-flex justify-content-between mt-4">
           <button class="btn btn-secondary" (click)="prevStep()">Back</button>
-          <button class="btn btn-warning" (click)="nextStep()" [disabled]="!courseForm.valid">Next</button>
+          <button class="btn btn-warning" (click)="nextStep()" [disabled]="!isCurrentStepValid()">Next</button>
         </div>
       </div>
 
-      <!-- Step 3: Upload Resume -->
-      <div *ngIf="step === 3">
-        <h3>Step 3 – Upload Resume / Documents</h3>
-        <div class="mb-3">
-          <label>Upload Your Resume / Documents</label>
-          <input type="file" class="form-control" (change)="onFileChange($event)" multiple>
-          <small class="text-muted">You can upload PDF, document, or image. Max 10 MB per file.</small>
-        </div>
+<!-- Step 3: Upload Resume -->
+<div *ngIf="step === 3">
+  <h3>Step 3 – Upload Resume / Documents</h3>
 
-        <div class="d-flex justify-content-between">
-          <button class="btn btn-secondary" (click)="prevStep()">Back</button>
-          <button class="btn btn-success" (click)="nextStep()" [disabled]="resumeFiles.length === 0">
-            Next
-          </button>
-        </div>
-      </div>
-      <div *ngIf="step === 4">
-        <h3>Step 4 – Payment</h3>
+  <div class="mb-3">
+    <label class="fw-bold">Upload Your Resume / Documents</label>
+    <input
+      type="file"
+      class="form-control"
+      (change)="onFileChange($event)"
+      multiple
+      accept=".pdf,.jpg,.jpeg,.png,.doc,.docx"
+    />
 
-        <p>Please choose a payment option for your selected course:</p>
+    <!-- Highlighted note -->
+    <div class="alert alert-info mt-2 py-2 px-3">
+      <strong>Note:</strong> You can upload multiple documents
+      (<b>PDF, JPG, PNG, DOC</b> – Max <b>2 MB</b> per file).
+    </div>
+  </div>
 
-        <div class="mb-3">
-          <div *ngIf="selectedCourse === 'course1'">
-            <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="payu_course1"> Pay via PayU –
-              Beginner Course</label>
-          </div>
-          <div *ngIf="selectedCourse === 'course2'">
-            <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="payu_course2"> Pay via PayU –
-              STCW Holder / Ex-Seafarer</label>
-          </div>
-          <div *ngIf="selectedCourse === 'course3'">
-            <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="payu_course3"> Pay via PayU –
-              Cruise Photographer</label>
-          </div>
-        </div>
+  <!-- ✅ Uploaded files list -->
+  <div *ngIf="resumeFiles.length > 0" class="uploaded-files mt-3">
+    <h5 class="text-primary mb-2">
+      Uploaded Files ({{ resumeFiles.length }}):
+    </h5>
+    <ul class="list-group">
+      <li
+        *ngFor="let file of resumeFiles; let i = index"
+        class="list-group-item d-flex justify-content-between align-items-center"
+      >
+        <span>{{ i + 1 }}. {{ file.name }}</span>
+        <button
+          type="button"
+          class="btn btn-sm btn-outline-danger"
+          (click)="removeFile(i)"
+        >
+          Remove
+        </button>
+      </li>
+    </ul>
+  </div>
 
-        <div class="d-flex justify-content-between">
-          <button class="btn btn-secondary" (click)="prevStep()">Back</button>
-          <button class="btn btn-success" (click)="proceedToPayment()" [disabled]="!paymentMode">
-            Pay Now
-          </button>
-        </div>
-      </div>
+  <!-- Navigation buttons -->
+  <div class="d-flex justify-content-between mt-4">
+    <button class="btn btn-secondary" (click)="prevStep()">Back</button>
+    <button class="btn btn-success" (click)="nextStep()" [disabled]="!isCurrentStepValid()">
+      Next
+    </button>
+  </div>
+</div>
+
+<!-- ✅ Step 4 – Payment -->
+<div *ngIf="step === 4">
+  <h3>Step 4 – Payment</h3>
+  <p>Please choose a payment option for your selected course:</p>
+
+ 
+<!-- ✅ Starter Track Payment Options -->
+<div *ngIf="courseForm.value.course === 'starterTrack'">
+
+  <label>
+    <input type="radio" name="payment"
+           [(ngModel)]="paymentMode"
+           value="st_full">
+    Pay via PayU – Full Payment (₹35,000)
+  </label><br>
+
+  <label>
+    <input type="radio" name="payment"
+           [(ngModel)]="paymentMode"
+           value="st_booking">
+    Pay via PayU – Booking Amount (₹17,500)
+  </label><br>
+
+  <label>
+    <input type="radio" name="payment"
+           [(ngModel)]="paymentMode"
+           value="st_custom">
+    Pay via PayU – Other Amount (Min ₹1)
+  </label>
+
+  <input
+    *ngIf="paymentMode === 'st_custom'"
+    type="number"
+    [(ngModel)]="customAmount"
+    class="form-control mt-2"
+    placeholder="Enter Amount (₹1 or more)"
+    min="1"
+  >
+</div>
+
+
+  <!-- ✅ Course 1 Payment Options -->
+  <div *ngIf="courseForm.value.course === 'course1'">
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="c1_advance"> Pay via PayU – Advance (₹50,000)</label><br>
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="c1_admission"> Pay via PayU – Admission Fees (₹1,00,000)</label><br>
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="c1_custom"> Pay via PayU – Other Amount (Custom, Min ₹5000)</label>
+    <input *ngIf="paymentMode === 'c1_custom'" type="number" [(ngModel)]="customAmount" class="form-control mt-2" placeholder="Enter Amount">
+  </div>
+
+  <!-- ✅ Course 2 Payment Options -->
+  <div *ngIf="courseForm.value.course === 'course2'">
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="c2_advance"> Pay via PayU – Advance (₹10,000)</label><br>
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="c2_admission"> Pay via PayU – Admission Fees (₹90,000)</label><br>
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="c2_custom"> Pay via PayU – Other Amount (Custom, Min ₹5000)</label>
+    <input *ngIf="paymentMode === 'c2_custom'" type="number" [(ngModel)]="customAmount" class="form-control mt-2" placeholder="Enter Amount">
+  </div>
+
+  <!-- ✅ Course 3 Payment Options -->
+  <div *ngIf="courseForm.value.course === 'course3'">
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="c3_evaluation"> Pay via PayU – Evaluation Fee (₹499)</label><br>
+    <label><input type="radio" name="payment" [(ngModel)]="paymentMode" value="c3_custom"> Pay via PayU – Other Amount (Custom, Min ₹1)</label>
+    <input *ngIf="paymentMode === 'c3_custom'" type="number" [(ngModel)]="customAmount" class="form-control mt-2" placeholder="Enter Amount">
+  </div>
+
+  <!-- ✅ Buttons -->
+  <div class="d-flex justify-content-between mt-4">
+    <button class="btn btn-secondary" (click)="prevStep()">Back</button>
+    <button class="btn btn-success" (click)="proceedToPayment()" [disabled]="!isCurrentStepValid()">Pay Now</button>
+  </div>
+</div>
+
+
+
 
 
     </div>

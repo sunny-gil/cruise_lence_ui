@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { SupabaseService } from '../supabase.service';
@@ -12,7 +12,7 @@ import { environment } from '../../environments/environment';
   templateUrl: './apply-now.component.html',
   styleUrls: ['./apply-now.component.css']
 })
-export class ApplyNowComponent {
+export class ApplyNowComponent implements OnInit {
   step = 1;
 
   personalForm: FormGroup;
@@ -20,19 +20,22 @@ export class ApplyNowComponent {
   course1Questions: FormGroup;
   course2Questions: FormGroup;
   course3Questions: FormGroup;
+  coursestartertrackQuestions: FormGroup;
+
 
   selectedCourse = '';
   resumeFiles: File[] = [];
   paymentMode: string = ''; // <-- required for ngModel
 
   isLoading: boolean = false;
+  customAmount: number = 0;
 
 
   constructor(private fb: FormBuilder, private supabaseService: SupabaseService) {
     // Step 1
     // debugger
     this.personalForm = this.fb.group({
-      
+
       fullName: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', Validators.required],
@@ -43,9 +46,17 @@ export class ApplyNowComponent {
     });
 
     // Step 2
-    this.courseForm = this.fb.group({ 
+    this.courseForm = this.fb.group({
       course: ['', Validators.required],
     });
+
+  this.coursestartertrackQuestions = this.fb.group({
+  usedCamera: ['', Validators.required],
+  attendedWorkshop: ['', Validators.required],
+  reason: ['', Validators.required],
+  message: ['']
+});
+
 
     // Course-specific questions
     this.course1Questions = this.fb.group({
@@ -77,33 +88,81 @@ export class ApplyNowComponent {
       skillEvaluation: ['', Validators.required],
       careerGoal: ['', Validators.required]
     });
+    
+  }
+
+  ngOnInit(): void {
+    this.courseForm.get('course')?.valueChanges.subscribe(value => {
+  this.selectedCourse = value;
+  this.paymentMode = '';
+});
+
   }
 
   // Navigation
+  isCurrentStepValid(): boolean {
+    if (this.step === 1) {
+      return this.personalForm.valid;
+    }
+    if (this.step === 2) {
+      if (!this.courseForm.valid) return false;
+      if (this.selectedCourse === 'starterTrack') return this.coursestartertrackQuestions.valid;
+      if (this.selectedCourse === 'course1') return this.course1Questions.valid;
+      if (this.selectedCourse === 'course2') {
+        return this.course2Questions.valid && this.selectedStcwCourses.length > 0;
+      }
+      if (this.selectedCourse === 'course3') return this.course3Questions.valid;
+      return false;
+    }
+    if (this.step === 3) {
+      return this.resumeFiles.length > 0;
+    }
+    if (this.step === 4) {
+      return !!this.paymentMode;
+    }
+    return false;
+  }
+
   nextStep() {
-    if (this.step === 1 && this.personalForm.valid) this.step++;
-    else if (this.step === 2 && this.courseForm.valid) this.step++;
-    else if (this.step === 3 && this.resumeFiles.length > 0) this.step++; // go to Payment
+    if (this.isCurrentStepValid() && this.step < 4) {
+      this.step++;
+    }
   }
 
   prevStep() {
     if (this.step > 1) this.step--;
   }
 
-  onCourseChange(event: Event) {
-    const target = event.target as HTMLSelectElement;
-    this.selectedCourse = target.value;
-    this.paymentMode = ''; // reset payment when course changes
+ onCourseChange(event: Event) {
+  const target = event.target as HTMLSelectElement;
+  const selectedValue = target.value; // ✅ value properly defined
+
+  this.selectedCourse = selectedValue;
+  this.courseForm.patchValue({ course: selectedValue });
+  this.paymentMode = '';
+}
+
+
+onFileChange(event: Event) {
+  const input = event.target as HTMLInputElement;
+  if (input.files && input.files.length > 0) {
+    const newFiles = Array.from(input.files);
+    // ✅ Add newly selected files to existing ones (avoid duplicates)
+    this.resumeFiles = [...this.resumeFiles, ...newFiles];
   }
 
-  onFileChange(event: Event) {
-    const input = event.target as HTMLInputElement;
-    if (input.files) {
-      this.resumeFiles = Array.from(input.files);
-    }
-  }
+  // ✅ Reset file input so same files can be reselected on mobile
+  input.value = '';
+}
+
+// ✅ Remove individual file
+removeFile(index: number) {
+  this.resumeFiles.splice(index, 1);
+}
+
 
   getCourseData() {
+    if (this.selectedCourse === 'starterTrack') return this.coursestartertrackQuestions.value;
     if (this.selectedCourse === 'course1') return this.course1Questions.value;
     if (this.selectedCourse === 'course2') {
       return {
@@ -115,38 +174,115 @@ export class ApplyNowComponent {
     return {};
   }
 
-  async uploadFiles(): Promise<string[]> {
-    if (!this.resumeFiles.length) return [];
-    const uploadedUrls: string[] = [];
+async uploadFiles(): Promise<string[]> {
+  if (!this.resumeFiles.length) return [];
 
-    for (const file of this.resumeFiles) {
-      // ✅ Sanitize file name
-      const sanitizedFileName = encodeURIComponent(file.name);
-      const path = `resumes/${Date.now()}_${sanitizedFileName}`;
+  const uploadedUrls: string[] = [];
 
-      const { data, error } = await this.supabaseService.uploadFile(file, 'resumes', path);
-      if (error) {
-        console.error('File upload error:', error);
-        continue;
-      }
+  for (const file of this.resumeFiles) {
+    const formData = new FormData();
+    formData.append('file', file);
 
-      const url = this.supabaseService.getPublicUrl('resumes', path);
-      if (url) uploadedUrls.push(url);
+    const response = await fetch(`${environment.backendUrl}/upload-resume`, {
+      method: 'POST',
+      body: formData
+    });
+
+    const result = await response.json();
+    if (result.fileUrl) {
+      uploadedUrls.push(result.fileUrl);
     }
-
-    return uploadedUrls;
   }
+
+  return uploadedUrls;
+}
+
+
+
+private submitPayuForm(payuUrl: string, params: Record<string,string>) {
+  const form = document.createElement('form');
+  form.method = 'POST';
+  form.action = payuUrl;
+  form.target = '_self';
+  form.style.display = 'none';
+  Object.entries(params).forEach(([k, v]) => {
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = k;
+    input.value = String(v ?? '');
+    form.appendChild(input);
+  });
+  document.body.appendChild(form);
+  setTimeout(() => form.submit(), 0); // iOS friendly
+}
 
 
 async proceedToPayment() {
-  // ✅ Define course-wise fixed fees here
-  let amount = 0;
+  if (!this.personalForm.valid || !this.courseForm.valid) {
+    alert('Please fill all required fields.');
+    return;
+  }
 
-  switch (this.courseForm.value.course) {
-    case 'course1': amount = 50000; break; // ₹50,000
-    case 'course2': amount = 10000; break; // ₹10,000
-    case 'course3': amount = 499; break;   // ₹499
-    default: amount = 1;                   // fallback test value
+  if (!this.paymentMode) {
+    alert('Please select a payment option.');
+    return;
+  }
+
+  let amount = '';
+
+  switch (this.paymentMode) {
+    // ✅ Starter Track
+case 'st_full':
+  amount = '35000.00';
+  break;
+
+case 'st_booking':
+  amount = '17500.00';
+  break;
+
+case 'st_custom':
+  amount = this.customAmount && this.customAmount >= 1
+    ? this.customAmount.toFixed(2)
+    : '0.00';
+
+  if (!this.customAmount || this.customAmount < 1) {
+    alert('Please enter an amount of ₹1 or more');
+    return;
+  }
+  break;
+
+
+    // ✅ Course 1
+    case 'c1_advance': amount = '50000.00'; break;
+    case 'c1_admission': amount = '100000.00'; break;
+    case 'c1_custom': 
+      amount = this.customAmount && this.customAmount > 0 ? this.customAmount.toFixed(2) : '0.00';
+      if (this.customAmount <= 0) {
+        alert('Please enter a valid amount greater than ₹0');
+        return;
+      }
+      break;
+
+    // ✅ Course 2
+    case 'c2_advance': amount = '10000.00'; break;
+    case 'c2_admission': amount = '90000.00'; break;
+    case 'c2_custom':
+      amount = this.customAmount && this.customAmount > 0 ? this.customAmount.toFixed(2) : '0.00';
+      if (this.customAmount <= 0) {
+        alert('Please enter a valid amount greater than ₹0');
+        return;
+      }
+      break;
+
+    // ✅ Course 3
+    case 'c3_evaluation': amount = '499.00'; break;
+    case 'c3_custom':
+      amount = this.customAmount && this.customAmount > 0 ? this.customAmount.toFixed(2) : '0.00';
+      if (this.customAmount <= 0) {
+        alert('Please enter a valid amount greater than ₹0');
+        return;
+      }
+      break;
   }
 
   const applicationData = {
@@ -155,60 +291,34 @@ async proceedToPayment() {
     courseData: this.getCourseData(),
     resumeFiles: await this.uploadFiles(),
     paymentMode: this.paymentMode,
-    amount // ✅ include the correct amount here
+    amount: amount
   };
 
   try {
-    // ✅ Use your backend URL (change for production)
-    const response = await fetch(`${environment.backendUrl}/payu-initiate`, {
+    this.isLoading = true;
+
+    const resp = await fetch(`${environment.backendUrl}/payu-initiate`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(applicationData)
     });
 
-    if (!response.ok) {
-      const errorText = await response.text();
-      console.error("❌ Backend error:", errorText);
-      alert("Payment initiation failed. Please try again.");
-      return;
+    const payuResp = await resp.json();
+    if (payuResp?.payuUrl && payuResp?.payuParams) {
+      this.submitPayuForm(payuResp.payuUrl, payuResp.payuParams);
+    } else {
+      alert('Error: PayU response invalid.');
     }
-
-    const data = await response.json();
-    console.log("✅ PayU Response:", data);
-
-    if (!data.payuParams || !data.payuUrl) {
-      console.error("❌ Invalid response:", data);
-      alert("Could not initiate payment. Please contact support.");
-      return;
-    }
-
-    // ✅ Open PayU in a new tab
-    const newTab = window.open('', '_blank');
-    if (!newTab) {
-      alert('Popup blocked! Please allow popups for this site.');
-      return;
-    }
-
-    const formHtml = `
-      <form id="payuForm" method="POST" action="${data.payuUrl}">
-        ${Object.entries(data.payuParams)
-          .map(
-            ([key, value]) =>
-              `<input type="hidden" name="${key}" value="${value}">`
-          )
-          .join('')}
-      </form>
-      <script>document.getElementById('payuForm').submit();</script>
-    `;
-
-    newTab.document.write(formHtml);
-    newTab.document.close();
 
   } catch (err) {
-    console.error("❌ Payment error:", err);
-    alert("Something went wrong while initiating payment.");
+    const msg = err instanceof Error ? err.message : 'Unexpected error';
+    alert('Payment error: ' + msg);
+  } finally {
+    this.isLoading = false;
   }
 }
+
+
 
 
 
@@ -242,6 +352,11 @@ async proceedToPayment() {
       const index = this.selectedStcwCourses.indexOf(course);
       if (index > -1) this.selectedStcwCourses.splice(index, 1);
     }
+    this.course2Questions.patchValue({
+      stcwCourse: this.selectedStcwCourses.length > 0 ? this.selectedStcwCourses.join(', ') : ''
+    });
+    this.course2Questions.get('stcwCourse')?.markAsTouched();
+    this.course2Questions.get('stcwCourse')?.updateValueAndValidity();
   }
 
 
@@ -326,8 +441,12 @@ onCheckboxChange(event: any) {
     this.course1Questions.reset();
     this.course2Questions.reset();
     this.course3Questions.reset();
+    this.coursestartertrackQuestions.reset();
+
     this.resumeFiles = [];
     this.paymentMode = '';
+    this.selectedCourse = '';
+    this.selectedStcwCourses = [];
     this.step = 1;
   }
 }

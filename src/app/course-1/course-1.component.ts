@@ -16,8 +16,8 @@ interface CrewMember {
 })
 export class Course1Component {
   crewMembers: CrewMember[] = [
-    { name: "Beginner & New to the Sea", role: "Our Beginner & New to the Sea course is a comprehensive, career-launch program designed for individuals who are passionate about photography", img: "assets/images/image-22.jpg" },
-    { name: "Maritime Documentation", role: "INDOS Registration, SID, STCW Safety Training, CDC, Medical Examination ", img: "assets/images/image-25.jpg" },
+    { name: "Beginner & New to the Sea", role: "Our Beginner & New to the Sea course is a comprehensive, career-launch program designed for individuals who are passionate about photography", img: "assets/images/starter-track04.webp" },
+    { name: "Maritime Documentation", role: "INDOS Registration, SID, STCW Safety Training, Medical Examination ", img: "assets/images/image-25.jpg" },
     { name: "Creative & Technical Photography Training", role: "DSLR mastery, Cruise-specific scenarios, Roleplay exercises simulating real onboard conditions", img: "assets/images/image-26.jpg" },
     { name: "Editing & Software Training", role: " Adobe Lightroom., Adobe Photoshop, Adobe Bridge, IRIS shooting and editing", img: "assets/images/image-27.jpg" },
     { name: "Career Preparation & Placement Assistance", role: "Grooming & communication workshops, Mock HR interview + employer-specific training, Direct interviews with our cruise partners", img: "assets/images/image-23.jpg" },

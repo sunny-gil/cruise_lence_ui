@@ -1,34 +1,64 @@
-<nav class="navbar navbar-expand-lg navbar-dark custom-navbar fixed-top">
-  <div class="container">
-    <!-- Logo -->
+<nav class="navbar navbar-expand-xxl fixed-top" [ngClass]="{'scrolled-nav': isScrolled, 'transparent-nav': !isScrolled}">
+  <div class="container-fluid px-lg-5">
+    <!-- Logo & Brand Info -->
     <a class="navbar-brand d-flex align-items-center" routerLink="/home">
-      <img src="assets/images/logo.png" alt="Logo" class="logo me-2" />
-      <span class="brand-text d-none d-lg-inline">Cruise Lens Academy</span>
+      <img src="assets/images/logo.png" alt="Logo" class="logo me-3" />
+      <div class="brand-text-container d-flex flex-column text-start">
+        <span class="brand-text">Cruise Lens Academy</span>
+        <span class="brand-tagline">Dock Here, Sail Everywhere</span>
+      </div>
     </a>
 
     <!-- Toggler -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <!-- Menu -->
+    <!-- Menu Links and Actions -->
     <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav ms-auto">
-        <li class="nav-item"><a class="nav-link" routerLink="/home" (click)="closeNavbar()">Home</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="about" (click)="closeNavbar()">About Academy</a></li>
+      <!-- Nav Links -->
+      <ul class="navbar-nav ms-auto align-items-center">
+        <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active" (click)="closeNavbar()">Home</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="about" routerLinkActive="active" (click)="closeNavbar()">About CLA</a></li>
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">Courses</a>
-          <ul class="dropdown-menu">
-            <li><a class="dropdown-item" routerLink="course-1" (click)="closeNavbar()">Course 1</a></li>
-            <li><a class="dropdown-item" routerLink="course-2" (click)="closeNavbar()">Course 2</a></li>
-            <li><a class="dropdown-item" routerLink="course-3" (click)="closeNavbar()">Course 3</a></li>
+          <a class="nav-link dropdown-toggle" href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Programs
+          </a>
+          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="programsDropdown">
+            <li><a class="dropdown-item" routerLink="starter-track" (click)="closeNavbar()">Starter Track – Photography Basics</a></li>
+            <li><a class="dropdown-item" routerLink="course-1" (click)="closeNavbar()">Course 1 – Beginner to Sea</a></li>
+            <li><a class="dropdown-item" routerLink="course-2" (click)="closeNavbar()">Course 2 – STCW / Ex-Seafarer</a></li>
+            <li><a class="dropdown-item" routerLink="course-3" (click)="closeNavbar()">Course 3 – Dynamic Evaluation</a></li>
           </ul>
         </li>
-        <li class="nav-item"><a class="nav-link" routerLink="partners" (click)="closeNavbar()">Our Team</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="faq" (click)="closeNavbar()">FAQs</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="contact" (click)="closeNavbar()">Inquire Us</a></li>
-        <li class="nav-item"><a class="nav-link" routerLink="apply-now" (click)="closeNavbar()">Apply Now</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="photographers" routerLinkActive="active" (click)="closeNavbar()">Crew Deck</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="partners" routerLinkActive="active" (click)="closeNavbar()">Success Stories</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="faq" routerLinkActive="active" (click)="closeNavbar()">FAQs</a></li>
+        <li class="nav-item"><a class="nav-link" routerLink="contact" routerLinkActive="active" (click)="closeNavbar()">Contact</a></li>
       </ul>
+
+      <!-- Action Group (MSU logo + Apply Button) -->
+      <div class="d-flex align-items-center ms-xl-4 mt-3 mt-xl-0 justify-content-center action-group">
+        <!-- MSU Partnership Lockup -->
+        <div class="msu-lockup d-none d-xl-flex align-items-center me-3">
+          <div class="msu-divider"></div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Medhavi_Skills_University_official_Logo.png/1280px-Medhavi_Skills_University_official_Logo.png" alt="Medhavi Skills University" class="msu-logo me-2" />
+          <div class="msu-text d-flex flex-column text-start">
+            <span class="msu-association">In Association with</span>
+            <span class="msu-title">MEDHAVI</span>
+            <span class="msu-subtitle">SKILLS UNIVERSITY</span>
+            <span class="msu-motto">Skill • Empower • Liberate</span>
+          </div>
+        </div>
+
+        <!-- Apply Button with Micro-line -->
+        <div class="apply-container d-flex flex-column align-items-center">
+          <a class="cta-btn apply-btn btn-gold-solid py-2 px-4" routerLink="apply-now" (click)="closeNavbar()">
+            APPLY NOW <i class="fa-solid fa-arrow-right ms-1"></i>
+          </a>
+          <span class="limited-seats-text">Limited Seats - Enroll Today!</span>
+        </div>
+      </div>
     </div>
   </div>
 </nav>

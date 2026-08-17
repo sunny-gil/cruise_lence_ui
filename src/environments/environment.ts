@@ -5,8 +5,10 @@
 //     salt: '3kd4Ihdl9D4B5F6QJWofTuOKtPvhGnbd',
 //     url: 'https://secure.payu.in/_payment'
 //   },
-//   backendUrl: 'http://127.0.0.1:3000/api',
-//   frontendUrl: 'http://localhost:4200'
+//   backendUrl: 'http://127.0.0.1:3000/api'
+
+//   //  backendUrl: 'http://10.70.156.42:3000/api',
+//   // frontendUrl: 'http://10.70.156.42:4200'
 // };
 
 
@@ -18,6 +20,6 @@
     salt: '3kd4Ihdl9D4B5F6QJWofTuOKtPvhGnbd',
     url: 'https://secure.payu.in/_payment'
   },
-  backendUrl: 'https://cruiselensacademy.com',
+  backendUrl: 'https://cruiselensacademy.com/api',
   frontendUrl: 'https://cruiselensacademy.com'
 };

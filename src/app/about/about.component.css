@@ -1,247 +1,317 @@
-/* Reset */
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+/* ================= About Hero Banner ================= */
+.about-hero-section {
+  position: relative;
+  background: linear-gradient(180deg, rgba(10, 20, 35, 0.8) 0%, rgba(10, 20, 35, 0.92) 100%), url('/assets/images/cruise-2.jpg') center/cover no-repeat;
+  padding: 180px 0 100px 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
 }
 
-body {
-  font-family: 'Poppins', sans-serif;
+.about-eyebrow {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold-accent);
+  letter-spacing: 2px;
+  text-transform: uppercase;
 }
 
-h1, h2, h3 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 600;
+.about-title {
+  font-size: 3rem;
+  font-weight: 800;
+  color: #ffffff;
+  letter-spacing: 1px;
 }
 
-p {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 300;
+.about-lead-text {
+  color: #cbd5e1 !important;
+  font-size: 1.15rem;
+  font-weight: 500;
+  line-height: 1.6;
 }
 
-
-
-/* Column 1: Green Sidebar */
-.col-green {
-  background: #ffcc66;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  padding: 1rem 0;
+/* ================= Story Section ================= */
+.story-section {
+  background-color: #ffffff;
 }
 
-/* Vertical text */
-.vertical-text {
-  writing-mode: vertical-rl;
-  transform: rotate(180deg);
-  font-size: 1rem;       /* slightly bigger */
-  font-weight: 900;      /* extra bold */
-  color: #000;
-  margin-bottom: 1rem;
-  text-decoration: none; /* remove underline */
-  cursor: pointer;       /* nice hover pointer */
+.story-paragraph {
+  font-size: 0.98rem;
+  color: #475569;
+  line-height: 1.7;
+  margin-bottom: 1.25rem;
 }
 
-/* Optional: hover effect */
-.vertical-text:hover {
-  color: #444; /* slightly darker on hover */
+.story-paragraph:last-child {
+  margin-bottom: 0;
 }
 
-
-/* Column 2: Dark Sidebar */
-.about-layout {
-  display: grid;
-  grid-template-columns: 70px 300px 1fr; /* three columns */
-  min-height: 100vh;
-  background: #000;
-  color: #fff;
-  margin-top: 80px;
+.about-video-wrapper {
+  border: 1px solid rgba(15, 41, 74, 0.08);
+  background-color: #ffffff;
+  border-radius: 12px;
   overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ================= Responsive ================= */
-@media (max-width: 991px) {
-  /* Hide the left green column */
-  .col-green {
-    display: none;
-  }
-
-  /* Adjust grid to use only remaining columns */
-  .about-layout {
-    grid-template-columns: 1fr; /* single column */
-  }
+.about-video-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
 }
 
-
-.col-dark {
-  background: #111;
-  display: flex;
-  flex-direction: column;
-  padding: 2rem;
-  overflow-y: auto; /* allow only sidebar text to scroll if too long */
+/* ================= Vision & Mission Section ================= */
+.vision-mission-section {
+  background-color: #f8fafc;
 }
 
-.sidebar-inner {
-  display: flex;
-  flex-direction: column;
+.vision-mission-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 16px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+  transition: all 0.3s ease;
   height: 100%;
 }
 
-.logo {
-  font-weight: bold;
-  margin-bottom: 2rem;
+.vision-mission-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  border-color: rgba(2, 132, 199, 0.2);
 }
 
-.project-info .title {
-  font-size: 1.6rem;
-  margin-bottom: 1rem;
-  color: #ffcc66;
+.vision-mission-img {
+  max-height: 220px;
+  width: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
 }
 
-.project-info hr {
-  border: 0;
-  border-top: 1px solid #444;
-  margin: 1rem 0;
+.vision-mission-card:hover .vision-mission-img {
+  transform: scale(1.03);
 }
 
-.project-info .description, 
-.project-info p {
-  font-size: 1rem;
-  line-height: 1.5;
-  color: #aaa;
-  text-align: justify;
+.circle-icon {
+  width: 44px;
+  height: 44px;
+  background-color: rgba(2, 132, 199, 0.08);
+  color: var(--accent-blue);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.15rem;
+  flex-shrink: 0;
 }
 
-.project-info .highlight {
-  color: #ffcc66;
-  font-weight: bold;
+/* ================= Values Section ================= */
+.values-section {
+  background-color: #ffffff;
 }
 
-/* Column 3: Image Section */
-.col-image {
+.value-box {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 14px;
+  padding: 35px 30px !important;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.02);
+}
+
+.value-box:hover {
+  border-color: var(--accent-blue) !important;
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(2, 132, 199, 0.08);
+}
+
+.value-icon {
+  font-size: 1.8rem;
+  color: var(--accent-blue);
+  background: rgba(2, 132, 199, 0.06);
+  width: 54px;
+  height: 54px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  margin-bottom: 22px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.value-box:hover .value-icon {
+  background: var(--accent-blue);
+  color: #ffffff;
+  transform: rotate(-5deg) scale(1.05);
+}
+
+/* ================= Gallery Highlights ================= */
+.gallery-section {
+  background-color: #f8fafc;
+}
+
+.gallery-img-wrapper {
   position: relative;
-  background: #000;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  border-color: #e2e8f0 !important;
+  transition: all 0.3s ease;
+}
+
+.gallery-img-wrapper:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  border-color: var(--accent-blue) !important;
+}
+
+.gallery-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.gallery-img-wrapper:hover .gallery-img {
+  transform: scale(1.05);
+}
+
+/* ================= Lightbox Modal ================= */
+.lightbox-modal {
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(10, 20, 35, 0.95);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: zoom-out;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.lightbox-content {
+  position: relative;
+  max-width: 85%;
+  max-height: 80%;
   display: flex;
   flex-direction: column;
-  overflow: auto;
+  align-items: center;
+  cursor: default;
 }
 
-.video-wrapper {
-  position: relative;
-  padding: 50px 20px; /* reduce padding on mobile */
-  background: #000;
-}
-
-.video-wrapper video {
-  width: 100%;
-  height: auto;       /* auto height to maintain aspect ratio */
-  max-height: 80vh;   /* optional: don't exceed 80% of viewport height */
-  display: block;
-  object-fit: contain; /* show full video without cropping */
-  border-radius: 12px;
-}
-
-/* Overlay text responsive */
-.video-wrapper .overlay-text {
-  position: absolute;
-  bottom: 30px;
-  left: 20px;
-  font-size: 1.5rem;
-}
-
-/* Media Query for Mobile */
-@media (max-width: 768px) {
-  .video-wrapper {
-    padding: 20px 10px;
-  }
-
-  .video-wrapper .overlay-text {
-    font-size: 1.5rem;
-    bottom: 15px;
-    left: 10px;
-  }
-}
-
-
-/* Image section (no padding, full width) */
-.image-section {
-  margin-top: 20px; /* space between video and image */
-}
-
-.image-wrapper {
-  position: relative;
-}
-
-.image-wrapper img {
-  width: 100%;   /* full width */
-  height: auto;
-  display: block;
-  border-radius: 0; /* remove rounding for full-width look */
-}
-
-.image-wrapper .overlay-text {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-  font-size: 1.5rem;
-  font-weight: 500;
-  color: #ffcc66;
-  background: rgba(0, 0, 0, 0.4);
-  padding: 10px 20px;
+.lightbox-img {
+  max-width: 100%;
+  max-height: 80vh;
+  object-fit: contain;
   border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+  animation: zoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-.mission
-{
-  color: #ffcc66;
+@keyframes zoomIn {
+  from { transform: scale(0.95); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
 }
 
-
-.content-section {
-  width: 100%;
-  padding: 40px;
-  color: #ddd;
-  text-align: left;
-  font-family: "Poppins", sans-serif;
+.lightbox-caption {
+  color: #e2e8f0;
+  margin-top: 15px;
+  font-size: 1.1rem;
+  font-weight: 500;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
 }
 
-.content-section h2 {
-  font-size: 2rem;
-  color: #ffcc66;
-  margin-bottom: 1.5rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-}
-
-.typing-container p {
-  white-space: pre-wrap; /* preserves line breaks */
-  font-family: "Poppins", sans-serif;
-  font-size: 1.5rem;
-  padding: 50px;
-  text-align: center;
-}
-
-.cursor {
-  display: inline-block;
-  width: 1px;
-  background-color: black;
-  animation: blink 0.7s steps(1) infinite;
-}
-
-@keyframes blink {
-  0%, 50%, 100% { opacity: 1; }
-  25%, 75% { opacity: 0; }
-}
-
-.lead 
-{
-  text-align: justify;
-  font-size: 1.5rem;
-}
-
-li 
-{
+.lightbox-close {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  color: #f1f5f9;
+  font-size: 40px;
   font-weight: 300;
-  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+  color: var(--gold-accent);
+  transform: scale(1.1);
+}
+
+.lightbox-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #f1f5f9;
+  width: 56px;
+  height: 56px;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.lightbox-nav:hover {
+  background: var(--accent-blue);
+  color: #ffffff;
+  border-color: var(--accent-blue);
+  transform: translateY(-50%) scale(1.08);
+}
+
+.lightbox-nav.prev {
+  left: 35px;
+}
+
+.lightbox-nav.next {
+  right: 35px;
+}
+
+/* ================= Responsive adjustments ================= */
+@media (max-width: 991px) {
+  .about-hero-section {
+    padding: 140px 0 70px 0;
+  }
+  .about-title {
+    font-size: 2.3rem;
+  }
+  .lightbox-nav {
+    width: 44px;
+    height: 44px;
+    font-size: 16px;
+  }
+  .lightbox-nav.prev {
+    left: 15px;
+  }
+  .lightbox-nav.next {
+    right: 15px;
+  }
+  .lightbox-close {
+    top: 15px;
+    right: 20px;
+    font-size: 35px;
+  }
+}
+
+@media (max-width: 575px) {
+  .about-hero-section {
+    padding: 120px 0 50px 0;
+  }
+  .about-title {
+    font-size: 1.8rem;
+  }
+  .about-lead-text {
+    font-size: 1rem;
+  }
 }

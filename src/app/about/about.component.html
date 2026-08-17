@@ -1,146 +1,168 @@
-<!-- About Layout -->
-<div class="about-layout">
+<!-- About Hero Banner -->
+<section class="about-hero-section py-10 text-center">
+  <div class="container">
+    <span class="about-eyebrow fw-bold text-uppercase">OUR STORY</span>
+    <h1 class="about-title fw-bold mt-2 mb-3">ABOUT CRUISE LENS ACADEMY</h1>
+    <div class="section-divider-gold mx-auto mb-4" style="width: 70px; height: 3px; background-color: var(--gold-accent);"></div>
+    <p class="about-lead-text mx-auto" style="max-width: 700px; font-size: 1.1rem;">
+      Bridging the gap between Indian photography talent and the global cruise ship industry.
+    </p>
+  </div>
+</section>
 
-  <!-- Column 1: Green Sidebar -->
-<div class="col col-green">
-  <!-- Back Home navigates to home page -->
-  <a routerLink="/home" class="vertical-text">Back Home</a>
-
-  <!-- Scroll to sections on same page -->
-  <a href="#vision" class="vertical-text" (click)="scrollToSection($event, 'vision')">Vision</a>
-  <a href="#mission" class="vertical-text" (click)="scrollToSection($event, 'mission')">Mission</a>
-  <a href="#values" class="vertical-text" (click)="scrollToSection($event, 'values')">Values</a>
-</div>
-
-
-  
-
-  <!-- Column 2: Dark Sidebar with Details -->
-  <div class="col col-dark">
-    <div class="sidebar-inner">
-
-      <!-- Logo -->
-      <div class="logo">
-        <img src="assets/images/logo.png" width="100px" alt="Cruise Lens Academy">
-      </div>
-
-      <!-- Project Info -->
-      <div class="project-info">
-        <h2 class="title">OUR STORY</h2>
-        <hr>
-        <p class="description">
+<!-- Our Story Section -->
+<section class="story-section py-5 bg-white">
+  <div class="container py-4">
+    <div class="row align-items-center g-5">
+      <!-- Left Column: Story Text -->
+      <div class="col-lg-6 text-start">
+        <h2 class="section-heading fw-bold mb-4" style="color: var(--primary-navy);">WHO WE ARE</h2>
+        <p class="story-paragraph">
           Cruise Lens Academy was founded with a simple but powerful vision — 
           to bridge the gap between Indian photographers with ambition and 
           the global cruise ship industry’s demand for talent.
         </p>
-       <p class="description">
-          Our founder, <span class="highlight">Rohan Singh</span>, began his journey as a cruise photographer 
+        <p class="story-paragraph">
+          Our founder, <strong style="color: var(--primary-navy);">Rohan Singh</strong>, began his journey as a cruise photographer 
           and went on to travel across <strong>43 countries</strong> while working onboard some of the world’s most 
-          renowned cruise lines. With base operations once in Southampton, UK, and roots in India, 
-          Rohan experienced firsthand how rewarding — yet how difficult to access — the world of cruise photography 
+          renowned cruise lines. Rohan experienced firsthand how rewarding — yet how difficult to access — the world of cruise photography 
           can be for aspiring Indian photographers.
         </p>
-       <p class="description">
-          Recognizing this gap, Rohan built <span class="highlight">Cruise Lens Academy</span> to create a dedicated pathway 
+        <p class="story-paragraph">
+          Recognizing this gap, Rohan built Cruise Lens Academy to create a dedicated pathway 
           for Indian talent. The Academy equips students not only with creative skills in photography and editing, 
           but also with essential maritime documentation 
-          <em>(STCW, INDOS, SID, CDC, Medical)</em>, grooming, and direct placement support — 
+          <em>(STCW, INDOS, SID, Medical)</em>, grooming, and direct placement support — 
           everything needed to step confidently onboard.
         </p>
       </div>
+
+      <!-- Right Column: Promo Video -->
+      <div class="col-lg-6">
+        <div class="about-video-wrapper shadow-sm rounded overflow-hidden">
+          <video controls class="w-100 d-block" style="max-height: 380px; object-fit: cover;">
+            <source src="assets/Video/shoot.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- Column 3: Video + Image Section -->
-<div class="col col-image">
+<!-- Vision & Mission Section -->
+<section class="vision-mission-section py-5 bg-light border-top border-bottom">
+  <div class="container py-3">
+    <div class="row g-4 justify-content-center">
+      <!-- Vision Card -->
+      <div class="col-lg-6 col-md-12">
+        <div class="vision-mission-card p-4 d-flex flex-column justify-content-between">
+          <div>
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="circle-icon"><i class="fa-solid fa-eye"></i></div>
+              <h3 class="fw-bold mb-0" style="color: var(--primary-navy); font-size: 1.4rem;">OUR VISION</h3>
+            </div>
+            <p class="text-muted mb-0" style="font-size: 0.98rem; line-height: 1.65; min-height: 80px;">
+              To be the leading global academy that transforms passionate Indian photographers into certified, world-class cruise photographers, opening up paths to explore the globe while mastering their craft.
+            </p>
+          </div>
+          <div class="mt-4 overflow-hidden rounded border">
+            <img src="assets/images/vision.png" alt="Our Vision" class="img-fluid vision-mission-img" />
+          </div>
+        </div>
+      </div>
 
-  <!-- Video Section -->
-  <div class="video-wrapper">
-    <video autoplay muted loop playsinline controls>
-      <source src="assets/Video/shoot.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <!-- <div class="overlay-text">About Us</div> -->
-  </div>
-
-  <!-- Image Section -->
-  <section class="image-section" id="vision">
-    <div class="image-wrapper">
-      <img src="assets/images/vision.png" alt="Cruiselens Academy">
-      <!-- <div class="overlay-text">OUR VISION</div> -->
-    </div>
-  </section>
-
-  <!-- Content Section -->
-<div class="typing-container">
-  <p>{{ displayedText }}<span class="cursor">|</span></p>
-</div>
-
-
-<div class="container-fluid my-5" id="mission">
-
-  <!-- Row 1: Mission -->
-  <div class="row align-items-center mb-4">
-    <!-- Image Left -->
-    <div class="col-md-6">
-      <img src="assets/images/mission.png" alt="Our Mission" class="img-fluid rounded shadow-sm">
-    </div> 
-    <!-- Text Right -->
-    <div class="col-md-6 p-5">
-      <h3 class="mb-3 mission text-center text-uppercase">Our Mission</h3>
-      <p class="lead list-unstyled text-center">
-        To empower Indian photographers by making cruise photography careers accessible, structured, and sustainable. We aim to create opportunities that extend far beyond land, giving our students the tools to capture the world while earning and growing professionally.
-      </p>
-    </div>
-  </div>
-
-  <!-- Row 2: Mission Images (3 Images) -->
-  <div class="row text-center mb-5">
-    <div class="col-md-4 mb-3">
-      <img src="assets/images/image-18.jpg" alt="Mission 1" class="img-fluid rounded shadow-sm">
-    </div>
-    <div class="col-md-4 mb-3">
-      <img src="assets/images/image-19.jpg" alt="Mission 2" class="img-fluid rounded shadow-sm">
-    </div>
-    <div class="col-md-4 mb-3">
-      <img src="assets/images/image-20.jpg" alt="Mission 3" class="img-fluid rounded shadow-sm">
+      <!-- Mission Card -->
+      <div class="col-lg-6 col-md-12">
+        <div class="vision-mission-card p-4 d-flex flex-column justify-content-between">
+          <div>
+            <div class="d-flex align-items-center gap-3 mb-3">
+              <div class="circle-icon"><i class="fa-solid fa-bullseye"></i></div>
+              <h3 class="fw-bold mb-0" style="color: var(--primary-navy); font-size: 1.4rem;">OUR MISSION</h3>
+            </div>
+            <p class="text-muted mb-0" style="font-size: 0.98rem; line-height: 1.65; min-height: 80px;">
+              To empower Indian photographers by making cruise photography careers accessible, structured, and sustainable. We aim to create opportunities that extend far beyond land, giving our students the tools to capture the world while earning and growing professionally.
+            </p>
+          </div>
+          <div class="mt-4 overflow-hidden rounded border">
+            <img src="assets/images/mission.png" alt="Our Mission" class="img-fluid vision-mission-img" />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- Row 3: Values (zigzag) -->
-  <div class="row align-items-center mb-4" id="values">
-    <!-- Text Left -->
-    <div class="col-md-6 order-md-1 order-2 p-5">
-      <!-- <h3 class="mb-3 mission text-uppercase">Our Values</h3> -->
-      <ul class="list-unstyled lead text-center">
-        <li><strong>Opportunity:</strong> Every Indian photographer deserves access to global careers without unnecessary roadblocks.</li>
-        <li><strong>Creativity:</strong> Training goes beyond buttons and lenses — we build storytellers who can connect with guests through images.</li>
-        <li><strong>Professionalism:</strong> Preparing students for corporate cruise environments where discipline, service, and adaptability matter.</li>
-      </ul>
-    </div>
-    <!-- Image Right -->
-    <div class="col-md-6 order-md-2 order-1">
-      <img src="assets/images/value.png" alt="Our Values" class="img-fluid rounded shadow-sm">
+<!-- Values Section -->
+<section class="values-section py-5 bg-white">
+  <div class="container py-4 text-center">
+    <span class="section-eyebrow fw-bold text-uppercase" style="color: var(--gold-accent);">OUR VALUES</span>
+    <h2 class="section-main-title fw-bold mt-2" style="color: var(--primary-navy);">WHAT DRIVES US</h2>
+    <div class="section-divider-gold mx-auto mb-5" style="width: 70px; height: 3px; background-color: var(--gold-accent);"></div>
+
+    <div class="row g-4 text-start">
+      <!-- Opportunity -->
+      <div class="col-lg-4 col-md-6">
+        <div class="value-box p-4 border rounded h-100">
+          <div class="value-icon mb-3"><i class="fa-solid fa-handshake-angle text-accent-blue"></i></div>
+          <h4 class="fw-bold mb-2" style="color: var(--primary-navy); font-size: 1.25rem;">OPPORTUNITY</h4>
+          <p class="text-muted mb-0" style="font-size: 0.9rem; line-height: 1.5;">
+            Every Indian photographer deserves access to global careers without unnecessary roadblocks. We make international cruise jobs directly accessible.
+          </p>
+        </div>
+      </div>
+
+      <!-- Creativity -->
+      <div class="col-lg-4 col-md-6">
+        <div class="value-box p-4 border rounded h-100">
+          <div class="value-icon mb-3"><i class="fa-solid fa-camera-retro text-accent-blue"></i></div>
+          <h4 class="fw-bold mb-2" style="color: var(--primary-navy); font-size: 1.25rem;">CREATIVITY</h4>
+          <p class="text-muted mb-0" style="font-size: 0.9rem; line-height: 1.5;">
+            Training goes beyond buttons and lenses. We build storytellers who can connect with guests, capturing emotion and memories that last a lifetime.
+          </p>
+        </div>
+      </div>
+
+      <!-- Professionalism -->
+      <div class="col-lg-4 col-md-12">
+        <div class="value-box p-4 border rounded h-100">
+          <div class="value-icon mb-3"><i class="fa-solid fa-ship text-accent-blue"></i></div>
+          <h4 class="fw-bold mb-2" style="color: var(--primary-navy); font-size: 1.25rem;">PROFESSIONALISM</h4>
+          <p class="text-muted mb-0" style="font-size: 0.9rem; line-height: 1.5;">
+            Preparing students for high-standard corporate cruise environments where discipline, customer service, and international adaptability are critical.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-  <!-- Row 4: Values Images (3 Images) -->
-  <div class="row text-center mb-5">
-    <div class="col-md-4 mb-3">
-      <img src="assets/images/image-12.jpg" alt="Value 1" class="img-fluid rounded shadow-sm">
-    </div>
-    <div class="col-md-4 mb-3">
-      <img src="assets/images/image-14.webp" alt="Value 2" class="img-fluid rounded shadow-sm">
-    </div>
-    <div class="col-md-4 mb-3">
-      <img src="assets/images/image-6.jpg" alt="Value 3" class="img-fluid rounded shadow-sm">
+<!-- Gallery Grid -->
+<section class="gallery-section py-5 bg-light border-top">
+  <div class="container py-4 text-center">
+    <span class="section-eyebrow fw-bold text-uppercase" style="color: var(--gold-accent);">CAMPUS HIGHLIGHTS</span>
+    <h2 class="section-main-title fw-bold mt-2" style="color: var(--primary-navy);">LIFE AT CRUISE LENS</h2>
+    <div class="section-divider-gold mx-auto mb-5" style="width: 70px; height: 3px; background-color: var(--gold-accent);"></div>
+
+    <div class="row g-4">
+      <div class="col-lg-4 col-md-6" *ngFor="let img of galleryImages; let i = index">
+        <div class="gallery-img-wrapper rounded-3 overflow-hidden border shadow-sm" (click)="openLightbox(i)" style="cursor: pointer;">
+          <img [src]="img.url" [alt]="img.alt" class="gallery-img" />
+        </div>
+      </div>
     </div>
   </div>
+</section>
 
-</div>
+<!-- Lightbox Modal -->
+<div class="lightbox-modal" *ngIf="showLightbox" (click)="closeLightbox()">
+  <button class="lightbox-close" (click)="closeLightbox()">&times;</button>
+  
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <img [src]="galleryImages[activeImageIndex].url" [alt]="galleryImages[activeImageIndex].alt" class="lightbox-img" />
+    <span class="lightbox-caption">{{ galleryImages[activeImageIndex].alt }}</span>
+  </div>
 
-
-
-</div>
-
+  <button class="lightbox-nav prev" (click)="prevImage($event)">&#10094;</button>
+  <button class="lightbox-nav next" (click)="nextImage($event)">&#10095;</button>
 </div>

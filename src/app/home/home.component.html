@@ -1,155 +1,259 @@
-<section 
-  class="hero-section d-flex flex-column align-items-center text-center"
-  (mousemove)="onMouseMove($event)" 
-  (mouseleave)="onMouseLeave()">
+<!-- Hero Section -->
+<section class="hero-section position-relative">
+  <div class="container hero-container position-relative">
+    <div class="row align-items-center">
+      <!-- Left Column: Hero Text -->
+      <div class="col-lg-6 col-md-12 text-start hero-text-box">
+        <span class="hero-eyebrow">INDIA'S FIRST</span>
+        <h1 class="hero-title mt-2 mb-3">
+          CRUISE SHIP <br>
+          <span class="text-navy-main">PHOTOGRAPHY</span> <br>
+          CERTIFICATION PROGRAM
+        </h1>
+        
+        <div class="hero-subtext-box mb-4">
+          <p class="hero-subtext-item"><i class="bi bi-check-circle-fill text-accent-blue me-2"></i> Professional Photography Training.</p>
+          <p class="hero-subtext-item"><i class="bi bi-check-circle-fill text-accent-blue me-2"></i> University Certification.</p>
+          <p class="hero-subtext-item"><i class="bi bi-check-circle-fill text-accent-blue me-2"></i> Global Career Opportunities.</p>
+        </div>
 
-  <!-- 4x4 Grid Background -->
-  <div class="hero-background-grid" #grid>
-    <div class="grid-item" *ngFor="let img of images" 
-         [style.backgroundImage]="'url(' + img + ')'">
-    </div>
-  </div>
+        <div class="d-flex flex-wrap gap-3">
+          <a routerLink="/apply-now" class="btn-gold-solid py-3 px-5 rounded-1 text-uppercase shadow-sm">
+            APPLY NOW <i class="fa-solid fa-arrow-right ms-2"></i>
+          </a>
+          <a routerLink="/contact" class="btn btn-white-outline py-3 px-4 rounded-1 text-uppercase fw-semibold">
+            DOWNLOAD BROCHURE <i class="bi bi-download ms-2"></i>
+          </a>
+        </div>
+      </div>
 
-  <!-- Spotlight overlay -->
-  <div class="hero-overlay" #overlay></div>
-
-  <!-- Hero content -->
-  <div class="hero-content">
-    <img src="/assets/images/logo.png" alt="Cruise Lens Academy" class="hero-logo text-center mb-5" />
-
-    <h1 class="fw-bold display-4">Cruise Lens Academy</h1>
-    <p class="lead fw-semibold mb-5 pb-5">Dock here. Sail everywhere.</p>
-
-    <p class="hero-subtext mt-3">
-      India’s only full-stack cruise photography training platform, <br>
-      built to transform passionate photographers into global cruise professionals.
-    </p>
-
-    <!-- Video Icons -->
-    <div class="d-flex justify-content-center gap-5 my-5">
-     <div class="video-icon" *ngFor="let item of videoIcons; let i = index" (click)="playFullscreenVideo(item.video)">
-  <i [class]="item.icon"></i>
-  <p class="mt-2 fw-semibold">{{ item.label }}</p>
-</div>
+      <!-- Right Column: Empty to let the background image show through on desktop -->
+      <div class="col-lg-6 col-md-12 d-none d-lg-block"></div>
     </div>
   </div>
 </section>
 
-<!-- Video Overlay -->
-<div class="video-overlay" *ngIf="selectedVideo">
-  <div class="video-container">
-    <button class="btn-close btn-close-white position-absolute top-0 end-0 m-3" (click)="closeVideo()"></button>
-   <video class="w-100 h-auto rounded shadow" controls autoplay muted playsinline>
-  <source [src]="selectedVideo" type="video/mp4" />
-  Your browser does not support the video tag.
-</video>
-  </div>
-</div>
-
-
-
-<!-- 2nd section -->
-
-
-<!-- Single story card -->
-<div class="grid-container single">
-  <a *ngFor="let slide of slides; let i = index"
-     class="card slides-card"
-     (click)="slideAndNavigate(slide, i, 'slides')">
-    <img [src]="slide.img" [alt]="slide.title">
-    <div class="card-overlay">
-      <!-- <div class="number">{{ i + 1 }}</div> -->
-      <div class="title fs-1 fw-bold">{{ slide.title }}</div>
-      <div class="subtitle fs-3 fw-bold">{{ slide.subtitle }}</div>
-    </div>
-  </a>
-</div>
-
-<!-- Mission & Vision (2 in a row) -->
-<div class="grid-container two-col">
-  <a *ngFor="let mv of missionVision; let i = index"
-     class="card missionVision-card"
-     (click)="slideAndNavigate(mv, i, 'missionVision')">
-    <img [src]="mv.img" [alt]="mv.title">
-    <div class="card-overlay">
-      <!-- <div class="number">{{ i + 2 }}</div> -->
-      <div class="title fs-3 fw-bold">{{ mv.title }}</div>
-      <div class="subtitle fs-4 fw-bold text-uppercase">{{ mv.subtitle }}</div>
-    </div>
-  </a>
-</div>
-
-<!-- section3rd for courses -->
-<section class="courses-section container-fluid pt-5">
-  <!-- Background Video -->
-  <video class="bg-video" autoplay muted loop playsinline>
-    <source src="assets/Video/sea.mp4" type="video/mp4" />
-    Your browser does not support the video tag.
-  </video>
-
-  <!-- Courses Content -->
-  <div
-    class="row course-row pt-5"
-    *ngFor="let course of courses; let i = index"
-  >
-    <!-- Left Column (titles) -->
-    <div class="col-lg-2  col-12 d-flex flex-column justify-content-center ps-lg-5 ps-3 text-center text-lg-start mb-3 mb-lg-0">
-      <div class="headtitle">
-        <h1 class="fw-bold mb-2 text-uppercase">{{ course.headtitle }}</h1>
-        <h2 class="fw-bold text-white text-uppercase">{{ course.title }}</h2>
+<!-- Overlapping Trust Strip -->
+<div class="container position-relative trust-strip-container">
+  <div class="trust-strip py-4 px-3">
+    <div class="row text-center align-items-center justify-content-center">
+      <!-- Item 1 -->
+      <div class="col-lg-3 col-md-6 mb-3 mb-lg-0 trust-item border-end-lg">
+        <div class="trust-icon-box">
+          <i class="fa-solid fa-graduation-cap"></i>
+        </div>
+        <div class="trust-text">
+          <span class="trust-title">MSU Certified</span>
+          <span class="trust-desc">University Certification</span>
+        </div>
+      </div>
+      <!-- Item 2 -->
+      <div class="col-lg-3 col-md-6 mb-3 mb-lg-0 trust-item border-end-lg">
+        <div class="trust-icon-box">
+          <i class="fa-solid fa-camera"></i>
+        </div>
+        <div class="trust-text">
+          <span class="trust-title">15 Working Days</span>
+          <span class="trust-desc">Hands-on Training</span>
+        </div>
+      </div>
+      <!-- Item 3 -->
+      <div class="col-lg-3 col-md-6 mb-3 mb-lg-0 trust-item border-end-lg">
+        <div class="trust-icon-box">
+          <i class="fa-solid fa-briefcase"></i>
+        </div>
+        <div class="trust-text">
+          <span class="trust-title">Placement Assistance</span>
+          <span class="trust-desc">End-to-End Support</span>
+        </div>
+      </div>
+      <!-- Item 4 -->
+      <div class="col-lg-3 col-md-6 trust-item">
+        <div class="trust-icon-box">
+          <i class="fa-solid fa-globe"></i>
+        </div>
+        <div class="trust-text">
+          <span class="trust-title">Global Opportunities</span>
+          <span class="trust-desc">Work on luxury cruises</span>
+        </div>
       </div>
     </div>
+  </div>
+</div>
 
-    <!-- Middle Column (Sticky Image) -->
-    <div class="col-lg-6  col-12 d-flex justify-content-center mb-3 mb-lg-0">
-      <div class="image-wrapper" [class.active]="activeIndex === i">
-        <img [src]="course.image" [alt]="course.title" />
+<!-- Programmes Section -->
+<section class="section-programmes py-5">
+  <div class="container text-center pt-5">
+    <span class="section-eyebrow fw-bold text-uppercase">OUR PROGRAMS</span>
+    <h2 class="section-main-title fw-bold mt-2">ONE CAREER. TWO PATHWAYS.</h2>
+    <div class="section-divider-gold mx-auto mb-5"></div>
+
+    <div class="row mt-4 justify-content-center gap-4">
+      <!-- Pathway 1 Card -->
+      <div class="col-xl-5 col-lg-6 col-md-12 mb-4">
+        <div class="program-horizontal-card d-flex flex-column flex-md-row text-start h-100">
+          <div class="program-img-col">
+            <img src="assets/images/image-55.jpg" alt="Certification in Cruise Photography" class="program-img" />
+          </div>
+          <div class="program-info-col p-4 d-flex flex-column justify-content-between">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <div class="program-icon-circle"><i class="fa-solid fa-camera"></i></div>
+                <span class="program-head-title fw-semibold text-muted">PATHWAY 1</span>
+              </div>
+              <h3 class="program-card-title fw-bold mb-3">1. CERTIFICATION IN CRUISE PHOTOGRAPHY (MSU CERTIFIED)</h3>
+              
+              <ul class="program-features-list check-list">
+                <li>15 Working Days</li>
+                <li>Professional Photography Training</li>
+                <li>MSU University Certification</li>
+              </ul>
+            </div>
+            
+            <div class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center">
+              <span class="program-price fw-bold fs-4">₹1,49,000</span>
+              <a routerLink="/course-1" class="btn-navy-solid text-uppercase btn-sm">
+                View Details <i class="fa-solid fa-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pathway 2 Card -->
+      <div class="col-xl-5 col-lg-6 col-md-12 mb-4">
+        <div class="program-horizontal-card d-flex flex-column flex-md-row text-start h-100">
+          <div class="program-img-col">
+            <img src="assets/images/image-56.jpg" alt="Complete Cruise Career Program" class="program-img" />
+          </div>
+          <div class="program-info-col p-4 d-flex flex-column justify-content-between">
+            <div>
+              <div class="d-flex align-items-center gap-2 mb-2">
+                <div class="program-icon-circle"><i class="fa-solid fa-anchor"></i></div>
+                <span class="program-head-title fw-semibold text-muted">PATHWAY 2</span>
+              </div>
+              <h3 class="program-card-title fw-bold mb-3">2. COMPLETE CRUISE CAREER PROGRAM</h3>
+              
+              <ul class="program-features-list check-list">
+                <li>15-Day Photography Course</li>
+                <li>Maritime Certifications & Documentation</li>
+                <li>Everything you need to start your cruise career</li>
+              </ul>
+            </div>
+            
+            <div class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center">
+              <span class="program-price fw-bold fs-4">₹2,49,000</span>
+              <a routerLink="/course-2" class="btn-navy-solid text-uppercase btn-sm">
+                View Details <i class="fa-solid fa-arrow-right ms-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-
-    <!-- Right Column (description & button) -->
-    <div class="col-lg-4 col-12 d-flex flex-column justify-content-center text-center text-lg-start ps-lg-5 ps-3">
-      <p class="text-white fs-5">{{ course.description }}</p>
-      <button class="btn btn-explore mt-3" (click)="exploreCourse(course)">
-        Explore More →
-      </button>
-    </div>
   </div>
 </section>
 
-<!-- section 4th -->
+<!-- Crew Deck Section -->
+<app-photographers></app-photographers>
 
-<section class="offer-section container-fluid py-5">
-  <div class="section-header text-center">
-    <h1 class="section-title text-uppercase"> What We Offer Our Students </h1>
-  </div>
-
-  <!-- Animated line -->
-  <div class="animated-line"></div>
-
-  <!-- Points list -->
-  <ul class="offer-list mt-4 text-center">
-    <li>End-to-end career launch support.</li>
-     <div class="animated-line"></div>
-    <li class="mt-4">Small batch sizes (6–8 students per intake).</li>
-     <div class="animated-line mt-4"></div>
-    <li class="mt-4">Partnerships with leading maritime academies.</li>
-     <div class="animated-line mt-4"></div>
-    <li class="mt-4">Employer tie-ups with international cruise companies.</li>
-     <div class="animated-line mt-4"></div>
-    <li class="mt-4">Structured career support even for currently working cruise photographers through evaluations and mock interviews.</li>
- <div class="animated-line mt-4"></div>
-  </ul>
-</section>
-
-
-  <section class="about-cruise">
-    <div class="glass-box">
-      <p class="mb-3 fs-3 text-white">Cruise Lens Academy is more than a school it’s a career launchpad.
- From your first documentation form to your first contract onboard, we’re with you every step of the way.
- </p>
+<!-- Unified Credibility Footer Band -->
+<section class="credibility-band py-5 border-top">
+  <div class="container-fluid px-lg-5">
+    <div class="row align-items-center justify-content-between gap-y-4">
       
+      <!-- What Our Students Say & Video -->
+      <div class="col-xxl-5 col-xl-6 col-lg-12 d-flex flex-column flex-md-row align-items-center gap-4 border-end-xl pe-xl-4 mb-4 mb-xl-0">
+        <div class="student-quote text-start flex-grow-1">
+          <span class="section-tiny-eyebrow fw-bold text-uppercase d-block mb-1">WHAT OUR STUDENTS SAY</span>
+          <div class="rating-stars mb-2 text-gold">
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+            <i class="bi bi-star-fill"></i>
+          </div>
+          <p class="quote-text italic text-muted mb-1">
+            "CLA changed my life. The training, support and placement assistance is unmatched."
+          </p>
+          <span class="student-name fw-bold text-navy-main font-weight-semibold">- Anurag Tiwari</span>
+        </div>
+        
+        <div class="video-preview-wrapper flex-shrink-0" (click)="playFullscreenVideo('assets/Video/student.mp4')">
+          <div class="video-preview-thumb shadow-sm rounded position-relative">
+            <img src="assets/images/photo-roshan.webp" alt="Student Video Thumbnail" class="img-fluid rounded" />
+            <i class="bi bi-play-circle-fill play-btn-overlay fs-2"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Google Reviews Badge -->
+      <div class="col-xxl-2 col-xl-2 col-md-4 col-sm-12 text-start border-end-md pe-md-4 mb-4 mb-md-0 d-flex align-items-center justify-content-xl-center">
+        <div class="google-reviews-badge">
+          <div class="d-flex align-items-center gap-2 mb-1">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/c/c1/Google_%22G%22_logo.svg" alt="Google Logo" width="28" height="28" />
+            <span class="fw-bold text-navy-main">Google Reviews</span>
+          </div>
+          <div class="rating-rating mt-1">
+            <span class="rating-num fw-bold fs-5 text-navy-main">4.9 </span>
+            <div class="stars-inline d-inline-block text-gold">
+              <i class="bi bi-star-fill small"></i>
+              <i class="bi bi-star-fill small"></i>
+              <i class="bi bi-star-fill small"></i>
+              <i class="bi bi-star-fill small"></i>
+              <i class="bi bi-star-fill small"></i>
+            </div>
+            <p class="reviews-count text-muted small mb-1">Based on 120+ reviews</p>
+            <a href="https://www.google.com" target="_blank" class="view-reviews-link small text-navy-main fw-bold text-decoration-none">VIEW ALL REVIEWS &rarr;</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Credibility Badges -->
+      <div class="col-xxl-5 col-xl-4 col-md-8 col-sm-12">
+        <div class="row g-3">
+          <!-- Item 1 -->
+          <div class="col-6 col-md-3 text-start d-flex flex-column align-items-start badge-card">
+            <div class="badge-icon-blue mb-2"><i class="fa-solid fa-handshake-angle"></i></div>
+            <span class="badge-lbl fw-bold text-navy-main text-uppercase">Industry Experts</span>
+            <p class="badge-desc-text text-muted mb-0">Learn from working professionals</p>
+          </div>
+          <!-- Item 2 -->
+          <div class="col-6 col-md-3 text-start d-flex flex-column align-items-start badge-card">
+            <div class="badge-icon-blue mb-2"><i class="fa-solid fa-camera-retro"></i></div>
+            <span class="badge-lbl fw-bold text-navy-main text-uppercase">Practical Training</span>
+            <p class="badge-desc-text text-muted mb-0">Real studio. Real experience.</p>
+          </div>
+          <!-- Item 3 -->
+          <div class="col-6 col-md-3 text-start d-flex flex-column align-items-start badge-card">
+            <div class="badge-icon-blue mb-2"><i class="fa-solid fa-graduation-cap"></i></div>
+            <span class="badge-lbl fw-bold text-navy-main text-uppercase">University Certified</span>
+            <p class="badge-desc-text text-muted mb-0">Add value to your career</p>
+          </div>
+          <!-- Item 4 -->
+          <div class="col-6 col-md-3 text-start d-flex flex-column align-items-start badge-card">
+            <div class="badge-icon-blue mb-2"><i class="fa-solid fa-ship"></i></div>
+            <span class="badge-lbl fw-bold text-navy-main text-uppercase">Global Career</span>
+            <p class="badge-desc-text text-muted mb-0">Work on luxury cruise ships</p>
+          </div>
+        </div>
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 
-
+<!-- Mobile Bottom Action Bar (Fixed at bottom on small viewports) -->
+<div class="mobile-action-bar d-lg-none d-flex justify-content-around align-items-center py-2 px-3 fixed-bottom border-top bg-white">
+  <a href="tel:+917827543626" class="action-item d-flex flex-column align-items-center text-decoration-none text-navy">
+    <i class="bi bi-telephone-fill fs-5 mb-1 text-accent-blue"></i>
+    <span class="small font-weight-semibold">Call Us</span>
+  </a>
+  <a href="https://wa.me/917827543626" target="_blank" class="action-item d-flex flex-column align-items-center text-decoration-none text-navy">
+    <i class="bi bi-whatsapp fs-5 mb-1 text-success"></i>
+    <span class="small font-weight-semibold">WhatsApp</span>
+  </a>
+  <a routerLink="/apply-now" class="btn btn-gold-solid btn-sm text-uppercase px-3 py-2">
+    Apply Now
+  </a>
+</div>

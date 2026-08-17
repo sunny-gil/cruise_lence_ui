@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
+import { PhotographersComponent } from "../photographers/photographers.component";
 interface Slide {
   title: string;
   subtitle: string;
@@ -12,7 +13,7 @@ interface Slide {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule,RouterModule],
+  imports: [CommonModule, RouterModule, PhotographersComponent],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
@@ -40,6 +41,9 @@ export class HomeComponent {
     '/assets/images/image-15.webp',
     '/assets/images/image-17.webp',
   ];
+
+
+  
 
   onMouseMove(event: MouseEvent) {
     if (!this.overlay || !this.grid) return;
@@ -161,6 +165,29 @@ missionVision: Slide[] = [
 
 constructor(private router: Router) {}
 
+// 🟢 PLACE THESE RIGHT AFTER CONSTRUCTOR — NOT AFTER courses[]
+activeIndex = 0;
+
+@HostListener('window:scroll')
+onScroll() {
+  const rows = document.querySelectorAll('.course-row');
+  rows.forEach((row, index) => {
+    const rect = row.getBoundingClientRect();
+    if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+      this.activeIndex = index;
+    }
+  });
+
+  const section = document.querySelector('.offer-section');
+  if (section) {
+    const rect = section.getBoundingClientRect();
+    if (rect.top < window.innerHeight / 1.3) {
+      section.classList.add('in-view');
+    }
+  }
+}
+
+
 slideAndNavigate(slide: Slide, index: number, listType: 'slides' | 'missionVision') {
   const cards = document.querySelectorAll(`.${listType}-card`);
   const card = cards[index] as HTMLElement;
@@ -215,28 +242,8 @@ courses = [
 ];
 
 
-   activeIndex = 0;
 
-  @HostListener('window:scroll', ['$event'])
-onScroll() {
-  // Active course row
-  const rows = document.querySelectorAll('.course-row');
-  rows.forEach((row, index) => {
-    const rect = row.getBoundingClientRect();
-    if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
-      this.activeIndex = index;
-    }
-  });
 
-  // Offer section in-view
-  const section = document.querySelector('.offer-section');
-  if (section) {
-    const rect = section.getBoundingClientRect();
-    if (rect.top < window.innerHeight / 1.3) {
-      section.classList.add('in-view');
-    }
-  }
-}
 
 
 exploreCourse(course: any) {
@@ -245,5 +252,59 @@ exploreCourse(course: any) {
 }
 
 
-}
 
+//  flippedCard: string | null = null;
+
+//   photographers = [
+//     {
+//       name: 'Rohan Singh',
+//       initials: 'RS',
+//       batch: 'Nov 2025',
+//       status: 'Available',
+//       image: 'assets/images/profile.png',
+//       bio: 'Cruise portrait expert with a flair for storytelling and lifestyle photography.',
+//       skills: ['Lightroom', 'Portraits', 'Sales'],
+//       certifications: ['STCW', 'INDOS', 'SID']
+//     },
+//     {
+//       name: 'Anjali Verma',
+//       initials: 'AV',
+//       batch: 'Nov 2025',
+//       status: 'Onboard',
+//     image: 'assets/images/profile.png',
+//       bio: 'Known for guest engagement and creative onboard cruise shoots.',
+//       skills: ['Candid', 'Teamwork', 'Communication'],
+//       certifications: ['STCW', 'INDOS', 'SID']
+//     },
+//     {
+//       name: 'Karan Patel',
+//       initials: 'KP',
+//       batch: 'Oct 2025',
+//       status: 'Hired',
+//       image: 'assets/images/profile.png',
+//       bio: 'Travel storyteller and creative cruise visuals specialist.',
+//       skills: ['Editing', 'Lighting', 'Portraits'],
+//       certifications: ['STCW', 'INDOS', 'SID']
+//     },
+//     {
+//       name: 'Divya Sharma',
+//       initials: 'DS',
+//       batch: 'Dec 2025',
+//       status: 'Available',
+//       image: 'assets/images/profile.png',
+//       bio: 'Experienced in ship-side portraiture and event coverage.',
+//       skills: ['Composition', 'Sales', 'Cruise Events'],
+//       certifications: ['STCW', 'INDOS', 'SID']
+//     }
+//   ];
+
+//   // Duplicate for infinite loop
+//   get doubledPhotographers() {
+//     return [...this.photographers, ...this.photographers];
+//   }
+
+//    flipCard(initials: string | null): void {
+//     this.flippedCard = initials;
+
+// }
+}

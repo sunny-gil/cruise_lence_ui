@@ -34,6 +34,10 @@ export const routes: Routes = [
           path: 'faq',
           loadComponent: () => import('./faq/faq.component').then(m => m.FaqComponent)
      },
+        {
+          path: 'starter-track',
+          loadComponent: () => import('./starter-track/starter-track.component').then(m => m.StarterTrackComponent)
+     },
       {
           path: 'apply-now',
           loadComponent: () => import('./apply-now/apply-now.component').then(m => m.ApplyNowComponent)
@@ -93,6 +97,10 @@ export const routes: Routes = [
      {
           path: 'payment-failure',
           loadComponent: () => import('./payment-failure/payment-failure.component').then(m => m.PaymentFailureComponent)
+     },
+      {
+          path: 'photographers',
+          loadComponent: () => import('./photographers/photographers.component').then(m => m.PhotographersComponent)
      },
 ];
      

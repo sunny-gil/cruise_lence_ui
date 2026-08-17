@@ -607,3 +607,62 @@ h5
     font-size: 0.9rem;
   }
 }
+/* ================= MOBILE TYPOGRAPHY FIX ================= */
+
+@media (max-width: 991px) {
+
+  h2 {
+    font-size: 1.6rem !important;
+  }
+
+  h3 {
+    font-size: 1.3rem !important;
+  }
+
+  h4 {
+    font-size: 1.2rem !important;
+  }
+
+  h5 {
+    font-size: 1.05rem !important;
+  }
+
+  p {
+    font-size: 0.95rem !important;
+    line-height: 1.6;
+  }
+
+  li {
+    font-size: 0.95rem !important;
+  }
+
+  .crew-overlay h3 {
+    font-size: 1.1rem !important;
+  }
+
+  .crew-overlay p {
+    font-size: 0.85rem !important;
+  }
+
+  .highlight-box h5 {
+    font-size: 1rem !important;
+  }
+
+  .document-card h4 {
+    font-size: 1.2rem !important;
+  }
+
+  .document-card p,
+  .document-card li {
+    font-size: 0.9rem !important;
+  }
+
+  .duration-fees-section h2 {
+    font-size: 1.5rem !important;
+  }
+
+  .duration-fees-section li {
+    font-size: 0.95rem !important;
+  }
+
+}

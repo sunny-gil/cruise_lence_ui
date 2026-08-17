@@ -273,3 +273,58 @@
     font-size: 0.9rem;
   }
 }
+/* ================= BALANCED MOBILE FONT SIZE ================= */
+
+@media (max-width: 991px) {
+
+  /* Main Headings */
+  .consultation-section h2,
+  .duration-fees-section h2 {
+    font-size: 1.8rem !important;
+  }
+
+  .consultation-section h5 {
+    font-size: 1.1rem !important;
+  }
+
+  /* Glass Box Text */
+  .glass-box p {
+    font-size: 1.1rem !important;
+    line-height: 1.7;
+  }
+
+  /* Overlay Text (image sections) */
+  .overlay h3 {
+    font-size: 1.3rem !important;
+  }
+
+  .overlay p {
+    font-size: 1.05rem !important;
+  }
+
+  /* Document Section */
+  .document-card h4 {
+    font-size: 1.3rem !important;
+  }
+
+  .document-card h6 {
+    font-size: 1.05rem !important;
+  }
+
+  .document-card p,
+  .document-card li {
+    font-size: 1rem !important;
+  }
+
+  /* Duration list */
+  .duration-fees-section li {
+    font-size: 1.05rem !important;
+  }
+
+  /* Buttons */
+  .btn-lg {
+    font-size: 1rem !important;
+    padding: 12px 26px;
+  }
+
+}

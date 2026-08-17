@@ -1,0 +1,164 @@
+.photographer-carousel-section {
+  background-color: #ffffff;
+  overflow: hidden;
+  position: relative;
+  border-top: 1px solid #cbd5e1;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.section-subtitle-text {
+  font-size: 0.9rem;
+  display: block;
+  margin-top: 5px;
+  color: var(--text-muted-dark);
+}
+
+/* Carousel structure */
+.carousel-wrapper {
+  width: 100%;
+  position: relative;
+  padding: 15px 0;
+}
+
+.carousel-track {
+  display: flex;
+  gap: 24px;
+  width: max-content;
+}
+
+.card-item {
+  width: 385px;
+  height: 220px;
+  perspective: 1000px;
+  flex-shrink: 0;
+}
+
+/* Card inner handles the flipping animation */
+.card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+}
+
+.card-inner.flipped {
+  transform: rotateY(180deg);
+}
+
+/* Card Front and Back styles */
+.card-front, .card-back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  border: 1px solid #cbd5e1;
+}
+
+/* Front Card - Layout */
+.photo-circle-horizontal {
+  width: 75px;
+  height: 75px;
+}
+
+.photo-circle-horizontal img {
+  border-color: #cbd5e1 !important;
+}
+
+/* Details back scroll */
+.details-scroll::-webkit-scrollbar {
+  width: 4px;
+}
+
+.details-scroll::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+.details-scroll::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 2px;
+}
+
+/* Slider Arrow Buttons */
+.nav-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  font-size: 1rem;
+  color: var(--primary-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 15;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.nav-btn:hover {
+  background-color: var(--primary-navy);
+  color: #ffffff;
+  border-color: var(--primary-navy);
+}
+
+.nav-btn.prev {
+  left: -20px;
+}
+
+.nav-btn.next {
+  right: -20px;
+}
+
+/* Responsive viewports navigation edges */
+@media (max-width: 991px) {
+  .nav-btn.prev {
+    left: 5px;
+  }
+  .nav-btn.next {
+    right: 5px;
+  }
+}
+
+@media (max-width: 575px) {
+  .card-item {
+    width: 310px;
+    height: 200px;
+  }
+  .photo-circle-horizontal {
+    width: 60px;
+    height: 60px;
+  }
+  .photo-circle-horizontal img {
+    width: 60px !important;
+    height: 60px !important;
+  }
+  .member-details h5 {
+    font-size: 0.92rem !important;
+  }
+  .member-details p {
+    font-size: 0.72rem !important;
+    margin-bottom: 2px !important;
+  }
+  .member-status-text {
+    font-size: 0.72rem !important;
+    margin-bottom: 4px !important;
+  }
+}
