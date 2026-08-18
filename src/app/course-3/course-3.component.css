@@ -1,330 +1,195 @@
-.image-section {
-        background-image: url('/assets/images/image-32.jpg');
-        background-size: cover;
-        background-position: center;
-        height: 500px;
-        width: 100%;
-    }
-   
-
-.glass-box {
-  background: rgba(255, 255, 255, 0.65);
-  backdrop-filter: blur(12px);
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-}
-
-.glass-box p {
-  color: black;
-  font-size: 1.5rem;
-}
-
-.benefit-card {
-  background: #fff;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.benefit-card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
-}
-
-/* Fade in */
-.fade-in-up {
-  opacity: 0;
-  transform: translateY(40px);
-  animation: fadeInUp 1.2s forwards;
-}
-
-@keyframes fadeInUp {
-  to { opacity: 1; transform: translateY(0); }
-}
-
-.duration-fees-section {
-  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+/* ================= Course Hero Section ================= */
+.course-hero-section {
   position: relative;
-  min-height: 400px;
+  background: linear-gradient(135deg, rgba(10, 20, 35, 0.85) 0%, rgba(15, 41, 74, 0.7) 100%), url('/assets/images/cruise-4.jpg') center/cover no-repeat;
+  min-height: 480px;
   display: flex;
   align-items: center;
   justify-content: center;
-}
-
-.overlay h3
-{
-  color: #ffcc66;
-}
-
-.overlay p {
-  font-size: 1.2rem;
-}
-
-.duration-fees-section .overlay {
-  background: rgba(0, 0, 0, 0.65); /* dark overlay */
+  padding-top: 150px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
   width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
 }
 
-.duration-fees-section h2 {
-  font-size: 2.2rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #ffcc66;
-}
-
-.duration-fees-section ul li {
-  margin-bottom: 12px;
-}
-
-.duration-fees-section .btn {
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.duration-fees-section .btn:hover {
-  transform: scale(1.05);
-  background-color: #ffcd39;
-}
-
-.bg-col {
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  min-height: 300px; /* adjust height */
-  overflow: hidden;
-  display: flex;
-  align-items: center; /* center content vertically */
-  justify-content: center; /* center horizontally */
-  padding: 20px;
-}
-
-.bg-col .overlay {
-  position: relative;
-  z-index: 2;
-  color: #fff;
-  text-align: center;
-  background: rgba(0, 0, 0, 0); /* dark background for readability */
-  padding: 20px;
-  border-radius: 8px;
-}
-
-.bg-col::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.6); /* global dark overlay */
-  z-index: 1;
-}
-
-
-.diary-page {
-  background: #fffdf5; /* off-white paper */
-  border: 2px solid #d4a373; /* diary edge */
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-
-  /* Notebook style lines */
-  background-image: 
-    linear-gradient(to bottom, #f1e5c9 1px, transparent 1px);
-  background-size: 100% 2.5em; /* line spacing */
-  line-height: 2.5em;
-  position: relative;
-}
-
-/* Left margin line */
-.diary-page::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 60px;
-  bottom: 0;
-  width: 2px;
-  background: #ff6666;
-}
-
-.diary-page h4, 
-.diary-page h6, 
-.diary-page p, 
-.diary-page li {
-  background: transparent;
-  margin-left: 80px;
-}
-
-.heading
-{
-  color: #ffcc66;
-}
-
-.about-cruise {
-  width: 100%;
-  background: url('/assets/images/image-56.jpg') no-repeat center;
-  background-size: cover;
-  background-attachment: fixed;
-  min-height: 200px; /* fill full viewport height */
-  display: flex; /* enable flexbox */
-  align-items: center; /* vertical center */
-  justify-content: center; /* horizontal center */
-}
-
-.glass-box-cruise {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 10px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  color: white;
-  padding: 1rem 1rem;
-  max-width: 850px; /* keep it readable */
-  text-align: center;
-}
-
-.document-card {
-  background: #fffdf5;               /* soft paper color */
-  border-left: 6px solid #ff6666;    /* diary-style left line */
-  border-radius: 12px;
-  padding: 2rem 1.5rem;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-  line-height: 1.8;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-/* Headings & lists spacing */
-.document-card h4 {
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
-}
-
-.document-card h6 {
-  margin-bottom: 0.8rem;
+.course-eyebrow {
   font-size: 1.1rem;
-  color: #555;
+  font-weight: 700;
+  color: var(--gold-accent, #d97706);
+  letter-spacing: 2px;
 }
 
-.document-card p {
-  margin-bottom: 1rem;
-  font-size: 1rem;
+.course-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-.document-card ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
+.course-subtitle {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--gold-accent, #d97706);
+  letter-spacing: 1px;
 }
 
-.document-card li {
-  margin-bottom: 0.5rem;
+/* ================= General Utilities & Headings ================= */
+.text-navy {
+  color: var(--primary-navy, #0f294a) !important;
 }
 
-/* Nested list (if needed) */
-.document-card li ul {
-  list-style-type: circle;
-  padding-left: 1.2rem;
-  margin-top: 0.3rem;
+.text-gold {
+  color: var(--gold-accent, #d97706) !important;
 }
 
-/* ================= Responsive ================= */
-@media (max-width: 767px) {
-  .document-card {
-    padding: 1.5rem 1rem;
+.section-main-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--primary-navy, #0f294a);
+}
+
+/* ================= Consultation Section & Intro ================= */
+.consultation-section {
+  background-color: #f8fafc;
+}
+
+.heading {
+  color: var(--primary-navy, #0f294a) !important;
+}
+
+.premium-light-box {
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 25px rgba(15, 41, 74, 0.03);
+}
+
+/* ================= Evaluation Step Cards ================= */
+.card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--gold-accent, #d97706);
+  box-shadow: 0 12px 30px rgba(15, 41, 74, 0.08) !important;
+}
+
+.card-body h3 {
+  font-size: 1.25rem;
+  color: var(--primary-navy, #0f294a);
+  font-weight: 700;
+}
+
+.card-body h6 {
+  font-size: 1.05rem;
+}
+
+.card-body p {
+  line-height: 1.6;
+}
+
+/* ================= Required Documents ================= */
+.document-card {
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #cbd5e1;
+}
+
+.document-card h4 {
+  color: var(--primary-navy, #0f294a);
+}
+
+/* ================= Duration & Fees Section ================= */
+.duration-fees-section {
+  position: relative;
+  background: linear-gradient(135deg, rgba(10, 20, 35, 0.9) 0%, rgba(15, 41, 74, 0.8) 100%), url('/assets/images/cruise-3.jpg') center/cover no-repeat;
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  width: 100%;
+}
+
+.fees-details-card {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+}
+
+.fees-details-card li {
+  border-bottom: 1px solid #e2e8f0 !important;
+  color: #334155;
+}
+
+.fees-details-card li:last-child {
+  border-bottom: none !important;
+}
+
+.fees-details-card strong {
+  color: var(--primary-navy, #0f294a) !important;
+}
+
+.fees-details-card span {
+  color: #334155;
+}
+
+.duration-fees-section .btn-warning {
+  background-color: var(--gold-accent, #d97706);
+  border-color: var(--gold-accent, #d97706);
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.duration-fees-section .btn-warning:hover {
+  background-color: var(--gold-accent-hover, #b45309);
+  border-color: var(--gold-accent-hover, #b45309);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(217, 119, 6, 0.25);
+}
+
+/* ================= Responsive Adjustments ================= */
+@media (max-width: 991px) {
+  .course-hero-section {
+    padding-top: 130px;
+    padding-bottom: 60px;
   }
-
-  .document-card h4 {
+  .course-title {
+    font-size: 2.8rem;
+  }
+  .course-subtitle {
     font-size: 1.3rem;
   }
+}
 
-  .document-card h6 {
-    font-size: 1rem;
+@media (max-width: 767px) {
+  .course-title {
+    font-size: 2.2rem;
   }
-
-  .document-card p, 
-  .document-card li {
-    font-size: 0.95rem;
-  }
-
-  .document-card ul {
-    padding-left: 1rem;
-  }
-
-  .document-card li ul {
-    padding-left: 0.8rem;
-  }
-
-  .document-card {
-    border-left-width: 4px;
+  .section-main-title {
+    font-size: 1.8rem;
   }
 }
 
 @media (max-width: 575px) {
-  .document-card h4 {
-    font-size: 1.2rem;
+  .course-hero-section {
+    padding-top: 110px;
+    padding-bottom: 50px;
   }
-
-  .document-card h6 {
-    font-size: 0.95rem;
+  .course-title {
+    font-size: 1.8rem;
   }
-
-  .document-card p, 
-  .document-card li {
-    font-size: 0.9rem;
+  .course-subtitle {
+    font-size: 1.1rem;
   }
-}
-/* ================= BALANCED MOBILE FONT SIZE ================= */
-
-@media (max-width: 991px) {
-
-  /* Main Headings */
-  .consultation-section h2,
-  .duration-fees-section h2 {
-    font-size: 1.8rem !important;
-  }
-
-  .consultation-section h5 {
-    font-size: 1.1rem !important;
-  }
-
-  /* Glass Box Text */
-  .glass-box p {
-    font-size: 1.1rem !important;
-    line-height: 1.7;
-  }
-
-  /* Overlay Text (image sections) */
-  .overlay h3 {
-    font-size: 1.3rem !important;
-  }
-
-  .overlay p {
-    font-size: 1.05rem !important;
-  }
-
-  /* Document Section */
-  .document-card h4 {
-    font-size: 1.3rem !important;
-  }
-
-  .document-card h6 {
-    font-size: 1.05rem !important;
-  }
-
-  .document-card p,
-  .document-card li {
+  .course-lead-text {
     font-size: 1rem !important;
   }
-
-  /* Duration list */
-  .duration-fees-section li {
-    font-size: 1.05rem !important;
-  }
-
-  /* Buttons */
-  .btn-lg {
-    font-size: 1rem !important;
-    padding: 12px 26px;
-  }
-
 }

@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
 
 interface FaqItem {
   question: string;
@@ -9,7 +10,7 @@ interface FaqItem {
 
 @Component({
   selector: 'app-faq',
-    imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './faq.component.html',
   styleUrls: ['./faq.component.css']
 })

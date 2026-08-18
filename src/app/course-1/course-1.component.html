@@ -1,230 +1,257 @@
-<section class="bg-dark">
-  <section class="bg-dark p-5">
-
-  <div class="crew-carousel">
-    <button class="crew-arrow crew-left" (click)="prev()">‹</button>
-
-    <div class="crew-track">
-      <div class="crew-card" *ngFor="let member of crewMembers; let i = index" [ngClass]="getCardClass(i)"
-        (click)="updateCrewCarousel(i)">
-        <img [src]="member.img" [alt]="member.name" />
-
-        <!-- Overlay content -->
-        <div class="crew-overlay">
-          <h3 class="text-white">{{ member.name }}</h3>
-          <p class="text-white">{{ member.role }}</p>
-        </div>
-      </div>
-    </div>
-
-    <button class="crew-arrow crew-right" (click)="next()">›</button>
-  </div>
-  <div class="crew-dots">
-    <div class="crew-dot" *ngFor="let member of crewMembers; let i = index" [class.active]="i === crewIndex"
-      (click)="updateCrewCarousel(i)"></div>
-  </div>
-
-</section>
-
-<section class="para-section">
-    <div class="container">
- <h2 class="highlight text-uppercase text-center mb-4">Beginner & New to the Sea</h2>
-
-
-        <p class="mb-3 text-white justify-text px-3">
-            Embarking on a cruise ship photography career requires far more than just knowing how to hold a camera. It’s
-            about understanding maritime life, adapting to a multicultural workplace, mastering documentation, and
-            building technical creative skills that can withstand the fast-paced demands of shipboard life.
-        </p>
-
-        <p class="mb-3 text-white justify-text px-3">
-            Our <span class="highlight fw-bold">Beginner & New to the Sea</span> course is a comprehensive,
-            career-launch program designed for individuals who are passionate about photography but have never worked at
-            sea. This program provides everything a student needs to become cruise-ready: from mandatory maritime
-            documentation to professional photography and editing training, as well as soft skills, mock interviews, and
-            placement support with international cruise lines.
-        </p>
-
-        <p class="mb-3 text-white justify-text px-3">
-            We keep our batch size small (6–8 students only) to ensure personalized mentoring. By the end of this
-            course, you will have not only the skills but also the confidence to step onboard and thrive in one of the
-            most rewarding careers the travel industry has to offer.
-        </p>
-        </div>
-</section>
-
-<section class="maritime-section">
-  <div class="container-fluid">
-    <div class="row align-items-center maritime-row">
-      <!-- Left: half-circle image -->
-      <div class="col-lg-6 m-0 p-0">
-        <div class="half-wrap">
-          <img src="assets/images/pexels.jpg" alt="Maritime Image" />
-        </div>
-      </div>
-
-      <!-- Right: content -->
-      <div class="col-lg-6 p-5">
-        <h2 class="section-title text-uppercase">Maritime Services</h2>
-        <ul class="services-list">
-          <li>⚓ INDOS</li>
-          <li>⚓ STCW Certificates: PST, <br> FPFF, EFA, PSSR, STSD, CM</li>
-          <li>⚓ SID</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="container-fluid py-5">
-  <div class="row align-items-center">
-    <!-- Text Column -->
-    <div class="col-lg-6 p-5 text-white">
-         <h2 class="section-title text-uppercase">Creative & Technical Photography Training</h2>
-      <ul class="mb-0 services-list">
-        <li>⚓ DSLR mastery (exposure triangle, white balance, lighting setups)</li>
-        <li>⚓ Cruise-specific scenarios: deck portraits, gangway photography, studio sessions,
-            event coverage</li>
-        <li>⚓ Roleplay exercises simulating real onboard conditions</li>
-      </ul>
-    </div>
-
-    <!-- Image Column (curve on left side now) -->
-    <div class="col-lg-6">
-      <div class="half-wrap left">
-        <img src="assets/images/image-2.jpg" alt="Photography Training">
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="maritime-section">
-  <div class="container-fluid">
-    <div class="row align-items-center maritime-row">
-      <!-- Left: half-circle image -->
-      <div class="col-lg-6 m-0 p-0">
-        <div class="half-wrap">
-          <img src="assets/images/image-28.webp" alt="Maritime Image" />
-        </div>
-      </div>
-
-      <!-- Right: content -->
-      <div class="col-lg-6 p-5">
-        <h2 class="section-title text-uppercase">
-Editing & Software Training (daily 1-hour dedicated session)
-</h2>
-        <ul class="services-list">
-          <li>⚓ Adobe Lightroom (color correction, workflow efficiency)</li>
-          <li>⚓ Adobe Photoshop (retouching, compositing)</li>
-          <li>⚓ Adobe Bridge (workflow management)</li>
-          <li>⚓ IRIS shooting and editing (used onboard cruise ships for guest photos)</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<section class="container-fluid py-5">
-  <div class="row align-items-center">
-    <!-- Text Column -->
-    <div class="col-lg-6 p-5 text-white">
-     <h2 class="section-title text-uppercase">Career Preparation & Placement Assistance</h2>
-                            <ul class="mb-0 services-list">
-                                <li>⚓ Grooming & communication workshops</li>
-                                <li>⚓ Mock HR interview + employer-specific training</li>
-                                <li>⚓ Direct interviews with our cruise partners</li>
-                            </ul>
-    </div>
-
-    <!-- Image Column (curve on left side now) -->
-    <div class="col-lg-6">
-      <div class="half-wrap left">
-        <img src="assets/images/image-29.jpg" alt="Photography Training">
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="program-breakdown py-5">
+<!-- Hero Banner Section -->
+<section class="course-hero-section text-center text-white">
   <div class="container">
+    <span class="course-eyebrow fw-bold text-uppercase">PATHWAY 1</span>
+    <h1 class="course-title fw-bold mt-2 mb-3">Beginner & New to the Sea</h1>
+    <span class="course-subtitle fw-bold d-block mb-3">COMPLETE SEAFARER & PHOTOGRAPHY PROGRAM</span>
+    <div class="section-divider-gold mx-auto mb-4" style="width: 70px; height: 3px; background-color: var(--gold-accent);"></div>
+    <p class="course-lead-text mx-auto" style="max-width: 800px; font-size: 1.15rem; color: #cbd5e1; line-height: 1.7;">
+      Our flagship 2-month career-launch program designed for individuals who are passionate about photography but have never worked at sea. Includes complete STCW maritime documentation, professional DSLR training, editing, and placement assistance.
+    </p>
+  </div>
+</section>
+
+<!-- Crew Carousel Section -->
+<section class="carousel-section py-5 bg-white border-bottom">
+  <div class="container text-center">
+    <h2 class="section-main-title fw-bold mb-4">COURSE STRUCTURE AT A GLANCE</h2>
+    <div class="section-divider-gold mx-auto mb-5" style="width: 70px; height: 3px; background-color: var(--gold-accent);"></div>
+    
+    <div class="crew-carousel mx-auto">
+      <button class="crew-arrow crew-left" (click)="prev()">‹</button>
+
+      <div class="crew-track">
+        <div class="crew-card" *ngFor="let member of crewMembers; let i = index" [ngClass]="getCardClass(i)"
+          (click)="updateCrewCarousel(i)">
+          <img [src]="member.img" [alt]="member.name" />
+
+          <!-- Overlay content -->
+          <div class="crew-overlay">
+            <h3 class="text-white">{{ member.name }}</h3>
+            <p class="text-white small">{{ member.role }}</p>
+          </div>
+        </div>
+      </div>
+
+      <button class="crew-arrow crew-right" (click)="next()">›</button>
+    </div>
+    
+    <div class="crew-dots mt-4">
+      <div class="crew-dot" *ngFor="let member of crewMembers; let i = index" [class.active]="i === crewIndex"
+        (click)="updateCrewCarousel(i)"></div>
+    </div>
+  </div>
+</section>
+
+<!-- Description Section -->
+<section class="para-section py-5 bg-light">
+  <div class="container text-center">
+    <h2 class="highlight text-uppercase text-navy mb-4">Pathway Overview</h2>
+    <div class="section-divider-gold mx-auto mb-4" style="width: 50px; height: 2px; background-color: var(--gold-accent);"></div>
+
+    <p class="mb-3 text-secondary justify-text px-3 mx-auto" style="max-width: 900px;">
+      Embarking on a cruise ship photography career requires far more than just knowing how to hold a camera. It’s
+      about understanding maritime life, adapting to a multicultural workplace, mastering documentation, and
+      building technical creative skills that can withstand the fast-paced demands of shipboard life.
+    </p>
+
+    <p class="mb-3 text-secondary justify-text px-3 mx-auto" style="max-width: 900px;">
+      Our <span class="text-gold fw-bold">Beginner & New to the Sea</span> course is a comprehensive,
+      career-launch program designed for individuals who are passionate about photography but have never worked at
+      sea. This program provides everything a student needs to become cruise-ready: from mandatory maritime
+      documentation to professional photography and editing training, as well as soft skills, mock interviews, and
+      placement support with international cruise lines.
+    </p>
+
+    <p class="mb-3 text-secondary justify-text px-3 mx-auto" style="max-width: 900px;">
+      We keep our batch size small (6–8 students only) to ensure personalized mentoring. By the end of this
+      course, you will have not only the skills but also the confidence to step onboard and thrive in one of the
+      most rewarding careers the travel industry has to offer.
+    </p>
+  </div>
+</section>
+
+<!-- Split Content Sections -->
+<section class="split-info-sections">
+  
+  <!-- Block 1: Maritime Services -->
+  <div class="maritime-section py-5 bg-white border-bottom">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Left: Image -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="half-wrap rounded overflow-hidden shadow-sm border">
+            <img src="assets/images/pexels.jpg" alt="Maritime Image" class="w-100 d-block" style="max-height: 400px; object-fit: cover;" loading="lazy" />
+          </div>
+        </div>
+        <!-- Right: Content -->
+        <div class="col-lg-6 ps-lg-5 text-start">
+          <h2 class="section-title text-uppercase text-navy fw-bold mb-3">Maritime Services</h2>
+          <div class="divider-gold mb-4"></div>
+          <ul class="services-list list-unstyled">
+            <li class="mb-2"><i class="bi bi-shield-check text-gold me-2"></i> INDOS Registration</li>
+            <li class="mb-2"><i class="bi bi-shield-check text-gold me-2"></i> STCW Certificates: PST, FPFF, EFA, PSSR, STSD, CM</li>
+            <li class="mb-2"><i class="bi bi-shield-check text-gold me-2"></i> SID (Seafarer Identity Document)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Block 2: Creative Photography -->
+  <div class="photography-section py-5 bg-light border-bottom">
+    <div class="container">
+      <div class="row align-items-center flex-lg-row-reverse">
+        <!-- Right: Image -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="half-wrap rounded overflow-hidden shadow-sm border">
+            <img src="assets/images/image-2.jpg" alt="Photography Training" class="w-100 d-block" style="max-height: 400px; object-fit: cover;" loading="lazy" />
+          </div>
+        </div>
+        <!-- Left: Content -->
+        <div class="col-lg-6 pe-lg-5 text-start">
+          <h2 class="section-title text-uppercase text-navy fw-bold mb-3">Creative & Technical Photography Training</h2>
+          <div class="divider-gold mb-4"></div>
+          <ul class="services-list list-unstyled">
+            <li class="mb-2"><i class="bi bi-camera text-gold me-2"></i> DSLR mastery (exposure triangle, white balance, lighting setups)</li>
+            <li class="mb-2"><i class="bi bi-camera text-gold me-2"></i> Cruise-specific scenarios: deck portraits, gangway photography, studio sessions, event coverage</li>
+            <li class="mb-2"><i class="bi bi-camera text-gold me-2"></i> Roleplay exercises simulating real onboard conditions</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Block 3: Editing & Software -->
+  <div class="editing-section py-5 bg-white border-bottom">
+    <div class="container">
+      <div class="row align-items-center">
+        <!-- Left: Image -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="half-wrap rounded overflow-hidden shadow-sm border">
+            <img src="assets/images/image-28.webp" alt="Editing Image" class="w-100 d-block" style="max-height: 400px; object-fit: cover;" loading="lazy" />
+          </div>
+        </div>
+        <!-- Right: Content -->
+        <div class="col-lg-6 ps-lg-5 text-start">
+          <h2 class="section-title text-uppercase text-navy fw-bold mb-3">Editing & Software Training</h2>
+          <p class="text-muted mb-3 fw-semibold">Daily 1-hour dedicated practical session</p>
+          <div class="divider-gold mb-4"></div>
+          <ul class="services-list list-unstyled">
+            <li class="mb-2"><i class="bi bi-laptop text-gold me-2"></i> Adobe Lightroom (color correction, workflow efficiency)</li>
+            <li class="mb-2"><i class="bi bi-laptop text-gold me-2"></i> Adobe Photoshop (retouching, compositing)</li>
+            <li class="mb-2"><i class="bi bi-laptop text-gold me-2"></i> Adobe Bridge (workflow management)</li>
+            <li class="mb-2"><i class="bi bi-laptop text-gold me-2"></i> IRIS shooting and editing (onboard guest photo systems)</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Block 4: Career Prep -->
+  <div class="career-section py-5 bg-light border-bottom">
+    <div class="container">
+      <div class="row align-items-center flex-lg-row-reverse">
+        <!-- Right: Image -->
+        <div class="col-lg-6 mb-4 mb-lg-0">
+          <div class="half-wrap rounded overflow-hidden shadow-sm border">
+            <img src="assets/images/image-29.jpg" alt="Career Prep" class="w-100 d-block" style="max-height: 400px; object-fit: cover;" loading="lazy" />
+          </div>
+        </div>
+        <!-- Left: Content -->
+        <div class="col-lg-6 pe-lg-5 text-start">
+          <h2 class="section-title text-navy fw-bold mb-3 text-uppercase">Career Preparation & Placement Assistance</h2>
+          <div class="divider-gold mb-4"></div>
+          <ul class="services-list list-unstyled">
+            <li class="mb-2"><i class="bi bi-briefcase text-gold me-2"></i> Grooming & communication workshops</li>
+            <li class="mb-2"><i class="bi bi-briefcase text-gold me-2"></i> Mock HR interview + employer-specific training</li>
+            <li class="mb-2"><i class="bi bi-briefcase text-gold me-2"></i> Direct interviews with our cruise partners</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Program Breakdown Section -->
+<section class="program-breakdown py-5 bg-white">
+  <div class="container text-center">
+    <span class="section-eyebrow fw-bold text-uppercase" style="color: var(--gold-accent);">STRUCTURE</span>
+    <h2 class="section-main-title fw-bold mt-2">PROGRAM BREAKDOWN</h2>
+    <div class="section-divider-gold mx-auto mb-5" style="width: 70px; height: 3px; background-color: var(--gold-accent);"></div>
+
     <div class="row g-4">
       
       <!-- Card 1 -->
-      <div class="col-md-6 col-lg-6">
-        <div class="card breakdown-card h-100 shadow-sm text-center">
-          <div class="card-body">
-            <div class="icon-box text-warning mb-3">
+      <div class="col-md-6">
+        <div class="card breakdown-card h-100 shadow-sm border">
+          <div class="card-body p-4">
+            <div class="icon-box text-gold mb-3 fs-2">
               <i class="bi bi-life-preserver"></i>
             </div>
-            <h5 class="card-title fw-bold">28 Days STCW COURSE</h5>
-            <ul class="list-unstyled mt-3 text-start">
-              <li><i class="bi bi-life-preserver text-warning me-2"></i> Personal Survival Techniques (PST)</li>
-              <li><i class="bi bi-fire text-warning me-2"></i> Fire Prevention and Fire Fighting (FPFF)</li>
-              <li><i class="bi bi-heart-pulse text-warning me-2"></i> Elementary First Aid (EFA)</li>
-              <li><i class="bi bi-shield-check text-warning me-2"></i> Personal Safety and Social Responsibilities (PSSR)</li>
-              <li><i class="bi bi-shield-lock text-warning me-2"></i> Security Training for Seafarers with Designated Security Duties (STSD)</li>
-              <li><i class="bi bi-people text-warning me-2"></i> Crowd Management</li>
-              <li><i class="bi bi-clipboard2-pulse text-warning me-2"></i> Medical Examination (DG Shipping Approved)</li>
-              <li><i class="bi bi-card-checklist text-warning me-2"></i>SID</li>
+            <h5 class="card-title fw-bold text-navy mb-3">28 Days STCW COURSE</h5>
+            <ul class="list-unstyled text-start m-0 d-flex flex-column gap-2">
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> Personal Survival Techniques (PST)</li>
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> Fire Prevention and Fire Fighting (FPFF)</li>
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> Elementary First Aid (EFA)</li>
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> Personal Safety and Social Responsibilities (PSSR)</li>
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> Security Training with Designated Security Duties (STSD)</li>
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> Crowd Management</li>
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> Medical Examination (DG Shipping Approved)</li>
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> SID</li>
             </ul>
           </div>
         </div>
       </div>
 
       <!-- Card 2 -->
-      <div class="col-md-6 col-lg-6">
-        <div class="card breakdown-card h-100 shadow-sm text-center">
-          <div class="card-body">
-            <div class="icon-box text-warning mb-3">
+      <div class="col-md-6">
+        <div class="card breakdown-card h-100 shadow-sm border">
+          <div class="card-body p-4">
+            <div class="icon-box text-gold mb-3 fs-2">
               <i class="bi bi-globe"></i>
             </div>
-            <h5 class="card-title fw-bold">6 Days offline classes in Goa</h5>
-            <ul class="list-unstyled mt-3 text-start">
-              <li><i class="bi bi-globe text-warning me-2"></i> Cruise culture & lifestyle orientation</li>
-              <li><i class="bi bi-camera text-warning me-2"></i> DSLR training (cruise-specific)</li>
-              <li><i class="bi bi-lightbulb text-warning me-2"></i> Lighting, framing & guest engagement</li>
-              <li><i class="bi bi-brush text-warning me-2"></i> Editing workshops (Lightroom, Photoshop, IRIS)</li>
-              <li><i class="bi bi-check2-circle text-warning me-2"></i> Assignments with feedback</li>
+            <h5 class="card-title fw-bold text-navy mb-3">6 Days Offline Classes in Goa</h5>
+            <ul class="list-unstyled text-start m-0 d-flex flex-column gap-2">
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> Cruise culture & lifestyle orientation</li>
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> DSLR training (cruise-specific)</li>
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> Lighting, framing & guest engagement</li>
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> Editing workshops (Lightroom, Photoshop, IRIS)</li>
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> Assignments with detailed feedback</li>
             </ul>
           </div>
         </div>
       </div>
 
       <!-- Card 3 -->
-      <div class="col-md-6 col-lg-6">
-        <div class="card breakdown-card h-100 shadow-sm text-center">
-          <div class="card-body">
-            <div class="icon-box text-warning mb-3">
+      <div class="col-md-6">
+        <div class="card breakdown-card h-100 shadow-sm border">
+          <div class="card-body p-4">
+            <div class="icon-box text-gold mb-3 fs-2">
               <i class="bi bi-camera-reels"></i>
             </div>
-            <h5 class="card-title fw-bold">2 Days Practical Training</h5>
-            <ul class="list-unstyled mt-3 text-start">
-              <li><i class="bi bi-camera-reels text-warning me-2"></i> Studio photography & roleplays</li>
-              <li><i class="bi bi-people-fill text-warning me-2"></i> On-deck simulated guest sessions</li>
-              <li><i class="bi bi-lightning-charge text-warning me-2"></i> Speed challenges (real cruise conditions)</li>
+            <h5 class="card-title fw-bold text-navy mb-3">2 Days Practical Training</h5>
+            <ul class="list-unstyled text-start m-0 d-flex flex-column gap-2">
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> Studio photography & roleplays</li>
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> On-deck simulated guest sessions</li>
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> Speed challenges under cruise conditions</li>
             </ul>
           </div>
         </div>
       </div>
 
       <!-- Card 4 -->
-      <div class="col-md-6 col-lg-6">
-        <div class="card breakdown-card h-100 shadow-sm text-center">
-          <div class="card-body">
-            <div class="icon-box text-warning mb-3">
+      <div class="col-md-6">
+        <div class="card breakdown-card h-100 shadow-sm border">
+          <div class="card-body p-4">
+            <div class="icon-box text-gold mb-3 fs-2">
               <i class="bi bi-award"></i>
             </div>
-            <h5 class="card-title fw-bold">1 day assessment + 1 day certification</h5>
-            <ul class="list-unstyled mt-3 text-start">
-              <li><i class="bi bi-clipboard-check text-warning me-2"></i> 1 day assessment</li>
-              <li><i class="bi bi-journal-check text-warning me-2"></i> Written + practical test</li>
-              <li><i class="bi bi-graph-up text-warning me-2"></i> Evaluation score</li>
-              <li><i class="bi bi-person-check text-warning me-2"></i> ≥80% → Placement interview eligibility</li>
-              <li><i class="bi bi-award text-warning me-2"></i> 1 Day Certification</li>
-              <li><i class="bi bi-trophy text-warning me-2"></i> Certification ceremony</li>
-              <li><i class="bi bi-mic text-warning me-2"></i> Guest lecture (industry experts)</li>
-              <li><i class="bi bi-people text-warning me-2"></i> Networking & Q&A</li>
+            <h5 class="card-title fw-bold text-navy mb-3">1 Day Assessment + 1 Day Certification</h5>
+            <ul class="list-unstyled text-start m-0 d-flex flex-column gap-2">
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> DG Shipping approved exam (Written + Practical)</li>
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> Evaluation Score (Requires ≥80% for placement interview)</li>
+              <li><i class="bi bi-arrow-right-short text-gold me-1"></i> Certification ceremony & expert guest lectures</li>
             </ul>
           </div>
         </div>
@@ -234,204 +261,42 @@ Editing & Software Training (daily 1-hour dedicated session)
   </div>
 </section>
 
-
-
-
-
-<section class="container py-5 mt-5">
-  <div class="document-card">
-    <h4>📂 Documents Required</h4>
-    <h6>For Course 1 – Beginner & New to the Sea</h6>
-    <p><strong>Students must upload:</strong></p>
-    <ul>
-      <li>Valid Passport (Indian Government stamp page, front & back page) *</li>
-      <li>Aadhaar Card *</li>
-      <li>10th & 12th Marksheet *</li>
-      <li>Passport-size photograph (white background, formal attire) *</li>
-      <li>Updated Resume / CV</li>
-    </ul>
-  </div>
-</section>
-
-
-
-<section class="duration-fees-section">
-  <div class="overlay">
-    <div class="container text-center text-white py-5">
-      <h2 class="fw-bold mb-4">Duration & Fees</h2>
-
-      <ul class="list-unstyled lead mb-4">
-        <li><strong>Duration:</strong> 2 Months</li>
-        <li><strong>Fees:</strong> ₹1,50,000 <small>(GST excluded)</small></li>
-        <!-- <li><strong>Batch Size:</strong> Min 6 – Max 8 students</li> -->
+<!-- Documents Section -->
+<section class="documents-section py-5 bg-light border-top border-bottom">
+  <div class="container py-3">
+    <div class="document-card p-4 p-md-5 shadow-sm border bg-white rounded-3 mx-auto" style="max-width: 800px;">
+      <h4 class="text-navy fw-bold mb-3"><i class="bi bi-folder-symlink-fill text-gold me-2"></i>📂 Documents Required</h4>
+      <h6 class="text-gold fw-bold mb-4">Course 1 – Beginner & New to the Sea</h6>
+      <p class="text-muted"><strong>Before starting the course, students must prepare:</strong></p>
+      <ul class="d-flex flex-column gap-2 text-secondary ps-3">
+        <li>Valid Passport (Government stamp page, front & back page) *</li>
+        <li>Aadhaar Card *</li>
+        <li>10th & 12th Academic Marksheets *</li>
+        <li>Passport-size photographs (white background, formal attire) *</li>
+        <li>Updated Resume / CV</li>
       </ul>
-
-   
-<!-- <div class="row columns-row mb-4">
-  <div class="col column-card">
-    <p>18 days STCW course (with certificates + medical + SID)</p>
-  </div>
-  <div class="col column-card">
-    <p>6 days offline course</p>
-  </div>
-  <div class="col column-card">
-    <p>2 days practical training</p>
-  </div>
-  <div class="col column-card">
-    <p>1 day assessment + 1 day certification</p>
-  </div>
-</div> -->
-
-
-      <a routerLink="/apply-now" class="btn btn-warning btn-lg fw-bold shadow-lg">
-         Apply Now
-      </a>
     </div>
   </div>
 </section>
 
-<!-- <section class="about-cruise">
-    <div class="glass-box">
-     <a routerLink="/apply-now" class="btn btn-warning btn-lg fw-bold shadow-lg">
-       Apply Now
-      </a>
-      
+<!-- Duration & Fees Section -->
+<section class="duration-fees-section text-center text-white py-5">
+  <div class="container py-5">
+    <h2 class="section-main-title text-white fw-bold mb-4 text-uppercase">DURATION & FEES</h2>
+    <div class="section-divider-gold mx-auto mb-4" style="width: 70px; height: 3px; background-color: var(--gold-accent);"></div>
+    
+    <div class="fees-details-card mx-auto p-4 p-md-5 mb-4 shadow" style="max-width: 600px;">
+      <ul class="list-unstyled text-start m-0 d-flex flex-column gap-3" style="font-size: 1.05rem;">
+        <li class="d-flex justify-content-between border-bottom pb-2"><strong class="text-navy">Course Name:</strong> <span>Beginner & New to the Sea</span></li>
+        <li class="d-flex justify-content-between border-bottom pb-2"><strong class="text-navy">Duration:</strong> <span>2 Months</span></li>
+        <li class="d-flex justify-content-between border-bottom pb-2"><strong class="text-navy">Batch Size:</strong> <span>Min 6 – Max 8 Students</span></li>
+        <li class="d-flex justify-content-between border-bottom pb-2"><strong class="text-navy">Location:</strong> <span>Goa, India</span></li>
+        <li class="d-flex justify-content-between pt-2"><strong class="text-gold fw-bold fs-5">Fees:</strong> <span class="text-gold fw-bold fs-5">₹1,50,000 + GST</span></li>
+      </ul>
     </div>
-  </section> -->
-    
-    <!-- <div class="section p-5 m-5">
-        <div class="container-fluid my-5">
-            <div class="course-details text-white">
-                <h3 class="mb-4">What’s Included</h3>
 
-               
-                <div class="row g-4">
-
-                    
-                    <div class="col-md-6 col-lg-6 text-white">
-                        <div class="included-item p-3 rounded shadow-sm h-100">
-                            <h4>Maritime Documentation</h4>
-                            <ul class="mb-0">
-                                <li>INDOS Registration</li>
-                                <li>SID (Seafarer Identity Document)</li>
-                                <li>STCW Safety Training (Basic Safety, Fire Prevention, Personal Survival, First Aid,
-                                    Security Awareness)</li>
-                                <li>(Continuous Discharge Certificate)</li>
-                                <li>Medical Examination (DG Shipping approved)</li>
-                            </ul>
-                        </div>
-                    </div>
-
-              
-                    <div class="col-md-6 col-lg-6 text-white">
-                        <div class="included-item p-3 rounded shadow-sm h-100">
-                            <h4>Creative & Technical Photography Training</h4>
-                            <ul class="mb-0">
-                                <li>DSLR mastery (exposure triangle, white balance, lighting setups)</li>
-                                <li>Cruise-specific scenarios: deck portraits, gangway photography, studio sessions,
-                                    event coverage</li>
-                                <li>Roleplay exercises simulating real onboard conditions</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-6 text-white">
-                        <div class="included-item p-3 rounded shadow-sm h-100">
-                            <h4>Editing & Software Training</h4>
-                            <ul class="mb-0">
-                                <li>Adobe Lightroom (color correction, workflow efficiency)</li>
-                                <li>Adobe Photoshop (retouching, compositing)</li>
-                                <li>Adobe Bridge (workflow management)</li>
-                                <li>IRIS shooting and editing (used onboard cruise ships for guest photos)</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <div class="col-md-6 col-lg-6">
-                        <div class="included-item p-3 rounded shadow-sm h-100">
-                            <h4>Career Preparation & Placement Assistance</h4>
-                            <ul class="mb-0">
-                                <li>Grooming & communication workshops</li>
-                                <li>Mock HR interview + employer-specific training</li>
-                                <li>Direct interviews with our cruise partners</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                </div>
-
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-icon">📅</div>
-                        <div class="timeline-content">
-                            <h4 class="me-5">Duration</h4>
-                            <p>Approximately 2 months (integrated training with maritime + photography + editing +
-                                placement prep)</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-icon">💰</div>
-                        <div class="timeline-content">
-                            <h4>Fees</h4>
-                            <p>₹1,50,000 (GST excluded)</p>
-                        </div>
-                    </div>
-
-                    <div class="timeline-item">
-                        <div class="timeline-icon">👥</div>
-                        <div class="timeline-content">
-                            <h4>Batch Size</h4>
-                            <p>Minimum 6, Maximum 8 students</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="text-center mt-4">
-                    <a href="#" class="button"> Apply Now</a>
-                </div>
-
-
-
-            </div>
-        </div>
-
-    </div> -->
-
-    <!-- <div id="courseCarousel" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-inner">
-
-           
-            <div class="carousel-item active">
-                <img src="assets/images/image-6.jpg" class="d-block w-100 rounded" alt="Slide 1">
-            </div>
-
-            <div class="carousel-item">
-                <img src="assets/images/image-7.jpg" class="d-block w-100 rounded" alt="Slide 2">
-            </div>
-
-           
-            <div class="carousel-item">
-                <img src="assets/images/image-8.jpg" class="d-block w-100 rounded" alt="Slide 3">
-            </div>
-
-        </div>
-
-       
-        <button class="carousel-control-prev carousel-arrow " type="button" data-bs-target="#courseCarousel" data-bs-slide="prev">
-            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next carousel-arrow " type="button" data-bs-target="#courseCarousel" data-bs-slide="next">
-            <span class="carousel-control-next-icon" aria-hidden="true"></span>
-            <span class="visually-hidden">Next</span>
-        </button>
-
-    
-        <div class="carousel-indicators">
-            <button type="button" data-bs-target="#courseCarousel" data-bs-slide-to="0" class="active"></button>
-            <button type="button" data-bs-target="#courseCarousel" data-bs-slide-to="1"></button>
-            <button type="button" data-bs-target="#courseCarousel" data-bs-slide-to="2"></button>
-        </div>
-    </div> -->
-
+    <a routerLink="/apply-now" class="btn btn-warning px-4 py-3 btn-lg fw-bold shadow-lg text-uppercase text-navy-dark letter-spacing-1 mt-3">
+       Apply Now
+    </a>
+  </div>
 </section>

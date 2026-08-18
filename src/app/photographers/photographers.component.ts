@@ -3,10 +3,11 @@ import {
   OnInit,
   AfterViewInit,
   ViewChild,
-  ElementRef
+  ElementRef,
+  OnDestroy
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 
@@ -17,7 +18,7 @@ import { environment } from '../../environments/environment';
   templateUrl: './photographers.component.html',
   styleUrls: ['./photographers.component.css']
 })
-export class PhotographersComponent implements OnInit, AfterViewInit {
+export class PhotographersComponent implements OnInit, AfterViewInit, OnDestroy {
 
   @ViewChild('track') trackRef!: ElementRef;
 
@@ -34,17 +35,30 @@ export class PhotographersComponent implements OnInit, AfterViewInit {
 
   apiUrl = `${environment.backendUrl}/testimonials`;
 
-  constructor(private http: HttpClient) {}
+  // Directory filter variables
+  isStandalonePage = false;
+  filterStatus = 'all';
+  searchQuery = '';
+  filteredPhotographers: any[] = [];
+
+  constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
+    this.isStandalonePage = this.router.url.includes('/photographers');
     this.loadPhotographers();
   }
 
   ngAfterViewInit(): void {
-    setTimeout(() => {
-      this.detectCardWidth();
-      this.startAutoSlide();
-    }, 500);
+    if (!this.isStandalonePage) {
+      setTimeout(() => {
+        this.detectCardWidth();
+        this.startAutoSlide();
+      }, 500);
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.pauseAutoSlide();
   }
 
   loadPhotographers(): void {
@@ -55,29 +69,32 @@ export class PhotographersComponent implements OnInit, AfterViewInit {
           p.initials ||
           p.name?.split(' ').map((n: string) => n[0]).join('') ||
           `P${i}`,
-        skills: (p.skills || '').split(',').map((s: string) => s.trim()),
-        certifications: (p.certifications || '').split(',').map((s: string) => s.trim())
+        skills: p.skills ? p.skills.split(',').map((s: string) => s.trim()).filter((s: string) => s.length > 0) : [],
+        certifications: p.certifications ? p.certifications.split(',').map((s: string) => s.trim()).filter((s: string) => s.length > 0) : []
       }));
 
-      // Infinite loop list
+      this.filteredPhotographers = this.photographers;
       this.doubled = [...this.photographers, ...this.photographers];
-      // this.doubled = this.photographers;
     });
   }
 
   detectCardWidth(): void {
-    const card = this.trackRef.nativeElement.querySelector('.card-item');
-    if (card) {
-      this.cardWidth = card.offsetWidth + 30;
+    if (this.trackRef) {
+      const card = this.trackRef.nativeElement.querySelector('.card-item');
+      if (card) {
+        this.cardWidth = card.offsetWidth + 24;
+      }
     }
   }
 
   /* ================= AUTO SLIDE ================= */
 
   startAutoSlide(): void {
-    this.autoSlideInterval = setInterval(() => {
-      this.nextSlide();
-    }, 3000);
+    if (!this.isStandalonePage) {
+      this.autoSlideInterval = setInterval(() => {
+        this.nextSlide();
+      }, 3000);
+    }
   }
 
   pauseAutoSlide(): void {
@@ -88,7 +105,7 @@ export class PhotographersComponent implements OnInit, AfterViewInit {
   }
 
   resumeAutoSlide(): void {
-    if (!this.autoSlideInterval) {
+    if (!this.isStandalonePage && !this.autoSlideInterval) {
       this.startAutoSlide();
     }
   }
@@ -96,11 +113,14 @@ export class PhotographersComponent implements OnInit, AfterViewInit {
   /* ================= SLIDER CONTROLS ================= */
 
   nextSlide(): void {
+    const listLength = this.filteredPhotographers.length;
+    if (listLength === 0) return;
+
     this.isTransitionEnabled = true;
     this.currentIndex++;
     this.updatePosition();
 
-    if (this.currentIndex === this.photographers.length) {
+    if (this.currentIndex === listLength) {
       setTimeout(() => {
         this.isTransitionEnabled = false;
         this.currentIndex = 0;
@@ -110,12 +130,15 @@ export class PhotographersComponent implements OnInit, AfterViewInit {
   }
 
   prevSlide(): void {
+    const listLength = this.filteredPhotographers.length;
+    if (listLength === 0) return;
+
     this.isTransitionEnabled = true;
     this.currentIndex--;
 
     if (this.currentIndex < 0) {
       this.isTransitionEnabled = false;
-      this.currentIndex = this.photographers.length - 1;
+      this.currentIndex = listLength - 1;
       this.updatePosition();
 
       setTimeout(() => {
@@ -134,5 +157,44 @@ export class PhotographersComponent implements OnInit, AfterViewInit {
 
   flipCard(initials: string | null): void {
     this.flippedCard = initials;
+  }
+
+  /* ================= DIRECTORY FILTERS ================= */
+
+  setFilter(status: string): void {
+    this.filterStatus = status;
+    this.applyFilters();
+  }
+
+  onSearchChange(event: any): void {
+    this.searchQuery = event.target.value.toLowerCase().trim();
+    this.applyFilters();
+  }
+
+  applyFilters(): void {
+    this.filteredPhotographers = this.photographers.filter(p => {
+      const matchesStatus = this.filterStatus === 'all' || p.status === this.filterStatus;
+      const nameLower = (p.name || '').toLowerCase();
+      const initialsLower = (p.initials || '').toLowerCase();
+      const matchesSearch = nameLower.includes(this.searchQuery) || initialsLower.includes(this.searchQuery);
+      return matchesStatus && matchesSearch;
+    });
+
+    // Reset slider state
+    this.currentIndex = 0;
+    this.translateX = 0;
+    this.isTransitionEnabled = false;
+
+    // Double for infinite scroll track (only if we have elements)
+    if (this.filteredPhotographers.length > 0) {
+      this.doubled = [...this.filteredPhotographers, ...this.filteredPhotographers];
+    } else {
+      this.doubled = [];
+    }
+
+    setTimeout(() => {
+      this.detectCardWidth();
+      this.isTransitionEnabled = true;
+    }, 100);
   }
 }

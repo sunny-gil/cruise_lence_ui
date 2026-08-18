@@ -1,194 +1,73 @@
-body {
-  font-family: 'Poppins', sans-serif;
+/* ================= Course Hero Section ================= */
+.course-hero-section {
+  position: relative;
+  background: linear-gradient(135deg, rgba(10, 20, 35, 0.85) 0%, rgba(15, 41, 74, 0.7) 100%), url('/assets/images/cruise-13.jpg') center/cover no-repeat;
+  min-height: 480px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 150px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  color: #ffffff;
+  width: 100%;
 }
 
-h1, h2, h3 {
-  font-family: 'Poppins', sans-serif;
+.course-eyebrow {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--gold-accent, #d97706);
+  letter-spacing: 2px;
+}
+
+.course-title {
+  font-size: 3.5rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #ffffff !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.course-subtitle {
+  font-size: 1.5rem;
   font-weight: 600;
+  color: var(--gold-accent, #d97706);
+  letter-spacing: 1px;
 }
 
-p {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 400;
+/* ================= General Utilities & Text ================= */
+.text-navy {
+  color: var(--primary-navy, #0f294a) !important;
 }
 
-
-
-
-.section {
-  font-family: 'Poppins', sans-serif;
-    color: #ffffff;
-    line-height: 1.7;
-    /* Makes paragraphs more readable */
-    font-size: 1.1rem;
+.text-gold {
+  color: var(--gold-accent, #d97706) !important;
 }
 
-
-
-.highlight {
-    color: #ffcc66;
-    font-weight: bold;
+.divider-gold {
+  width: 55px;
+  height: 2px;
+  background-color: var(--gold-accent, #d97706);
 }
 
-h2.highlight {
-    font-size: 2.5rem;
-    text-align: center;
+.section-main-title {
+  font-size: 2.2rem;
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: var(--primary-navy, #0f294a);
 }
 
-p {
-    margin-bottom: 1rem;
-    font-size: 20px;
+/* ================= 3D Carousel Section ================= */
+.carousel-section {
+  background-color: #ffffff;
 }
-
-.button {
-    background-color: #FFD700;
-    color: #121212;
-    padding: 12px 28px;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: 0.3s;
-}
-
-.button:hover {
-    background-color: #ffcc66;
-}
-
-.course-details {
-    padding: 40px 20px;
-}
-
-.included-grid {
-    display: flex;
-    /* Use flex to align cards */
-    flex-wrap: wrap;
-    /* Wrap on smaller screens */
-    gap: 30px;
-    /* Space between cards */
-    justify-content: space-between;
-    margin-bottom: 30px;
-}
-
-.included-item {
-    background-color: #ffcc66;
-    padding: 30px;
-    /* More padding for bigger look */
-    border-radius: 16px;
-    /* More rounded corners */
-    flex: 1 1 calc(25% - 20px);
-    /* Take up 25% width minus gap */
-    min-width: 250px;
-    /* Ensure cards don’t shrink too small */
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
-    /* Adds depth */
-    transition: transform 0.3s, box-shadow 0.3s;
-    color: black;
-}
-
-.included-item:hover {
-    transform: translateY(-5px);
-    /* Hover lift effect */
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.5);
-}
-
-.included-item h4 {
-    color: black;
-    margin-bottom: 20px;
-    font-size: 1.3em;
-    /* Slightly bigger headings */
-}
-
-.included-item ul {
-    list-style-type: disc;
-    padding-left: 20px;
-    line-height: 1.6;
-}
-
-.timeline {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    padding-left: 40px;
-    margin: 40px 0;
-}
-
-.timeline::before {
-    content: '';
-    position: absolute;
-    left: 20px;
-    top: 0;
-    bottom: 0;
-    width: 4px;
-    background-color: #ffcc66;
-    border-radius: 2px;
-}
-
-.timeline-item {
-    display: flex;
-    align-items: flex-start;
-    margin-bottom: 30px;
-    position: relative;
-}
-
-.timeline-icon {
-    background-color: #ffcc66;
-    color: #0a0a0a;
-    font-size: 20px;
-    padding: 10px;
-    border-radius: 50%;
-    position: absolute;
-    left: -10px;
-    top: 0;
-}
-
-.timeline-content {
-    background-color: #1e1e1e;
-    padding: 15px 20px;
-    border-radius: 8px;
-    width: 100%;
-}
-
-.timeline-content h4 {
-    margin: 0 30px 10px;
-    color: #ffcc66;
-}
-
-.timeline-content p {
-    margin: 0;
-    line-height: 1.5;
-}
-
-.button {
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #ffcc66;
-    color: #0a0a0a;
-    font-weight: bold;
-    text-decoration: none;
-    border-radius: 6px;
-    transition: background-color 0.3s;
-}
-
-.button:hover {
-    background-color: #ffcc66;
-}
-
-.image-section {
-    background-image: url('/assets/images/image-1.jpg');
-    background-size: cover;
-    background-position: center;
-    height: 500px;
-    width: 100%;
-}
-
 
 .crew-carousel {
   width: 100%;
-  max-width: 1350px;
-  height: 450px;
+  max-width: 1200px;
+  height: 350px;
   position: relative;
   perspective: 1000px;
-  margin-top: 80px;
 }
 
 .crew-track {
@@ -198,20 +77,59 @@ p {
   align-items: center;
   justify-content: center;
   position: relative;
-  transform-style: preserve-3d;
-  transition: transform 0.8s ease;
 }
 
 .crew-card {
   position: absolute;
-  width: 600px;
-  height: 500px;
-  border-radius: 20px;
+  width: 380px;
+  height: 250px;
+  border-radius: 16px;
   overflow: hidden;
-  background: white;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
-  transition: all 0.8s ease;
+  box-shadow: 0 8px 24px rgba(15, 41, 74, 0.1);
+  transition: all 0.75s cubic-bezier(0.25, 0.8, 0.25, 1);
   cursor: pointer;
+  z-index: 1;
+  opacity: 0;
+  transform: translate3d(0, 0, -200px);
+  border: 1px solid #e2e8f0;
+}
+
+/* 3D Positioning */
+.crew-card.center {
+  opacity: 1;
+  transform: translate3d(0, 0, 0) scale(1.08);
+  z-index: 5;
+  box-shadow: 0 15px 35px rgba(15, 41, 74, 0.18);
+  border-color: var(--gold-accent, #d97706);
+}
+
+.crew-card.left-1 {
+  opacity: 0.8;
+  transform: translate3d(-310px, 0, -80px) scale(0.9);
+  z-index: 3;
+}
+
+.crew-card.right-1 {
+  opacity: 0.8;
+  transform: translate3d(310px, 0, -80px) scale(0.9);
+  z-index: 3;
+}
+
+.crew-card.left-2 {
+  opacity: 0.4;
+  transform: translate3d(-540px, 0, -150px) scale(0.75);
+  z-index: 2;
+}
+
+.crew-card.right-2 {
+  opacity: 0.4;
+  transform: translate3d(540px, 0, -150px) scale(0.75);
+  z-index: 2;
+}
+
+.crew-card.hidden {
+  opacity: 0;
+  pointer-events: none;
 }
 
 .crew-card img {
@@ -220,108 +138,70 @@ p {
   object-fit: cover;
 }
 
-.crew-card.center {
-  z-index: 10;
-  transform: scale(1.1);
-}
-
-.crew-card.left-1 {
-  transform: translateX(-200px) scale(0.9);
-  opacity: 0.2;
-  filter: grayscale(80%);
-}
-
-.crew-card.left-2 {
-  transform: translateX(-400px) scale(0.8);
-  opacity: 0.1;
-  filter: grayscale(100%);
-}
-
-.crew-card.right-1 {
-  transform: translateX(200px) scale(0.9);
-  opacity: 0.2;
-  filter: grayscale(80%);
-}
-
-.crew-card.right-2 {
-  transform: translateX(400px) scale(0.8);
-  opacity: 0.1;
-  filter: grayscale(100%);
-}
-
-.crew-card.hidden {
-  opacity: 0;
-  pointer-events: none;
-}
-
-.crew-info {
+.crew-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 16px 20px;
+  background: linear-gradient(to top, rgba(15, 41, 74, 0.95) 45%, rgba(15, 41, 74, 0.2) 100%);
   text-align: center;
-  margin-top: 40px;
-  color: white;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateY(82px);
 }
 
-.crew-name {
-  font-size: 2.5rem;
-  color: #cc5500;
-  color: white;
- 
+.crew-card:hover .crew-overlay,
+.crew-card.center .crew-overlay {
+  transform: translateY(0);
 }
 
-.crew-role {
-  font-size: 1.2rem;
-  text-transform: uppercase;
-  color: #aa4400;
-  letter-spacing: 0.1em;
+.crew-overlay h3 {
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  font-weight: 700;
+  color: #ffffff;
 }
 
-.crew-dots {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin-top: 60px;
+.crew-overlay p {
+  font-size: 0.82rem;
+  margin-bottom: 0;
+  line-height: 1.45;
+  color: rgba(255, 255, 255, 0.85);
+  opacity: 0;
+  transition: opacity 0.3s ease 0.1s;
 }
 
-.crew-dot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background: rgba(204, 85, 0, 0.2);
-  cursor: pointer;
+.crew-card:hover .crew-overlay p,
+.crew-card.center .crew-overlay p {
+  opacity: 1;
 }
 
-.crew-dot.active {
-  background: #cc5500;
-}
-
+/* Carousel controls */
 .crew-arrow {
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
-  background: linear-gradient(
-    to right,
-    rgba(255, 215, 0, 0.8),   /* Golden */
-    rgba(64, 224, 208, 0.8)   /* Aqua/Water Blue */
-  );
-
-
-
-  color: white;
-  width: 40px;
-  height: 40px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  color: var(--primary-navy, #0f294a);
   border-radius: 50%;
-  border: none;
-  font-size: 1.5rem;
+  width: 46px;
+  height: 46px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
   cursor: pointer;
+  z-index: 10;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
 }
 
 .crew-arrow:hover {
- background: linear-gradient(
-  to right,
-   rgba(220, 53, 69, 0.8) 
-  rgba(0, 123, 255, 0.8),   /* Blue */
-    /* Red */
-);
-
+  background: var(--gold-accent, #d97706);
+  border-color: var(--gold-accent, #d97706);
+  color: #ffffff;
+  box-shadow: 0 6px 15px rgba(217, 119, 6, 0.3);
 }
 
 .crew-left {
@@ -332,587 +212,201 @@ p {
   right: 20px;
 }
 
-/* Bottom overlay */
-.crew-overlay {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  padding: 20px 30px; 
-  background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0.7));
-  color: white;
-  text-align: center;
-}
-
-.crew-overlay h3 {
-  margin: 0;
-  font-size: 1.2rem;
-  font-weight: bold;
-}
-
-.crew-overlay p {
-  margin: 5px 0 0;
-  font-size: 1rem;
-  line-height: 1.5rem;
-  /* opacity: 0.85; */
-}
-
-@media (max-width: 767px) {
-  .crew-overlay p {
-  font-size: 0.8rem;
-}
-
-}
-
-.with-arrow::after {
-  content: "›"; /* Unicode arrow */
-  float: right;
-  font-size: 14px;
-  color: #dc3545; /* red arrow (Bootstrap danger) */
-}
-
-.btn-custom:focus,
-.btn-custom:active,
-.btn-custom.show {
-  box-shadow: none !important;
-  outline: none !important;
-  border: none !important;
-}
-
-.half-circle-image {
-  width: 100%;
-  height: 500px; /* adjust as needed */
-  overflow: hidden;
+.crew-dots {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
+  gap: 8px;
 }
 
-.half-circle-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  clip-path: circle(90% at left center); /* half circle from right */
+.crew-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background-color: #cbd5e1;
+  cursor: pointer;
+  transition: all 0.25s ease;
 }
 
-
-:root{
-  --gold: #ffcc66;
-  --bg: #1f2224;          /* page background color used for cutout */
-  --height: 500px;        /* change to control section height */
-  --cut-width: 55%;       /* how wide the curved cut is (relative to half-wrap) */
+.crew-dot.active {
+  background-color: var(--gold-accent, #d97706);
+  transform: scale(1.25);
 }
 
-/* section background + spacing */
-.maritime-section{
-  background: var(--bg);
-  padding: 60px 0px;
-  color: #fff;
+/* ================= Overview Paragraphs ================= */
+.para-section {
+  font-size: 1.05rem;
+  line-height: 1.7;
 }
 
-/* ensure row height for vertical centering */
-.maritime-row {
-  min-height: var(--height);
-}
-
-/* wrapper for image and decorative pseudo elements */
+/* ================= Split Grid Images ================= */
 .half-wrap {
-  position: relative;
-  height: var(--height);
-  overflow: visible;
-  display: block;
-  border-radius: 0 50% 50% 0;
-  border: 6px solid var(--gold);
-  /* brighter, wider shadow */
-  box-shadow: 0 0 40px 10px rgba(255, 204, 102, 0.6);
+  border: 1px solid #cbd5e1;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
 }
 
-/* the image itself fits the wrapper and uses same radius */
-.half-wrap img{
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 0 50% 50% 0;   /* match wrapper */
-}
-
-/* curved gold ring that will sit slightly outside the cutout edge */
-.half-wrap::before {
-  content: "";
-  position: absolute;
-  right: calc(-1 * ((100% - var(--cut-width)) / 2));
-  top: 6%;
-  width: var(--cut-width);
-  height: 88%;
-  border-radius: 50% 0 0 50%;
-  border: 6px solid var(--gold);
-  /* golden glow around curve */
-  box-shadow: 0 0 40px 12px rgba(255, 204, 102, 0.7);
-  z-index: 2;
-}
-
-
-/* dark cutout that covers the right part of the image to create the curved "empty" area */
-.half-wrap::after{
-  content: "";
-  position: absolute;
-  /* this is slightly inset compared to ::before so the gold ring remains visible */
-  right: -6px;
-  top: 8%;
-  width: calc(var(--cut-width) - 3%); /* slightly smaller so ring shows */
-  height: 84%;
-  border-radius: 50% 0 0 50%;
-  background: var(--bg); /* same as page bg so it looks like a cutout */
-  z-index: 3;
-  pointer-events: none;
-}
-
-/* Right column content styling */
-.section-title{
-  margin-bottom: 1rem;
-  font-size: 2rem;
-  font-weight: 700;
-  color: #ffcc66;
-}
-
-.services-list{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-size: 1.5rem;
-  line-height: 1.8;
-}
-
-/* small screens: remove fancy cutout and show a normal stacked layout */
-@media (max-width: 767.98px){
-  :root{ --height: 320px; } /* reduce height on mobile */
-  .half-wrap,
-  .half-wrap img,
-  .half-wrap::before,
-  .half-wrap::after {
-    border-radius: 8px !important;
-  }
-  .half-wrap::before, .half-wrap::after {
-    display: none;
-  }
-  .maritime-row {
-    min-height: auto;
-  }
-}
-
-
-.duration-fees-section {
-  background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
-  position: relative;
-  min-height: 500px; /* increased height for 4 columns */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.duration-fees-section .overlay {
-  background: rgba(0, 0, 0, 0.65);
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.duration-fees-section h2 {
-  font-size: 2.2rem;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  color: #ffcc66;
-}
-
-.duration-fees-section ul li {
+.services-list li {
+  font-size: 1.05rem;
+  color: #334155;
   margin-bottom: 12px;
 }
 
-.columns-row {
-  display: flex;
-  justify-content: center;
-  gap: 20px; /* space between columns */
-  flex-wrap: nowrap; /* prevent wrapping */
-}
-
-.column-card {
-  background: rgba(255, 255, 255, 0.1); /* semi-transparent card */
-  border-radius: 10px;
-  padding: 20px;
-  text-align: center;
-  color: #fff;
-  font-weight: 500;
-  line-height: 1.5;
-  flex: 1; /* equal width */
-  transition: transform 0.3s ease, background 0.3s ease;
-  min-width: 200px; /* keep it from shrinking too small */
-}
-
-.column-card:hover {
-  transform: translateY(-5px);
-  background: rgba(255, 255, 255, 0.2);
-}
-
-.column-card p {
-  margin: 0;
-}
-
-
-.duration-fees-section .btn {
-  transition: transform 0.3s ease, background-color 0.3s ease;
-}
-
-.duration-fees-section .btn:hover {
-  transform: scale(1.05);
-  background-color: #ffcd39;
-}
-
-
-.diary-page {
-  background: #fffdf5; /* off-white paper */
-  border: 2px solid #d4a373; /* diary edge */
-  border-radius: 12px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
-
-  /* Notebook style lines */
-  background-image: 
-    linear-gradient(to bottom, #f1e5c9 1px, transparent 1px);
-  background-size: 100% 2.5em; /* line spacing */
-  line-height: 2.5em;
-  position: relative;
-}
-
-/* Left margin line (like a diary margin) */
-.diary-page::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 60px;
-  bottom: 0;
-  width: 2px;
-  background: #ff6666; /* red margin line */
-}
-
-.diary-page h4, 
-.diary-page h6, 
-.diary-page p, 
-.diary-page li {
-  background: transparent; /* keep text above lines */
-  margin-left: 80px; /* indent after red line */
-}
-
-
-/* Common gradient for both arrows */
-.carousel-arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  background: linear-gradient(
-    to right,
-    rgba(255, 215, 0, 0.8),   /* Golden */
-    rgba(64, 224, 208, 0.8)   /* Aqua/Water Blue */
-  );
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-  border: none;
-  margin: 40px;
-}
-
-/* Make the inner arrow icons visible and white */
-.carousel-control-prev-icon,
-.carousel-control-next-icon {
-  background-image: none; /* remove default Bootstrap icon */
-  width: 20px;
-  height: 20px;
-  border: solid white;
-  border-width: 0 3px 3px 0;
-  display: inline-block;
-  padding: 3px;
-}
-
-/* Rotate for prev/next arrows */
-.carousel-control-prev-icon {
-  transform: rotate(135deg);
-}
-
-.carousel-control-next-icon {
-  transform: rotate(-45deg);
-}
-
-.justify-text
-{
-  text-align: justify;
-}
+/* ================= Program Breakdown Section ================= */
 .breakdown-card {
-  border-radius:50% 50% 0 0 / 30% 30% 0 0; /* bowl shape */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  padding: 15px;
-  overflow: hidden;
+  background: #ffffff;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02) !important;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.3s ease, box-shadow 0.3s ease;
 }
 
 .breakdown-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transform: translateY(-5px);
+  border-color: var(--gold-accent, #d97706);
+  box-shadow: 0 12px 30px rgba(15, 41, 74, 0.08) !important;
 }
 
-.breakdown-card .icon-box {
-  font-size: 40px; /* bigger icon */
+.breakdown-card li {
+  font-size: 0.95rem;
+  color: #334155;
 }
 
-.breakdown-card .card-title {
-  font-size: 1.5rem;
-  margin-top: 10px;
-}
-
-.breakdown-card ul li {
-  margin-bottom: 8px;
-  font-size: 1.2rem;
-}
-
-
-.about-cruise {
-  width: 100%;
-  background: url('/assets/images/image-24.jpg') no-repeat center;
-  background-size: cover;
-  background-attachment: fixed;
-  min-height: 200px; /* fill full viewport height */
-  display: flex; /* enable flexbox */
-  align-items: center; /* vertical center */
-  justify-content: center; /* horizontal center */
-}
-
-.glass-box {
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 10px;
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
-  color: white;
-  padding: 1rem 1rem;
-  max-width: 850px; /* keep it readable */
-  text-align: center;
-}
-
+/* ================= Required Documents ================= */
 .document-card {
-  background: #fffdf5;               /* soft paper color */
-  border-left: 6px solid #ff6666;    /* diary-style left line */
+  background: #ffffff;
   border-radius: 12px;
-  padding: 2rem 1.5rem;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
-  line-height: 1.8;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  border: 1px solid #cbd5e1;
 }
 
-/* Headings & lists spacing */
 .document-card h4 {
-  margin-bottom: 0.5rem;
-  font-size: 1.5rem;
+  color: var(--primary-navy, #0f294a);
 }
 
-.document-card h6 {
-  margin-bottom: 0.8rem;
-  font-size: 1.1rem;
-  color: #555;
+/* ================= Duration & Fees Section ================= */
+.duration-fees-section {
+  position: relative;
+  background: linear-gradient(135deg, rgba(10, 20, 35, 0.9) 0%, rgba(15, 41, 74, 0.8) 100%), url('/assets/images/cruise-3.jpg') center/cover no-repeat;
+  padding: 80px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  width: 100%;
 }
 
-.document-card p {
-  margin-bottom: 1rem;
-  font-size: 1rem;
+.fees-details-card {
+  background: #ffffff !important;
+  border: 1px solid #cbd5e1 !important;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
 }
 
-.document-card ul {
-  list-style-type: disc;
-  padding-left: 1.5rem;
+.fees-details-card li {
+  border-bottom: 1px solid #e2e8f0 !important;
+  color: #334155;
 }
 
-.document-card li {
-  margin-bottom: 0.5rem;
+.fees-details-card li:last-child {
+  border-bottom: none !important;
 }
 
-/* Nested list (if needed) */
-.document-card li ul {
-  list-style-type: circle;
-  padding-left: 1.2rem;
-  margin-top: 0.3rem;
+.fees-details-card strong {
+  color: var(--primary-navy, #0f294a) !important;
 }
 
-/* ================= Responsive ================= */
-@media (max-width: 767px) {
-  .document-card {
-    padding: 1.5rem 1rem;
+.fees-details-card span {
+  color: #334155;
+}
+
+.duration-fees-section .btn-warning {
+  background-color: var(--gold-accent, #d97706);
+  border-color: var(--gold-accent, #d97706);
+  color: #ffffff;
+  transition: all 0.3s ease;
+}
+
+.duration-fees-section .btn-warning:hover {
+  background-color: var(--gold-accent-hover, #b45309);
+  border-color: var(--gold-accent-hover, #b45309);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 25px rgba(217, 119, 6, 0.25);
+}
+
+/* ================= Responsive Adjustments ================= */
+@media (max-width: 991px) {
+  .course-hero-section {
+    padding-top: 130px;
+    padding-bottom: 60px;
   }
-
-  .document-card h4 {
+  .course-title {
+    font-size: 2.8rem;
+  }
+  .course-subtitle {
     font-size: 1.3rem;
   }
-
-  .document-card h6 {
-    font-size: 1rem;
+  .crew-carousel {
+    height: 300px;
   }
-
-  .document-card p, 
-  .document-card li {
-    font-size: 0.95rem;
+  .crew-card {
+    width: 300px;
+    height: 200px;
   }
-
-  .document-card ul {
-    padding-left: 1rem;
+  .crew-card.left-1 {
+    transform: translate3d(-200px, 0, -80px) scale(0.9);
   }
-
-  .document-card li ul {
-    padding-left: 0.8rem;
+  .crew-card.right-1 {
+    transform: translate3d(200px, 0, -80px) scale(0.9);
   }
+  .crew-card.left-2, .crew-card.right-2 {
+    display: none; /* Hide distant cards on tablet */
+  }
+}
 
-  .document-card {
-    border-left-width: 4px;
+@media (max-width: 767px) {
+  .course-title {
+    font-size: 2.2rem;
+  }
+  .section-main-title {
+    font-size: 1.8rem;
   }
 }
 
 @media (max-width: 575px) {
-  .document-card h4 {
-    font-size: 1.2rem;
+  .course-hero-section {
+    padding-top: 110px;
+    padding-bottom: 50px;
   }
-
-  .document-card h6 {
-    font-size: 0.95rem;
+  .course-title {
+    font-size: 1.8rem;
   }
-
-  .document-card p, 
-  .document-card li {
-    font-size: 0.9rem;
-  }
-}
-/* ================= BEGINNER PAGE RESPONSIVE TYPOGRAPHY ================= */
-
-/* Tablet */
-@media (max-width: 992px) {
-
-  /* Paragraph section */
-  .para-section p {
-    font-size: 17px;
-    line-height: 1.6;
-  }
-
-  h2.highlight {
-    font-size: 2rem;
-  }
-
-  /* Section titles */
-  .section-title {
-    font-size: 1.7rem;
-  }
-
-  /* Services list */
-  .services-list {
-    font-size: 1.2rem;
-  }
-
-  /* Breakdown cards */
-  .breakdown-card .card-title {
-    font-size: 1.3rem;
-  }
-
-  .breakdown-card ul li {
-    font-size: 1rem;
-  }
-
-  /* Duration section */
-  .duration-fees-section ul li {
+  .course-subtitle {
     font-size: 1.1rem;
   }
-
-}
-
-
-/* Mobile */
-@media (max-width: 768px) {
-
-  .para-section p {
-    font-size: 15px;
-    padding: 0 15px;
+  .course-lead-text {
+    font-size: 1rem !important;
   }
-
-  h2.highlight {
-    font-size: 1.7rem;
+  .crew-carousel {
+    height: 260px;
   }
-
-  .section-title {
-    font-size: 1.5rem;
+  .crew-card {
+    width: 240px;
+    height: 160px;
   }
-
-  .services-list {
-    font-size: 1rem;
-    line-height: 1.6;
+  .crew-card.left-1 {
+    transform: translate3d(-130px, 0, -60px) scale(0.85);
   }
-
-  .crew-overlay h3 {
-    font-size: 1rem;
+  .crew-card.right-1 {
+    transform: translate3d(130px, 0, -60px) scale(0.85);
   }
-
-  .crew-overlay p {
-    font-size: 0.85rem;
+  .crew-arrow {
+    width: 36px;
+    height: 36px;
+    font-size: 1.4rem;
   }
-
-  .breakdown-card .card-title {
-    font-size: 1.2rem;
+  .crew-left {
+    left: 5px;
   }
-
-  .breakdown-card ul li {
-    font-size: 0.95rem;
+  .crew-right {
+    right: 5px;
   }
-
-  .duration-fees-section h2 {
-    font-size: 1.6rem;
-  }
-
-  .duration-fees-section ul li {
-    font-size: 0.95rem;
-  }
-
-}
-
-
-/* Small phones */
-@media (max-width: 480px) {
-  .crew-overlay p {
-  margin: 20px;
-  /* opacity: 0.85; */
-}
-
-
-  .para-section p {
-    font-size: 14px;
-  }
-
-  h2.highlight {
-    font-size: 1.5rem;
-  }
-
-  .section-title {
-    font-size: 1.3rem;
-  }
-
-  .services-list {
-    font-size: 0.95rem;
-  }
-
-  .breakdown-card .card-title {
-    font-size: 1.1rem;
-  }
-
-  .breakdown-card ul li {
-    font-size: 0.9rem;
-  }
-
-  .duration-fees-section ul li {
-    font-size: 0.9rem;
-  }
-
 }
