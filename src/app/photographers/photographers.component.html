@@ -60,14 +60,14 @@
             transition: isTransitionEnabled ? 'transform 0.6s ease' : 'none'
           }"
         >
-          <div class="card-item" *ngFor="let member of doubled">
+          <div class="card-item" *ngFor="let member of doubled; trackBy: trackByInitials">
 
             <div class="card-inner shadow-sm" [class.flipped]="flippedCard === member.initials">
 
               <!-- FRONT OF CARD (Horizontal Layout) -->
               <div class="card-front p-3 d-flex align-items-center text-start gap-3" style="cursor: pointer;" (click)="flipCard(member.initials)">
                 <div class="photo-circle-horizontal flex-shrink-0">
-                  <img [src]="member.image || 'assets/images/profile.png'" [alt]="member.initials" class="rounded-circle border" width="75" height="75" style="object-fit: cover;" />
+                  <img [src]="member.image || 'assets/images/profile.png'" [alt]="member.initials" class="rounded-circle border" width="75" height="75" style="object-fit: cover;" loading="lazy" />
                 </div>
 
                 <div class="member-details flex-grow-1">
@@ -160,14 +160,14 @@
             transition: isTransitionEnabled ? 'transform 0.6s ease' : 'none'
           }"
         >
-          <div class="card-item" *ngFor="let member of doubled">
+          <div class="card-item" *ngFor="let member of doubled; trackBy: trackByInitials">
 
             <div class="card-inner shadow-sm" [class.flipped]="flippedCard === member.initials">
 
               <!-- FRONT OF CARD (Horizontal Layout) -->
               <div class="card-front p-3 d-flex align-items-center text-start gap-3" style="cursor: pointer;" (click)="flipCard(member.initials)">
                 <div class="photo-circle-horizontal flex-shrink-0">
-                  <img [src]="member.image || 'assets/images/profile.png'" [alt]="member.initials" class="rounded-circle border" width="75" height="75" style="object-fit: cover;" />
+                  <img [src]="member.image || 'assets/images/profile.png'" [alt]="member.initials" class="rounded-circle border" width="75" height="75" style="object-fit: cover;" loading="lazy" />
                 </div>
 
                 <div class="member-details flex-grow-1">

@@ -91,10 +91,29 @@
     "serverTarget": "Cruise_Lens_Academy:server:production",
     "routes": [
       "/",
-      "/course-1",
-      "/apply-now",
+      "/home",
       "/about",
-      "/contact"
+      "/course-1",
+      "/course-2",
+      "/course-3",
+      "/starter-track",
+      "/why-cruise",
+      "/partners",
+      "/contact",
+      "/faq",
+      "/apply-now",
+      "/photographers",
+      "/terms&Condition",
+      "/privacy-policy",
+      "/refund-cancellation-policy",
+      "/disclaimer",
+      "/cookie-policy",
+      "/Shipping-Delivery-Policy",
+      "/grievance-redressal-policy",
+      "/academic-training-policy",
+      "/code-conduct-policy",
+      "/academic-integrity-policy",
+      "/payment-emi-policy"
     ]
   }
 }

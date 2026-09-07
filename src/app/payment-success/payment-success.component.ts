@@ -3,8 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import jsPDF from 'jspdf';
-import autoTable from 'jspdf-autotable';
 
 @Component({
   selector: 'app-payment-success',
@@ -72,10 +70,13 @@ export class PaymentSuccessComponent implements OnInit {
   }
 
   // ✅ Download PDF Receipt using jsPDF
-downloadReceipt() {
-  if (!this.paymentData) return;
+  async downloadReceipt() {
+    if (!this.paymentData) return;
 
-  const doc = new jsPDF();
+    const { default: jsPDF } = await import('jspdf');
+    const { default: autoTable } = await import('jspdf-autotable');
+
+    const doc = new jsPDF();
 
   // --- Load and Add Logo (with proper aspect ratio and centering) ---
   const logo = new Image();

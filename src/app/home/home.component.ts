@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, ElementRef, HostListener, QueryList, ViewChild, ViewChildren } from '@angular/core';
+import { Component, ElementRef, HostListener, NgZone, QueryList, ViewChild, ViewChildren } from '@angular/core';
 import { Router, RouterLink, RouterModule } from '@angular/router';
 import { PhotographersComponent } from "../photographers/photographers.component";
 interface Slide {
@@ -42,43 +42,46 @@ export class HomeComponent {
     '/assets/images/image-17.webp',
   ];
 
-
-  
+  constructor(private router: Router, private ngZone: NgZone) {}
 
   onMouseMove(event: MouseEvent) {
     if (!this.overlay || !this.grid) return;
 
-    const x = event.clientX;
-    const y = event.clientY;
-    const size = this.spotlightSize;
+    this.ngZone.runOutsideAngular(() => {
+      const x = event.clientX;
+      const y = event.clientY;
+      const size = this.spotlightSize;
 
-    this.overlay.nativeElement.style.background = `
-      radial-gradient(
-        circle ${size/2}px at ${x}px ${y}px,
-        rgba(255,255,255,0.15) 0%,
-        transparent 70%,
-        rgba(0,0,0,0.85) 100%
-      )
-    `;
+      this.overlay.nativeElement.style.background = `
+        radial-gradient(
+          circle ${size/2}px at ${x}px ${y}px,
+          rgba(255,255,255,0.15) 0%,
+          transparent 70%,
+          rgba(0,0,0,0.85) 100%
+        )
+      `;
 
-    // Lens border (CSS vars)
-    this.overlay.nativeElement.style.setProperty('--lens-x', `${x}px`);
-    this.overlay.nativeElement.style.setProperty('--lens-y', `${y}px`);
+      // Lens border (CSS vars)
+      this.overlay.nativeElement.style.setProperty('--lens-x', `${x}px`);
+      this.overlay.nativeElement.style.setProperty('--lens-y', `${y}px`);
 
-    // Rotate grid slightly based on mouse position
-    const rotateX = (y / window.innerHeight - 0.5) * 90;
-    const rotateY = (x / window.innerWidth - 0.5) * 90;
+      // Rotate grid slightly based on mouse position
+      const rotateX = (y / window.innerHeight - 0.5) * 90;
+      const rotateY = (x / window.innerWidth - 0.5) * 90;
 
-    this.grid.nativeElement.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+      this.grid.nativeElement.style.transform = `rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
   }
 
   onMouseLeave() {
     if (!this.overlay || !this.grid) return;
 
-    this.overlay.nativeElement.style.background = `black`;
-    this.overlay.nativeElement.style.setProperty('--lens-x', `-9999px`);
-    this.overlay.nativeElement.style.setProperty('--lens-y', `-9999px`);
-    this.grid.nativeElement.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    this.ngZone.runOutsideAngular(() => {
+      this.overlay.nativeElement.style.background = `black`;
+      this.overlay.nativeElement.style.setProperty('--lens-x', `-9999px`);
+      this.overlay.nativeElement.style.setProperty('--lens-y', `-9999px`);
+      this.grid.nativeElement.style.transform = 'rotateX(0deg) rotateY(0deg)';
+    });
   }
 
   videoIcons = [
@@ -87,105 +90,115 @@ export class HomeComponent {
     { icon: 'bi bi-collection-play', label: 'Student Stories', video: 'assets/Video/student.mp4' }
   ];
 
-
-
-
   @ViewChild('videoPlayer') videoPlayer!: ElementRef;
 
   selectedVideo: string | null = null;
 
   selectVideo(index: number) {
-  this.selectedVideo = this.videoIcons[index].video;
+    this.selectedVideo = this.videoIcons[index].video;
 
-  setTimeout(() => {
-    this.videoPlayer?.nativeElement.play().catch((err: any) => console.log(err));
-  }, 0);
-}
+    setTimeout(() => {
+      this.videoPlayer?.nativeElement.play().catch((err: any) => console.log(err));
+    }, 0);
+  }
 
   closeVideo() {
     this.selectedVideo = null;
   }
 
-playFullscreenVideo(src: string) {
-  // 1️⃣ Create the iframe
-  const iframe = document.createElement('iframe');
-  iframe.src = src + '?autoplay=1&rel=0&controls=1&modestbranding=1';
-  iframe.allow = 'autoplay; fullscreen';
-  iframe.allowFullscreen = true;
-  iframe.style.position = 'fixed';
-  iframe.style.top = '0';
-  iframe.style.left = '0';
-  iframe.style.width = '100vw';
-  iframe.style.height = '100vh';
-  iframe.style.zIndex = '9999';
-  iframe.style.border = 'none';
+  playFullscreenVideo(src: string) {
+    const iframe = document.createElement('iframe');
+    iframe.src = src + '?autoplay=1&rel=0&controls=1&modestbranding=1';
+    iframe.allow = 'autoplay; fullscreen';
+    iframe.allowFullscreen = true;
+    iframe.style.position = 'fixed';
+    iframe.style.top = '0';
+    iframe.style.left = '0';
+    iframe.style.width = '100vw';
+    iframe.style.height = '100vh';
+    iframe.style.zIndex = '9999';
+    iframe.style.border = 'none';
 
-  // 2️⃣ Create close button
-  const closeBtn = document.createElement('button');
-  closeBtn.innerHTML = '✕';
-  closeBtn.style.position = 'fixed';
-  closeBtn.style.top = '20px';
-  closeBtn.style.right = '20px';
-  closeBtn.style.fontSize = '2rem';
-  closeBtn.style.color = 'white';
-  closeBtn.style.background = 'transparent';
-  closeBtn.style.border = 'none';
-  closeBtn.style.cursor = 'pointer';
-  closeBtn.style.zIndex = '10000';
+    const closeBtn = document.createElement('button');
+    closeBtn.innerHTML = '✕';
+    closeBtn.style.position = 'fixed';
+    closeBtn.style.top = '20px';
+    closeBtn.style.right = '20px';
+    closeBtn.style.fontSize = '2rem';
+    closeBtn.style.color = 'white';
+    closeBtn.style.background = 'transparent';
+    closeBtn.style.border = 'none';
+    closeBtn.style.cursor = 'pointer';
+    closeBtn.style.zIndex = '10000';
 
-  // 3️⃣ Remove iframe and button function
-  const removeIframe = () => {
-    document.body.removeChild(iframe);
-    document.body.removeChild(closeBtn);
-    document.removeEventListener('keydown', onEsc);
-  };
+    const removeIframe = () => {
+      document.body.removeChild(iframe);
+      document.body.removeChild(closeBtn);
+      document.removeEventListener('keydown', onEsc);
+    };
 
-  // 4️⃣ Event listeners to close
-  iframe.addEventListener('click', removeIframe);
-  closeBtn.addEventListener('click', removeIframe);
+    iframe.addEventListener('click', removeIframe);
+    closeBtn.addEventListener('click', removeIframe);
 
-  const onEsc = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') removeIframe();
-  };
-  document.addEventListener('keydown', onEsc);
+    const onEsc = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') removeIframe();
+    };
+    document.addEventListener('keydown', onEsc);
 
-  // 5️⃣ Append elements to body
-  document.body.appendChild(iframe);
-  document.body.appendChild(closeBtn);
-}
-
-slides: Slide[] = [
-  { title: 'OUR STORY', subtitle: 'CRUISE LENS ACADEMY', img: 'assets/images/image-44.jpg', link: '/about', direction: 'right' },
-];
-
-missionVision: Slide[] = [
-  { title: 'WHY CRUISE LENS ACADEMY', subtitle: 'Our Purpose', img: 'assets/images/image-53.jpg', link: '/why-cruise', direction: 'left' },
-  { title: 'OUR TEAM', subtitle: 'Our Goal', img: 'assets/images/image-54.jpg', link: '/partners', direction: 'right' },
-];
-
-constructor(private router: Router) {}
-
-// 🟢 PLACE THESE RIGHT AFTER CONSTRUCTOR — NOT AFTER courses[]
-activeIndex = 0;
-
-@HostListener('window:scroll')
-onScroll() {
-  const rows = document.querySelectorAll('.course-row');
-  rows.forEach((row, index) => {
-    const rect = row.getBoundingClientRect();
-    if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
-      this.activeIndex = index;
-    }
-  });
-
-  const section = document.querySelector('.offer-section');
-  if (section) {
-    const rect = section.getBoundingClientRect();
-    if (rect.top < window.innerHeight / 1.3) {
-      section.classList.add('in-view');
-    }
+    document.body.appendChild(iframe);
+    document.body.appendChild(closeBtn);
   }
-}
+
+  slides: Slide[] = [
+    { title: 'OUR STORY', subtitle: 'CRUISE LENS ACADEMY', img: 'assets/images/image-44.jpg', link: '/about', direction: 'right' },
+  ];
+
+  missionVision: Slide[] = [
+    { title: 'WHY CRUISE LENS ACADEMY', subtitle: 'Our Purpose', img: 'assets/images/image-53.jpg', link: '/why-cruise', direction: 'left' },
+    { title: 'OUR TEAM', subtitle: 'Our Goal', img: 'assets/images/image-54.jpg', link: '/partners', direction: 'right' },
+  ];
+
+  activeIndex = 0;
+
+  @HostListener('window:scroll')
+  onScroll() {
+    this.ngZone.runOutsideAngular(() => {
+      const rows = document.querySelectorAll('.course-row');
+      let newActiveIndex = this.activeIndex;
+      rows.forEach((row, index) => {
+        const rect = row.getBoundingClientRect();
+        if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+          newActiveIndex = index;
+        }
+      });
+
+      if (newActiveIndex !== this.activeIndex) {
+        this.ngZone.run(() => {
+          this.activeIndex = newActiveIndex;
+        });
+      }
+
+      const section = document.querySelector('.offer-section');
+      if (section) {
+        const rect = section.getBoundingClientRect();
+        if (rect.top < window.innerHeight / 1.3) {
+          section.classList.add('in-view');
+        }
+      }
+    });
+  }
+
+  trackByCourse(index: number, course: any) {
+    return course.id || index;
+  }
+
+  trackByImg(index: number, img: string) {
+    return img || index;
+  }
+
+  trackByVideo(index: number, video: any) {
+    return video.label || index;
+  }
 
 
 slideAndNavigate(slide: Slide, index: number, listType: 'slides' | 'missionVision') {

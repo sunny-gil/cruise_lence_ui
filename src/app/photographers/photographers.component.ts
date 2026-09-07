@@ -41,6 +41,8 @@ export class PhotographersComponent implements OnInit, AfterViewInit, OnDestroy 
   searchQuery = '';
   filteredPhotographers: any[] = [];
 
+  private static cachedPhotographers: any[] | null = null;
+
   constructor(private http: HttpClient, private router: Router) {}
 
   ngOnInit(): void {
@@ -62,19 +64,33 @@ export class PhotographersComponent implements OnInit, AfterViewInit, OnDestroy 
   }
 
   loadPhotographers(): void {
-    this.http.get<any[]>(this.apiUrl).subscribe(res => {
-      this.photographers = res.map((p: any, i: number) => ({
-        ...p,
-        initials:
-          p.initials ||
-          p.name?.split(' ').map((n: string) => n[0]).join('') ||
-          `P${i}`,
-        skills: p.skills ? p.skills.split(',').map((s: string) => s.trim()).filter((s: string) => s.length > 0) : [],
-        certifications: p.certifications ? p.certifications.split(',').map((s: string) => s.trim()).filter((s: string) => s.length > 0) : []
-      }));
-
+    if (PhotographersComponent.cachedPhotographers) {
+      this.photographers = PhotographersComponent.cachedPhotographers;
       this.filteredPhotographers = this.photographers;
       this.doubled = [...this.photographers, ...this.photographers];
+      return;
+    }
+
+    this.http.get<any[]>(this.apiUrl).subscribe({
+      next: (res) => {
+        const mapped = res.map((p: any, i: number) => ({
+          ...p,
+          initials:
+            p.initials ||
+            p.name?.split(' ').map((n: string) => n[0]).join('') ||
+            `P${i}`,
+          skills: p.skills ? p.skills.split(',').map((s: string) => s.trim()).filter((s: string) => s.length > 0) : [],
+          certifications: p.certifications ? p.certifications.split(',').map((s: string) => s.trim()).filter((s: string) => s.length > 0) : []
+        }));
+
+        PhotographersComponent.cachedPhotographers = mapped;
+        this.photographers = mapped;
+        this.filteredPhotographers = mapped;
+        this.doubled = [...mapped, ...mapped];
+      },
+      error: (err) => {
+        console.error('Failed to load testimonials:', err);
+      }
     });
   }
 
@@ -196,5 +212,9 @@ export class PhotographersComponent implements OnInit, AfterViewInit, OnDestroy 
       this.detectCardWidth();
       this.isTransitionEnabled = true;
     }, 100);
+  }
+
+  trackByInitials(index: number, item: any) {
+    return item.initials || item.name || index;
   }
 }
