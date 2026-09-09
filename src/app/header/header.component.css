@@ -6,25 +6,28 @@
 /* Light Theme Navigation Bar */
 .transparent-nav {
   background-color: #ffffff;
-  padding: 1rem 1rem;
+  padding: 0.75rem 0;
   border-bottom: 1px solid #e2e8f0;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.02);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.03);
 }
 
 .scrolled-nav {
   background-color: #ffffff;
-  padding: 0.6rem 1rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  padding: 0.5rem 0;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.07);
   border-bottom: 1px solid #e2e8f0;
 }
 
 /* Brand Logo and Text */
 .logo {
-  height: 52px;
+  height: 48px;
+  width: auto;
+  object-fit: contain;
   transition: height 0.3s ease-in-out;
 }
+
 .scrolled-nav .logo {
-  height: 42px;
+  height: 40px;
 }
 
 .brand-text-container {
@@ -32,16 +35,17 @@
 }
 
 .brand-text {
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: 1.2rem;
+  font-weight: 800;
   color: var(--gold-accent);
-  letter-spacing: 0.3px;
+  letter-spacing: 0.4px;
   text-transform: uppercase;
+  font-family: 'Poppins', sans-serif;
 }
 
 .brand-tagline {
-  font-size: 0.65rem;
-  font-weight: 600;
+  font-size: 0.62rem;
+  font-weight: 700;
   color: var(--primary-navy);
   letter-spacing: 0.8px;
   text-transform: uppercase;
@@ -49,12 +53,31 @@
 }
 
 /* Navigation Links */
+.navbar-nav {
+  gap: 2px;
+}
+
 .navbar-nav .nav-link {
   color: var(--primary-navy) !important;
   font-weight: 600;
-  font-size: 0.92rem;
-  padding: 0.5rem 0.9rem !important;
+  font-size: 0.9rem;
+  padding: 0.5rem 0.8rem !important;
   transition: all 0.2s ease-in-out;
+  position: relative;
+  white-space: nowrap;
+}
+
+.navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: var(--gold-accent);
+  transition: all 0.25s ease;
+  transform: translateX(-50%);
+  border-radius: 2px;
 }
 
 .navbar-nav .nav-link:hover,
@@ -62,44 +85,84 @@
   color: var(--gold-accent) !important;
 }
 
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+  width: 60%;
+}
+
+/* Remove underline indicator for dropdown toggle caret */
+.navbar-nav .nav-link.dropdown-toggle::after {
+  display: inline-block;
+  content: "";
+  position: static;
+  width: auto;
+  height: auto;
+  background-color: transparent;
+  transform: none;
+  margin-left: 0.35em;
+  vertical-align: 0.255em;
+  border-top: 0.3em solid;
+  border-right: 0.3em solid transparent;
+  border-bottom: 0;
+  border-left: 0.3em solid transparent;
+}
+
 /* Dropdown Menu Styles */
 .dropdown-menu {
   background-color: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 6px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(15, 41, 74, 0.12) !important;
+  padding: 8px 0;
+  margin-top: 8px !important;
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .dropdown-item {
   color: var(--primary-navy);
   font-weight: 500;
-  font-size: 0.85rem;
-  padding: 0.5rem 1.2rem;
+  font-size: 0.88rem;
+  padding: 0.6rem 1.25rem;
   transition: all 0.2s ease-in-out;
 }
 
 .dropdown-item:hover {
-  background-color: #f1f5f9;
+  background-color: #f8fafc;
   color: var(--gold-accent);
   font-weight: 600;
+  padding-left: 1.45rem;
 }
 
-/* Medhavi Lockup Styles */
-.msu-lockup {
+/* Partner Lockup Styles (MSU + Skill India) */
+.partner-lockup {
   display: flex;
   align-items: center;
+  padding: 2px 0;
 }
 
-.msu-divider {
+.partner-divider {
   width: 1px;
-  height: 34px;
+  height: 44px;
   background-color: #cbd5e1;
-  margin-right: 15px;
+  border-radius: 1px;
 }
 
 .msu-logo {
-  height: 34px;
+  height: 38px;
   width: auto;
+  object-fit: contain;
 }
 
 .msu-text {
@@ -110,7 +173,7 @@
 .msu-association {
   font-size: 0.55rem;
   text-transform: uppercase;
-  opacity: 0.7;
+  opacity: 0.75;
   letter-spacing: 0.5px;
   font-weight: 600;
 }
@@ -119,6 +182,7 @@
   font-size: 0.85rem;
   font-weight: 800;
   letter-spacing: 0.5px;
+  color: #0f294a;
 }
 
 .msu-subtitle {
@@ -130,36 +194,61 @@
 
 .msu-motto {
   font-size: 0.48rem;
-  opacity: 0.7;
+  opacity: 0.75;
   font-weight: 600;
 }
 
-/* Apply Now container */
+/* Dedicated Skill India Logo Styling */
+.skill-india-box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.skill-india-logo {
+  height: 52px;
+  width: auto;
+  max-width: 130px;
+  object-fit: contain;
+  transition: transform 0.2s ease;
+}
+
+.skill-india-logo:hover {
+  transform: scale(1.04);
+}
+
+/* Apply Now Container */
 .apply-container {
-  margin-top: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .cta-btn.apply-btn {
   font-size: 0.85rem;
+  font-weight: 700;
   padding: 8px 18px !important;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: 0 2px 6px rgba(217, 119, 6, 0.2);
-  transition: all 0.2s ease;
+  border-radius: 6px;
+  box-shadow: 0 3px 10px rgba(217, 119, 6, 0.25);
+  transition: all 0.25s ease;
 }
 
 .cta-btn.apply-btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.35);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(217, 119, 6, 0.35);
+  background-color: var(--gold-accent-hover);
 }
 
 .limited-seats-text {
   font-size: 0.58rem;
   color: var(--text-muted-dark);
-  font-weight: 600;
-  margin-top: 3px;
+  font-weight: 700;
+  margin-top: 4px;
   letter-spacing: 0.5px;
   text-transform: uppercase;
+  white-space: nowrap;
 }
 
 /* Toggler Icon color */
@@ -171,32 +260,46 @@
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%230f294a' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E") !important;
 }
 
-/* ================= Responsive Styles ================= */
+/* Responsive Styles */
 @media (max-width: 1399px) {
   .transparent-nav {
     background-color: #ffffff !important;
-    padding: 0.8rem 1rem;
+    padding: 0.75rem 1rem;
   }
-  
+
   .navbar-collapse {
     background-color: #ffffff;
-    padding: 1rem 0;
+    padding: 1.25rem 1rem;
     border-top: 1px solid #e2e8f0;
-    margin-top: 10px;
+    margin-top: 12px;
+    border-radius: 8px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
   }
-  
+
+  .navbar-nav {
+    width: 100%;
+  }
+
   .navbar-nav .nav-link {
-    padding: 0.6rem 1rem !important;
+    padding: 0.75rem 1rem !important;
     width: 100%;
     text-align: center;
     border-bottom: 1px solid #f1f5f9;
   }
 
+  .navbar-nav .nav-link::after {
+    display: none;
+  }
+
   .dropdown-menu {
     text-align: center;
     background-color: #f8fafc;
-    border: none;
-    box-shadow: none;
+    border: none !important;
+    box-shadow: none !important;
+  }
+
+  .dropdown-item:hover {
+    padding-left: 1.25rem;
   }
 
   .action-group {
@@ -204,13 +307,14 @@
     gap: 12px;
   }
 
-  .msu-divider {
-    display: none;
+  .partner-lockup {
+    margin-right: 0 !important;
+    margin-bottom: 8px;
   }
 
   .cta-btn.apply-btn {
     width: 100%;
-    margin-top: 10px;
+    justify-content: center;
   }
 }
 
@@ -218,15 +322,14 @@
   .brand-text {
     font-size: 1.05rem !important;
   }
+
   .brand-tagline {
     font-size: 0.58rem !important;
     letter-spacing: 0.5px !important;
   }
+
   .logo {
     height: 38px !important;
     margin-right: 8px !important;
-  }
-  .navbar-brand {
-    margin-right: 0 !important;
   }
 }

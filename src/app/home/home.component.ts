@@ -226,22 +226,18 @@ courses = [
   { 
     id: 'course-1',
     headtitle:'Course 1:',
-    title: 'Beginner & New to the Sea', 
+    title: 'Certification in Cruise Photography', 
     image: 'assets/images/image-55.jpg', 
-    description: `Kickstart your cruise photography career! 
-    Includes maritime documentation, DSLR & editing training, 
-    soft skills, and placement support with international cruise lines. 
-    Duration: 2 months | Fees: ₹1,50,000 | Small batch size (6–8 students)` 
+    description: `Kickstart your cruise photography career! 15-working-day professional program certified by Medhavi Skills University (MSU) & Skill India. Includes DSLR, lighting, editing & placement assistance. 
+    Duration: 15 Working Days | Fees: ₹1,49,000 | Small batch size (6–8 students)` 
   },
   { 
     id: 'course-2',
     headtitle:'Course 2:',
-    title: 'STCW Holder / Ex-Seafarer', 
+    title: 'Complete Cruise Career Program', 
     image: 'assets/images/image-56.jpg', 
-    description: `Fast-track 10-day program for STCW-certified or 
-    ex-seafarers. Focuses on creative, technical & placement training, 
-    with immersive online + practical sessions in Goa. 
-    Duration: 10 days | Fees: ₹1,00,000 | Small batch size (6–8 students)` 
+    description: `Complete dual-skill program combining 15-day cruise photography with 14-day STCW maritime training by NAMAC. Includes stay (accommodation) & daily meals during STCW. 
+    Duration: 15 Days Photography + 14 Days Maritime | Fees: ₹2,08,000 | Small batch size (6–8 students)` 
   },
   { 
     id: 'course-3',

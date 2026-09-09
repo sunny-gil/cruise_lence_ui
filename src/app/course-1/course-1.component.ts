@@ -21,7 +21,7 @@ export class Course1Component {
     { name: "Creative & Technical Photography Training", role: "DSLR mastery, Cruise-specific scenarios, Roleplay exercises simulating real onboard conditions", img: "assets/images/image-26.jpg" },
     { name: "Editing & Software Training", role: " Adobe Lightroom., Adobe Photoshop, Adobe Bridge, IRIS shooting and editing", img: "assets/images/image-27.jpg" },
     { name: "Career Preparation & Placement Assistance", role: "Grooming & communication workshops, Mock HR interview + employer-specific training, Direct interviews with our cruise partners", img: "assets/images/image-23.jpg" },
-    { name: "Duration", role: "Approximately 2 months (integrated training with maritime + photography + editing + placement prep), Fees: ₹1,50,000 (GST excluded), Batch Size: Minimum 6, Maximum 8 students", img: "assets/images/image-24.jpg" }
+    { name: "Duration", role: "15-Working-Day Professional Program (MSU & Skill India Certified), Fees: ₹1,49,000, Batch Size: Minimum 6, Maximum 8 students", img: "assets/images/image-24.jpg" }
   ];
 
 crewIndex = 0;

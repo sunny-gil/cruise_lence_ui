@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-xxl fixed-top" [ngClass]="{'scrolled-nav': isScrolled, 'transparent-nav': !isScrolled}">
-  <div class="container-fluid px-lg-5">
+  <div class="container-fluid px-xl-5 px-lg-4 px-3">
     <!-- Logo & Brand Info -->
-    <a class="navbar-brand d-flex align-items-center" routerLink="/home">
+    <a class="navbar-brand d-flex align-items-center py-0" routerLink="/home">
       <img src="assets/images/logo.png" alt="Logo" class="logo me-3" />
       <div class="brand-text-container d-flex flex-column text-start">
         <span class="brand-text">Cruise Lens Academy</span>
@@ -10,21 +10,21 @@
     </a>
 
     <!-- Toggler -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler border-0 shadow-none p-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
     <!-- Menu Links and Actions -->
     <div class="collapse navbar-collapse" id="navbarNav">
       <!-- Nav Links -->
-      <ul class="navbar-nav ms-auto align-items-center">
-        <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active" (click)="closeNavbar()">Home</a></li>
+      <ul class="navbar-nav ms-auto align-items-center me-xl-2">
+        <li class="nav-item"><a class="nav-link" routerLink="/home" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}" (click)="closeNavbar()">Home</a></li>
         <li class="nav-item"><a class="nav-link" routerLink="about" routerLinkActive="active" (click)="closeNavbar()">About CLA</a></li>
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="programsDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Programs
           </a>
-          <ul class="dropdown-menu dropdown-menu-dark" aria-labelledby="programsDropdown">
+          <ul class="dropdown-menu shadow-lg border-0" aria-labelledby="programsDropdown">
             <li><a class="dropdown-item" routerLink="starter-track" (click)="closeNavbar()">Starter Track – Photography Basics</a></li>
             <li><a class="dropdown-item" routerLink="course-1" (click)="closeNavbar()">Course 1 – Beginner to Sea</a></li>
             <li><a class="dropdown-item" routerLink="course-2" (click)="closeNavbar()">Course 2 – STCW / Ex-Seafarer</a></li>
@@ -37,24 +37,35 @@
         <li class="nav-item"><a class="nav-link" routerLink="contact" routerLinkActive="active" (click)="closeNavbar()">Contact</a></li>
       </ul>
 
-      <!-- Action Group (MSU logo + Apply Button) -->
-      <div class="d-flex align-items-center ms-xl-4 mt-3 mt-xl-0 justify-content-center action-group">
-        <!-- MSU Partnership Lockup -->
-        <div class="msu-lockup d-none d-xl-flex align-items-center me-3">
-          <div class="msu-divider"></div>
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Medhavi_Skills_University_official_Logo.png/1280px-Medhavi_Skills_University_official_Logo.png" alt="Medhavi Skills University" class="msu-logo me-2" />
-          <div class="msu-text d-flex flex-column text-start">
-            <span class="msu-association">In Association with</span>
-            <span class="msu-title">MEDHAVI</span>
-            <span class="msu-subtitle">SKILLS UNIVERSITY</span>
-            <span class="msu-motto">Skill • Empower • Liberate</span>
+      <!-- Action Group (MSU logo + Skill India logo + Apply Button) -->
+      <div class="d-flex align-items-center ms-xl-3 mt-3 mt-xl-0 justify-content-center action-group">
+        <!-- MSU & Skill India Partnership Lockup -->
+        <div class="partner-lockup d-none d-xl-flex align-items-center me-3">
+          <div class="partner-divider"></div>
+          
+          <!-- MSU Block -->
+          <div class="d-flex align-items-center me-3">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0e/Medhavi_Skills_University_official_Logo.png/1280px-Medhavi_Skills_University_official_Logo.png" alt="Medhavi Skills University" class="msu-logo me-2" />
+            <div class="msu-text d-flex flex-column text-start">
+              <span class="msu-association">Approved Partner</span>
+              <span class="msu-title">MEDHAVI</span>
+              <span class="msu-subtitle">SKILLS UNIVERSITY</span>
+              <span class="msu-motto">Skill • Empower • Liberate</span>
+            </div>
+          </div>
+
+          <div class="partner-divider me-3"></div>
+
+          <!-- Skill India Logo -->
+          <div class="skill-india-box d-flex align-items-center">
+            <img src="assets/images/skill-india-logo.png" alt="Skill India" class="skill-india-logo" />
           </div>
         </div>
 
-        <!-- Apply Button with Micro-line -->
-        <div class="apply-container d-flex flex-column align-items-center">
-          <a class="cta-btn apply-btn btn-gold-solid py-2 px-4" routerLink="apply-now" (click)="closeNavbar()">
-            APPLY NOW <i class="fa-solid fa-arrow-right ms-1"></i>
+        <!-- Apply Button with Subtext -->
+        <div class="apply-container d-flex flex-column align-items-center ms-xl-1">
+          <a class="cta-btn apply-btn btn-gold-solid py-2 px-3 text-nowrap d-flex align-items-center gap-2" routerLink="apply-now" (click)="closeNavbar()">
+            <span>APPLY NOW</span> <i class="fa-solid fa-arrow-right fs-6"></i>
           </a>
           <span class="limited-seats-text">Limited Seats - Enroll Today!</span>
         </div>

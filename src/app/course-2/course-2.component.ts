@@ -42,8 +42,8 @@ export class Course2Component {
     img: "assets/images/image-62.jpg" 
   },
   { 
-    name: "Duration", 
-    role: "Course Duration: 1 Week (6 days offline + 2 days practical studio sessions + 1 assessment + 1 certification). Fees: ₹1,00,000 (GST excluded). Batch Size: 6–8 students.", 
+    name: "Duration & Details", 
+    role: "Course Duration: 15 Days Photography + 14 Days Maritime STCW Training (NAMAC). Fees: ₹2,08,000 (Includes Stay & Meals during STCW). Batch Size: 6–8 students.", 
     img: "assets/images/image-63.jpg" 
   }
 ];

@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build && node -e \"console.log('\\n========================================\\n📦 BUILD OUTPUT PATH:\\n' + require('path').resolve(__dirname, 'dist/cruise-lens-academy/browser') + '\\n========================================\\n')\"",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:Cruise_Lens_Academy": "node dist/cruise-lens-academy/server/server.mjs"
