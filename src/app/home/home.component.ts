@@ -236,19 +236,37 @@ courses = [
     headtitle:'Course 2:',
     title: 'Complete Cruise Career Program', 
     image: 'assets/images/image-56.jpg', 
-    description: `Complete dual-skill program combining 15-day cruise photography with 14-day STCW maritime training by NAMAC. Includes stay (accommodation) & daily meals during STCW. 
-    Duration: 15 Days Photography + 14 Days Maritime | Fees: ₹2,08,000 | Small batch size (6–8 students)` 
-  },
-  { 
-    id: 'course-3',
-    headtitle:'Course 3:',
-    title: 'Working Cruise Photographers (Consultation)', 
-    image: 'assets/images/image-4.jpg', 
-    description: `Exclusive evaluation & consultation for onboard photographers. 
-    Benchmark your portfolio, get career guidance & fast-track to senior roles. 
-    Duration: 1 week | Paid evaluation (details after enquiry)` 
+    description: `Complete preparation pathway combining ~30 working days of professional cruise photography with maritime STCW training.
+    Duration: ~30 Working Days Photography + Maritime/STCW | Fees: ₹2,08,000 | Comprehensive career pathway` 
   }
 ];
+
+activeReviewIndex = 0;
+studentReviews = [
+  {
+    name: 'Anurag Tiwari',
+    role: 'Cruise Photographer, MSC Cruises',
+    text: 'CLA changed my life. The training, support and placement assistance is unmatched. Practical shoots and guest interaction prepared me directly for ship life.'
+  },
+  {
+    name: 'Roshan Kumar',
+    role: 'Cruise Photographer, Royal Caribbean',
+    text: 'The most comprehensive cruise photography academy in India. Mentorship by industry veterans gave me the confidence to excel onboard.'
+  },
+  {
+    name: 'Pooja Patil',
+    role: 'Cruise Photographer, Costa Cruises',
+    text: 'From studio lighting to maritime workflow, CLA covers every detail. The hands-on training and career guidance are genuinely world-class.'
+  }
+];
+
+nextReview() {
+  this.activeReviewIndex = (this.activeReviewIndex + 1) % this.studentReviews.length;
+}
+
+prevReview() {
+  this.activeReviewIndex = (this.activeReviewIndex - 1 + this.studentReviews.length) % this.studentReviews.length;
+}
 
 
 

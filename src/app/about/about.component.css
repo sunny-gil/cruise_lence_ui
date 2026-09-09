@@ -463,3 +463,31 @@
     min-height: 300px;
   }
 }
+
+/* ================= Values Cards & Leadership ================= */
+.value-card {
+  border-top: 4px solid var(--gold-accent) !important;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08) !important;
+}
+
+.team-img-wrapper {
+  transition: transform 0.3s ease;
+}
+
+.team-img-wrapper:hover {
+  transform: scale(1.02);
+}
+
+.gallery-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(0deg, rgba(15, 41, 74, 0.9) 0%, transparent 100%);
+  color: #ffffff;
+}

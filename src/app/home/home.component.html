@@ -21,7 +21,7 @@
           <a routerLink="/apply-now" class="btn-gold-solid py-3 px-5 rounded-1 text-uppercase shadow-sm">
             APPLY NOW <i class="fa-solid fa-arrow-right ms-2"></i>
           </a>
-          <a routerLink="/contact" class="btn btn-white-outline py-3 px-4 rounded-1 text-uppercase fw-semibold">
+          <a href="assets/docs/Cruise_Lens_Academy_Brochure.pdf" download="Cruise_Lens_Academy_Brochure.pdf" class="btn btn-white-outline py-3 px-4 rounded-1 text-uppercase fw-semibold">
             DOWNLOAD BROCHURE <i class="bi bi-download ms-2"></i>
           </a>
         </div>
@@ -82,13 +82,17 @@
 </div>
 
 <!-- Programmes Section -->
-<section class="section-programmes py-5">
-  <div class="container text-center pt-5">
-    <span class="section-eyebrow fw-bold text-uppercase">OUR PROGRAMS</span>
-    <h2 class="section-main-title fw-bold mt-2">ONE CAREER. TWO PATHWAYS.</h2>
-    <div class="section-divider-gold mx-auto mb-5"></div>
+<!-- Our Courses / Pathways Section -->
+<section class="programs-overview-section py-5">
+  <div class="container-fluid px-lg-5">
+    <div class="text-center mb-5">
+      <span class="section-tiny-eyebrow fw-bold text-uppercase">CHOOSE YOUR PATHWAY</span>
+      <h2 class="section-title fw-bold text-navy-main mt-1">CLA 2.0 Training Programs</h2>
+      <div class="title-underline mx-auto mt-2"></div>
+      <p class="section-subtitle text-muted mt-2">Structured career preparation designed for high-earning global cruise photography.</p>
+    </div>
 
-    <div class="row mt-4 justify-content-center gap-4">
+    <div class="row justify-content-center">
       <!-- Pathway 1 Card -->
       <div class="col-xl-5 col-lg-6 col-md-12 mb-4">
         <div class="program-horizontal-card d-flex flex-column flex-md-row text-start h-100">
@@ -101,12 +105,12 @@
                 <div class="program-icon-circle"><i class="fa-solid fa-camera"></i></div>
                 <span class="program-head-title fw-semibold text-muted">PATHWAY 1</span>
               </div>
-              <h3 class="program-card-title fw-bold mb-3">1. CERTIFICATION IN CRUISE PHOTOGRAPHY (MSU CERTIFIED)</h3>
+              <h3 class="program-card-title fw-bold mb-3">1. CERTIFICATION IN CRUISE PHOTOGRAPHY</h3>
               
               <ul class="program-features-list check-list">
-                <li>15 Working Days</li>
-                <li>Professional Photography Training</li>
-                <li>MSU University Certification</li>
+                <li>15-Working-Day Professional Photography Program</li>
+                <li>MSU University Certification & Skill Points</li>
+                <li>Cruise Photography Workflow, Portraiture & Sales</li>
               </ul>
             </div>
             
@@ -135,14 +139,14 @@
               <h3 class="program-card-title fw-bold mb-3">2. COMPLETE CRUISE CAREER PROGRAM</h3>
               
               <ul class="program-features-list check-list">
-                <li>15-Day Photography Course</li>
-                <li>Maritime Certifications & Documentation</li>
+                <li>30 Working Days of Photography Training</li>
+                <li>Maritime STCW Certifications & Documentation</li>
                 <li>Everything you need to start your cruise career</li>
               </ul>
             </div>
             
             <div class="mt-4 pt-3 border-top d-flex justify-content-between align-items-center">
-              <span class="program-price fw-bold fs-4">₹2,49,000</span>
+              <span class="program-price fw-bold fs-4">₹2,08,000</span>
               <a routerLink="/course-2" class="btn-navy-solid text-uppercase btn-sm">
                 View Details <i class="fa-solid fa-arrow-right ms-1"></i>
               </a>
@@ -162,10 +166,25 @@
   <div class="container-fluid px-lg-5">
     <div class="row align-items-center justify-content-between gap-y-4">
       
-      <!-- What Our Students Say & Video -->
-      <div class="col-xxl-5 col-xl-6 col-lg-12 d-flex flex-column flex-md-row align-items-center gap-4 border-end-xl pe-xl-4 mb-4 mb-xl-0">
-        <div class="student-quote text-start flex-grow-1">
-          <span class="section-tiny-eyebrow fw-bold text-uppercase d-block mb-1">WHAT OUR STUDENTS SAY</span>
+      <!-- Dynamic Student Reviews (Video Removed) -->
+      <div class="col-xxl-5 col-xl-6 col-lg-12 border-end-xl pe-xl-4 mb-4 mb-xl-0">
+        <div class="dynamic-review-card p-3 rounded shadow-sm bg-white border text-start">
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <div class="d-flex align-items-center gap-2">
+              <span class="badge bg-success-subtle text-success border border-success-subtle px-2 py-1 small fw-semibold">
+                <i class="bi bi-patch-check-fill me-1"></i> Verified Student Review
+              </span>
+            </div>
+            <div class="review-nav-arrows d-flex gap-1">
+              <button class="btn btn-sm btn-light border py-0 px-2" (click)="prevReview()" title="Previous Review">
+                <i class="bi bi-chevron-left small"></i>
+              </button>
+              <button class="btn btn-sm btn-light border py-0 px-2" (click)="nextReview()" title="Next Review">
+                <i class="bi bi-chevron-right small"></i>
+              </button>
+            </div>
+          </div>
+
           <div class="rating-stars mb-2 text-gold">
             <i class="bi bi-star-fill"></i>
             <i class="bi bi-star-fill"></i>
@@ -173,16 +192,17 @@
             <i class="bi bi-star-fill"></i>
             <i class="bi bi-star-fill"></i>
           </div>
-          <p class="quote-text italic text-muted mb-1">
-            "CLA changed my life. The training, support and placement assistance is unmatched."
+
+          <p class="quote-text italic text-dark mb-3">
+            "{{ studentReviews[activeReviewIndex].text }}"
           </p>
-          <span class="student-name fw-bold text-navy-main font-weight-semibold">- Anurag Tiwari</span>
-        </div>
-        
-        <div class="video-preview-wrapper flex-shrink-0" (click)="playFullscreenVideo('assets/Video/student.mp4')">
-          <div class="video-preview-thumb shadow-sm rounded position-relative">
-            <img src="assets/images/photo-roshan.webp" alt="Student Video Thumbnail" class="img-fluid rounded" loading="lazy" />
-            <i class="bi bi-play-circle-fill play-btn-overlay fs-2"></i>
+
+          <div class="d-flex align-items-center justify-content-between border-top pt-2">
+            <div>
+              <span class="student-name fw-bold text-navy-main d-block">{{ studentReviews[activeReviewIndex].name }}</span>
+              <span class="text-muted small">{{ studentReviews[activeReviewIndex].role }}</span>
+            </div>
+            <span class="badge bg-light text-muted border small">{{ activeReviewIndex + 1 }} / {{ studentReviews.length }}</span>
           </div>
         </div>
       </div>
@@ -204,7 +224,7 @@
               <i class="bi bi-star-fill small"></i>
             </div>
             <p class="reviews-count text-muted small mb-1">Based on 120+ reviews</p>
-            <a href="https://www.google.com" target="_blank" class="view-reviews-link small text-navy-main fw-bold text-decoration-none">VIEW ALL REVIEWS &rarr;</a>
+            <a href="https://www.google.com/search?q=Cruise+Lens+Academy+Goa+reviews" target="_blank" rel="noopener noreferrer" class="view-reviews-link small text-navy-main fw-bold text-decoration-none">VIEW ALL REVIEWS &rarr;</a>
           </div>
         </div>
       </div>

@@ -18,11 +18,12 @@ export const routes: Routes = [
           path: 'course-2',
           loadComponent: () => import('./course-2/course-2.component').then(m => m.Course2Component)
      },
-      {
-          path: 'course-3',
-          loadComponent: () => import('./course-3/course-3.component').then(m => m.Course3Component)
-     },
-      {
+       {
+           path: 'course-3',
+           redirectTo: 'course-2',
+           pathMatch: 'full'
+      },
+       {
           path: 'partners',
           loadComponent: () => import('./partners/partners.component').then(m => m.PartnersComponent)
      },
@@ -35,9 +36,10 @@ export const routes: Routes = [
           loadComponent: () => import('./faq/faq.component').then(m => m.FaqComponent)
      },
         {
-          path: 'starter-track',
-          loadComponent: () => import('./starter-track/starter-track.component').then(m => m.StarterTrackComponent)
-     },
+           path: 'starter-track',
+           redirectTo: 'course-1',
+           pathMatch: 'full'
+      },
       {
           path: 'apply-now',
           loadComponent: () => import('./apply-now/apply-now.component').then(m => m.ApplyNowComponent)

@@ -41,10 +41,15 @@ export class PartnersComponent implements OnInit {
 
   showLightbox = false;
   activeImageIndex = 0;
+  isPlayingVideo = false;
 
   constructor() {}
 
   ngOnInit(): void {}
+
+  playVideo(): void {
+    this.isPlayingVideo = true;
+  }
 
   /* ================= LIGHTBOX LOGIC ================= */
 

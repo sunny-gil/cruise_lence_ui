@@ -16,37 +16,37 @@ interface CrewMember {
 })
 export class Course2Component {
   crewMembers: CrewMember[] = [
-  { 
-    name: "Skip documentation – focus purely on creativity & technicals", 
-    role: "Learn with a practical-first approach, focusing on creative photography and technical mastery without unnecessary theory.", 
-    img: "assets/images/image-58.jpg" 
-  },
-  { 
-    name: "Hands-on photography & editing workshops", 
-    role: "Intensive classroom and outdoor workshops covering DSLR usage, lighting, framing, and professional editing practices.", 
-    img: "assets/images/image-59.jpg" 
-  },
-  { 
-    name: "Roleplays, real-world experiences, and guest lectures", 
-    role: "Simulated cruise-ship scenarios, roleplays, and insights from industry professionals to prepare you for actual onboard conditions.", 
-    img: "assets/images/image-64.jpg" 
-  },
-  { 
-    name: "Editing & Software Training", 
-    role: "Master industry-standard tools like Adobe Lightroom, Photoshop, Bridge, and IRIS for professional-level editing.", 
-    img: "assets/images/image-61.jpg" 
-  },
-  { 
-    name: "Career Preparation & Placement Assistance", 
-    role: "Guidance on grooming, communication, mock HR interviews, employer-specific preparation, and direct placement opportunities.", 
-    img: "assets/images/image-62.jpg" 
-  },
-  { 
-    name: "Duration & Details", 
-    role: "Course Duration: 15 Days Photography + 14 Days Maritime STCW Training (NAMAC). Fees: ₹2,08,000 (Includes Stay & Meals during STCW). Batch Size: 6–8 students.", 
-    img: "assets/images/image-63.jpg" 
-  }
-];
+    { 
+      name: "~30 Working Days Photography Training", 
+      role: "Comprehensive professional photography curriculum covering camera mechanics, advanced lighting, studio portraiture, and editing workflows.", 
+      img: "assets/images/image-58.jpg" 
+    },
+    { 
+      name: "Maritime STCW Safety Certifications", 
+      role: "Mandatory DG Shipping approved maritime safety modules: PSSR, EFA, FPFF, PST, and STSDSD for life and work at sea.", 
+      img: "assets/images/image-59.jpg" 
+    },
+    { 
+      name: "Cruise Photography Workflow", 
+      role: "High-speed guest photography, gangway operations, dining room shoots, deck events, and onboard digital lab management.", 
+      img: "assets/images/image-64.jpg" 
+    },
+    { 
+      name: "Guest Interaction & Photography Sales", 
+      role: "International hospitality etiquette, effective communication, dynamic posing, and onboard gallery sales mastery.", 
+      img: "assets/images/image-61.jpg" 
+    },
+    { 
+      name: "Career Preparation & Placement", 
+      role: "Grooming, resume building, mock HR interviews, Fit-to-Sea medical guidance, and direct cruise recruitment support.", 
+      img: "assets/images/image-62.jpg" 
+    },
+    { 
+      name: "Program Investment & Certification", 
+      role: "Program Investment: ₹2,08,000. Medhavi Skills University Certification, Skill Points, and Verifiable Digital Credentials.", 
+      img: "assets/images/image-63.jpg" 
+    }
+  ];
 
 
 crewIndex = 0;

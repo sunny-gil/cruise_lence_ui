@@ -284,6 +284,28 @@
   color: var(--gold-accent);
 }
 
+.dynamic-review-card {
+  background: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  border-left: 4px solid var(--gold-accent) !important;
+  transition: all 0.3s ease;
+}
+
+.review-nav-arrows button {
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  color: var(--primary-navy);
+}
+
+.review-nav-arrows button:hover {
+  background-color: var(--gold-accent);
+  color: #ffffff;
+  border-color: var(--gold-accent);
+}
+
 .google-reviews-badge {
   background-color: #f8fafc;
   border: 1px solid #cbd5e1;

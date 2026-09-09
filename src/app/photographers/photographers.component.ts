@@ -187,8 +187,15 @@ export class PhotographersComponent implements OnInit, AfterViewInit, OnDestroy 
     this.applyFilters();
   }
 
+  sortOption: string = 'default';
+
+  setSort(event: any): void {
+    this.sortOption = event.target.value;
+    this.applyFilters();
+  }
+
   applyFilters(): void {
-    this.filteredPhotographers = this.photographers.filter(p => {
+    let result = this.photographers.filter(p => {
       const matchesStatus = this.filterStatus === 'all' || p.status === this.filterStatus;
       const nameLower = (p.name || '').toLowerCase();
       const initialsLower = (p.initials || '').toLowerCase();
@@ -196,12 +203,21 @@ export class PhotographersComponent implements OnInit, AfterViewInit, OnDestroy 
       return matchesStatus && matchesSearch;
     });
 
-    // Reset slider state
+    if (this.sortOption === 'name-asc') {
+      result.sort((a, b) => (a.name || '').localeCompare(b.name || ''));
+    } else if (this.sortOption === 'name-desc') {
+      result.sort((a, b) => (b.name || '').localeCompare(a.name || ''));
+    } else if (this.sortOption === 'batch') {
+      result.sort((a, b) => (b.batch || '').localeCompare(a.batch || ''));
+    }
+
+    this.filteredPhotographers = result;
+
+    // Reset slider state for home page embedded widget
     this.currentIndex = 0;
     this.translateX = 0;
     this.isTransitionEnabled = false;
 
-    // Double for infinite scroll track (only if we have elements)
     if (this.filteredPhotographers.length > 0) {
       this.doubled = [...this.filteredPhotographers, ...this.filteredPhotographers];
     } else {

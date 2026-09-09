@@ -489,3 +489,53 @@
     top: -18px;
   }
 }
+
+/* ================= Bank Details Modal Popup ================= */
+.bank-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 41, 74, 0.75);
+  backdrop-filter: blur(4px);
+  z-index: 1050;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.bank-modal-dialog {
+  width: 100%;
+  max-width: 520px;
+  max-height: 90vh;
+  overflow-y: auto;
+  animation: modalFadeIn 0.3s ease;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.payment-option-card {
+  transition: all 0.2s ease;
+  background-color: #ffffff;
+}
+
+.payment-option-card.selected {
+  border-color: var(--gold-accent, #d97706) !important;
+  background-color: rgba(217, 119, 6, 0.04) !important;
+  box-shadow: 0 4px 12px rgba(217, 119, 6, 0.12);
+}
+
+.payment-breakdown-box {
+  border-left: 4px solid var(--gold-accent, #d97706) !important;
+}
